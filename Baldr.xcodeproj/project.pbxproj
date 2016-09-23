@@ -518,6 +518,7 @@
 				5A46E5671D95090D00A63C32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A46E5681D95090D00A63C32 /* Build configuration list for PBXNativeTarget "BaldrTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +527,7 @@
 				5A46E56A1D95090D00A63C32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A46E56B1D95090D00A63C32 /* Build configuration list for PBXNativeTarget "BaldrUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +536,7 @@
 				5A46E56D1D95090D00A63C32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
