@@ -9,101 +9,144 @@
         <!--Lights-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="LightsViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Lights View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Lights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDJ-cn-l7g">
+                                <frame key="frameInset" minX="73" minY="314" width="268" height="109"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="27"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
-                            <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="dDJ-cn-l7g" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="1ez-us-ECL"/>
+                            <constraint firstItem="dDJ-cn-l7g" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7pv-hG-kh5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Lights" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Lights" id="wu0-1r-OTf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="arO-22-FY6">
+                            <connections>
+                                <action selector="editLight:" destination="9pv-A4-QxB" id="Sh1-cY-nyf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CLp-wb-fBz">
+                            <connections>
+                                <action selector="addLight:" destination="9pv-A4-QxB" id="7Yv-sW-EbG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addLight" destination="CLp-wb-fBz" id="g3D-zh-7Gj"/>
+                        <outlet property="editLight" destination="arO-22-FY6" id="dId-4S-gzU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="1634.7826086956522" y="-701.08695652173924"/>
         </scene>
-        <!--Rooms-->
+        <!--Moods-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="MoodsViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Rooms View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Moods" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFL-WU-jBZ">
+                                <frame key="frameInset" minX="73" minY="314" width="268" height="109"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="27"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="lFL-WU-jBZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="RRR-b2-BfN"/>
+                            <constraint firstItem="lFL-WU-jBZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="o1t-3g-YoJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rooms" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" title="Moods" id="KT1-is-I3g">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="h5b-ZL-l7j">
+                            <connections>
+                                <action selector="editMood:" destination="8rJ-Kc-sve" id="nfz-97-xN7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="A7g-4v-0cO">
+                            <connections>
+                                <action selector="addMood:" destination="8rJ-Kc-sve" id="AsJ-dQ-hOc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addLight" destination="A7g-4v-0cO" id="ihT-B6-x9Q"/>
+                        <outlet property="addMood" destination="A7g-4v-0cO" id="abu-Yx-qCR"/>
+                        <outlet property="editMood" destination="h5b-ZL-l7j" id="jPV-AW-aET"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1635" y="743"/>
         </scene>
-        <!--Moods-->
+        <!--Rooms-->
         <scene sceneID="wIj-Rr-QLW">
             <objects>
-                <viewController id="pb7-hO-MMy" sceneMemberID="viewController">
+                <viewController id="pb7-hO-MMy" customClass="RoomsViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hm7-M7-L8E"/>
                         <viewControllerLayoutGuide type="bottom" id="04j-1L-38d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CI3-P0-psu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fby-xB-ZlQ">
                                 <frame key="frameInset" minX="89" minY="313" width="196" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Moods View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0C6-A9-yDz">
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Rooms" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4G-Cn-h82">
+                                <frame key="frameInset" minX="73" minY="313" width="268" height="109"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0C6-A9-yDz" firstAttribute="centerY" secondItem="CI3-P0-psu" secondAttribute="centerY" id="Fhn-QU-seZ"/>
-                            <constraint firstItem="0C6-A9-yDz" firstAttribute="centerX" secondItem="CI3-P0-psu" secondAttribute="centerX" id="UK5-Rd-0g6"/>
+                            <constraint firstItem="S4G-Cn-h82" firstAttribute="centerY" secondItem="CI3-P0-psu" secondAttribute="centerY" id="MdM-al-9Ud"/>
+                            <constraint firstItem="S4G-Cn-h82" firstAttribute="centerX" secondItem="CI3-P0-psu" secondAttribute="centerX" id="iJg-Fw-ug2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Moods" image="third" id="ORQ-oZ-bKW"/>
+                    <navigationItem key="navigationItem" title="Rooms" id="TUn-Ek-yk0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="3ZP-RG-7py">
+                            <connections>
+                                <action selector="editRoom:" destination="pb7-hO-MMy" id="1sa-Kj-2AP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rVD-wH-35f">
+                            <connections>
+                                <action selector="addRoom:" destination="pb7-hO-MMy" id="ZE3-7N-MQk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addRoom" destination="rVD-wH-35f" id="oa3-kB-CaO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJk-pY-ioL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400.8" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="1634.7826086956522" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -116,19 +159,76 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="pb7-hO-MMy" kind="relationship" relationship="viewControllers" id="MEX-tO-YZp"/>
+                        <segue destination="OKT-1l-i67" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="65o-QW-Gix" kind="relationship" relationship="viewControllers" id="MEX-tO-YZp"/>
+                        <segue destination="dMV-3J-Coq" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-170" y="0.0"/>
+        </scene>
+        <!--Lights-->
+        <scene sceneID="vdo-zb-viK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tp1-lN-nrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OKT-1l-i67" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Lights" image="lights" selectedImage="lights" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gm4-Zd-95L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="plt-A8-Nki"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="696.79999999999995" y="-700.29985007496259"/>
+        </scene>
+        <!--Rooms-->
+        <scene sceneID="4bw-6g-j1Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="65o-QW-Gix" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rooms" image="rooms" selectedImage="rooms" id="ORQ-oZ-bKW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m2O-yy-ySU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pb7-hO-MMy" kind="relationship" relationship="rootViewController" id="ffH-FJ-SKC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRa-gs-pwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="0.0"/>
+        </scene>
+        <!--Moods-->
+        <scene sceneID="Xwk-Oy-XwX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dMV-3J-Coq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Moods" image="moods" selectedImage="rooms" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8KD-7W-x2O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="upU-TL-LvX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DNG-Kp-NHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="743"/>
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="25" height="25"/>
-        <image name="second" width="25" height="25"/>
-        <image name="third" width="25" height="25"/>
+        <image name="lights" width="25" height="25"/>
+        <image name="moods" width="25" height="25"/>
+        <image name="rooms" width="25" height="25"/>
     </resources>
 </document>
