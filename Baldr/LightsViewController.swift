@@ -11,11 +11,6 @@ import UIKit
 class LightsViewController: UIViewController {
 
     
-    // temporary
-    @IBOutlet weak var addLight: UIBarButtonItem!
-    
-    // check when pressed to add effect to cell
-    @IBOutlet weak var editLight: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -28,16 +23,6 @@ class LightsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func addLight(_ sender: AnyObject) {
-        
-    
-        // TODO: connect to another view controller
-        tabBarController?.selectedIndex = 2
-    
-    
-    }
 
-    @IBAction func editLight(_ sender: AnyObject) {
-    }
 }
 

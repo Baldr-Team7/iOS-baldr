@@ -10,8 +10,6 @@ import UIKit
 
 class MoodsViewController: UIViewController {
 
-    @IBOutlet weak var addMood: UIBarButtonItem!
-    @IBOutlet weak var editMood: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -25,13 +23,7 @@ class MoodsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addMood(_ sender: AnyObject) {
-    }
 
-    @IBAction func editMood(_ sender: AnyObject) {
-    }
-    
-    
     
     /*
     // MARK: - Navigation

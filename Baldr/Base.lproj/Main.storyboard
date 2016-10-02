@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Lights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDJ-cn-l7g">
@@ -32,21 +32,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lights" id="wu0-1r-OTf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="arO-22-FY6">
-                            <connections>
-                                <action selector="editLight:" destination="9pv-A4-QxB" id="Sh1-cY-nyf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CLp-wb-fBz">
-                            <connections>
-                                <action selector="addLight:" destination="9pv-A4-QxB" id="7Yv-sW-EbG"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="arO-22-FY6"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CLp-wb-fBz"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addLight" destination="CLp-wb-fBz" id="g3D-zh-7Gj"/>
-                        <outlet property="editLight" destination="arO-22-FY6" id="dId-4S-gzU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +49,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No Moods" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFL-WU-jBZ">
@@ -78,22 +66,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Moods" id="KT1-is-I3g">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="h5b-ZL-l7j">
-                            <connections>
-                                <action selector="editMood:" destination="8rJ-Kc-sve" id="nfz-97-xN7"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="A7g-4v-0cO">
-                            <connections>
-                                <action selector="addMood:" destination="8rJ-Kc-sve" id="AsJ-dQ-hOc"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="h5b-ZL-l7j"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="A7g-4v-0cO"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addLight" destination="A7g-4v-0cO" id="ihT-B6-x9Q"/>
-                        <outlet property="addMood" destination="A7g-4v-0cO" id="abu-Yx-qCR"/>
-                        <outlet property="editMood" destination="h5b-ZL-l7j" id="jPV-AW-aET"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,7 +83,7 @@
                         <viewControllerLayoutGuide type="bottom" id="04j-1L-38d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CI3-P0-psu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fby-xB-ZlQ">
@@ -129,20 +104,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rooms" id="TUn-Ek-yk0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="3ZP-RG-7py">
-                            <connections>
-                                <action selector="editRoom:" destination="pb7-hO-MMy" id="1sa-Kj-2AP"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rVD-wH-35f">
-                            <connections>
-                                <action selector="addRoom:" destination="pb7-hO-MMy" id="ZE3-7N-MQk"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="3ZP-RG-7py"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rVD-wH-35f"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addRoom" destination="rVD-wH-35f" id="oa3-kB-CaO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJk-pY-ioL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,7 +135,6 @@
         <!--Lights-->
         <scene sceneID="vdo-zb-viK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tp1-lN-nrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OKT-1l-i67" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Lights" image="lights" selectedImage="lights" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -184,6 +147,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="plt-A8-Nki"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tp1-lN-nrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696.79999999999995" y="-700.29985007496259"/>
         </scene>

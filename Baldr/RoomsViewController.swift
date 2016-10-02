@@ -11,11 +11,6 @@ import UIKit
 class RoomsViewController: UIViewController {
 
     
-    @IBOutlet weak var addRoom: UIBarButtonItem!
-
-    
-    @IBOutlet weak var editRoom: UIBarButtonItem!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,13 +22,6 @@ class RoomsViewController: UIViewController {
     }
 
 
-   
-    @IBAction func addRoom(_ sender: AnyObject) {
-    }
-    
-    
-    @IBAction func editRoom(_ sender: AnyObject) {
-    }
     
     
     
