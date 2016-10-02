@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E53E1D95090D00A63C32 /* AppDelegate.swift */; };
-		5A46E5411D95090D00A63C32 /* LightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5401D95090D00A63C32 /* LightsViewController.swift */; };
+		5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */; };
 		5A46E5431D95090D00A63C32 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5421D95090D00A63C32 /* RoomsViewController.swift */; };
 		5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46E5441D95090D00A63C32 /* Main.storyboard */; };
 		5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A46E5471D95090D00A63C32 /* Assets.xcassets */; };
 		5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */; };
 		5A46E5561D95090D00A63C32 /* BaldrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5551D95090D00A63C32 /* BaldrTests.swift */; };
 		5A46E5611D95090D00A63C32 /* BaldrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5601D95090D00A63C32 /* BaldrUITests.swift */; };
-		5A58758C1DA06C2400089800 /* LightsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A58758B1DA06C2400089800 /* LightsTableCell.xib */; };
-		5A58758E1DA06DCE00089800 /* LightsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58758D1DA06DCE00089800 /* LightsTableCell.swift */; };
 		5AE333521DA05E4600D679BF /* MoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +38,7 @@
 /* Begin PBXFileReference section */
 		5A46E53B1D95090D00A63C32 /* Baldr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baldr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E53E1D95090D00A63C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A46E5401D95090D00A63C32 /* LightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsViewController.swift; sourceTree = "<group>"; };
+		5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsTableViewController.swift; sourceTree = "<group>"; };
 		5A46E5421D95090D00A63C32 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		5A46E5451D95090D00A63C32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A46E5471D95090D00A63C32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,8 +50,6 @@
 		5A46E55C1D95090D00A63C32 /* BaldrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaldrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E5601D95090D00A63C32 /* BaldrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaldrUITests.swift; sourceTree = "<group>"; };
 		5A46E5621D95090D00A63C32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A58758B1DA06C2400089800 /* LightsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableCell.xib; sourceTree = "<group>"; };
-		5A58758D1DA06DCE00089800 /* LightsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableCell.swift; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,12 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				5A46E53E1D95090D00A63C32 /* AppDelegate.swift */,
-				5A46E5401D95090D00A63C32 /* LightsViewController.swift */,
+				5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */,
 				5A46E5421D95090D00A63C32 /* RoomsViewController.swift */,
 				5AE333511DA05E4600D679BF /* MoodsViewController.swift */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
-				5A58758B1DA06C2400089800 /* LightsTableCell.xib */,
-				5A58758D1DA06DCE00089800 /* LightsTableCell.swift */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
 				5A46E54C1D95090D00A63C32 /* Info.plist */,
@@ -250,7 +244,6 @@
 				5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */,
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
 				5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */,
-				5A58758C1DA06C2400089800 /* LightsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +271,7 @@
 				5A46E5431D95090D00A63C32 /* RoomsViewController.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsViewController.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,
-				5A46E5411D95090D00A63C32 /* LightsViewController.swift in Sources */,
-				5A58758E1DA06DCE00089800 /* LightsTableCell.swift in Sources */,
+				5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
