@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A2DC2951DA186B200CF2119 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */; };
+		5A2DC2961DA186B200CF2119 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */; };
 		5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E53E1D95090D00A63C32 /* AppDelegate.swift */; };
 		5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */; };
 		5A46E5431D95090D00A63C32 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5421D95090D00A63C32 /* RoomsViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsTableViewCell.swift; path = ../LightsTableViewCell.swift; sourceTree = "<group>"; };
+		5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LightsTableViewCell.xib; path = ../LightsTableViewCell.xib; sourceTree = "<group>"; };
 		5A46E53B1D95090D00A63C32 /* Baldr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baldr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E53E1D95090D00A63C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsTableViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */,
 				5A46E5421D95090D00A63C32 /* RoomsViewController.swift */,
 				5AE333511DA05E4600D679BF /* MoodsViewController.swift */,
+				5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */,
+				5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
@@ -243,6 +249,7 @@
 			files = (
 				5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */,
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
+				5A2DC2961DA186B200CF2119 /* LightsTableViewCell.xib in Resources */,
 				5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2DC2951DA186B200CF2119 /* LightsTableViewCell.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsViewController.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsViewController.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,
