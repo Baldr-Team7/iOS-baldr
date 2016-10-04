@@ -59,6 +59,7 @@ class LightsTableViewController: UITableViewController {
      
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
         
+        
         cell.mainLabel.text = lightsArrayData[indexPath.row].main
         cell.secondaryLabel.text = lightsArrayData[indexPath.row].secondary
         //    cell.lightSwitch.isOn = lightsArrayData[indexPath.row].onOff

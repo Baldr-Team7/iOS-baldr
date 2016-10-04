@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LightsCell" rowHeight="120" id="KGk-i7-Jjw" customClass="LightsTableViewCell" customModule="Baldr" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LightsCell" rowHeight="80" id="KGk-i7-Jjw" customClass="LightsTableViewCell" customModule="Baldr" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="400" height="80"/>
+                <frame key="frameInset" width="400" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LightName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4n-me-9Yp">
@@ -43,7 +43,7 @@
                 <outlet property="mainLabel" destination="q4n-me-9Yp" id="eWQ-z0-bmH"/>
                 <outlet property="secondaryLabel" destination="po7-QL-4Xx" id="I7g-J6-VIv"/>
             </connections>
-            <point key="canvasLocation" x="74" y="91"/>
+            <point key="canvasLocation" x="86" y="24"/>
         </tableViewCell>
     </objects>
 </document>
