@@ -19,12 +19,19 @@ struct lightsCellData {
     let main: String!
     let secondary: String!
     // let onOff: Bool!
+    
+//    func getMain() -> String {
+//        return main
+//    }
+    
+    
 }
 
 
 
 class LightsTableViewController: UITableViewController {
 
+    @IBOutlet var LightsTable: UITableView!
     
     var lightsArrayData = [lightsCellData]()
     
@@ -33,24 +40,59 @@ class LightsTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
-        lightsArrayData = [lightsCellData(main: "MASTER", secondary: ""),
-                           lightsCellData(main: "MY LIGHT", secondary: "Kitchen"),
-                           lightsCellData(main: "Ceiling Light", secondary: "Living Room"),
-                           lightsCellData(main: "Kitchen Light Main", secondary: "Kitchen"),
-                           lightsCellData(main: "ASDFASDFASDF", secondary: "asdfjlaksdf"),
-                           lightsCellData(main: "rweqrqwerqwer", secondary: "rqwerqwerqwer"),
-                           lightsCellData(main: "zxdscvzxcvzxcvzxcv", secondary: "qwerqwerqwerqwer"),
-                           lightsCellData(main: "zxcv", secondary: "qwerqwerqwer"),
-                           lightsCellData(main: "qwerqwer", secondary: "qwerqwerqwer"),
-                           lightsCellData(main: "rqwerqwer", secondary: "qwerqwerqwer")]
+     
+        lightsArrayData =  [lightsCellData(main: "MASTER", secondary: ""),
+                            lightsCellData(main: "MY LIGHT", secondary: "Kitchen"),
+                            lightsCellData(main: "Ceiling Light", secondary: "Living Room"),
+                            lightsCellData(main: "Kitchen Light Main", secondary: "Kitchen"),
+                            lightsCellData(main: "ASDFASDFASDF", secondary: "asdfjlaksdf"),
+                            lightsCellData(main: "rweqrqwerqwer", secondary: "rqwerqwerqwer"),
+                            lightsCellData(main: "zxdscvzxcvzxcvzxcv", secondary: "qwerqwerqwerqwer"),
+                            lightsCellData(main: "zxcv", secondary: "qwerqwerqwer"),
+                            lightsCellData(main: "qwerqwer", secondary: "qwerqwerqwer"),
+                            lightsCellData(main: "rqwerqwer", secondary: "qwerqwerqwer")]
+        
+ 
+        lightsArrayData.append(lightsCellData(main: "test", secondary: "test"))
         
         
+        let light = lightsCellData(main: "boop", secondary: "boop")
+        addLight(light: light)
+        
+        
+        let light2 = lightsCellData(main: "MY LIGHT", secondary: "Kitchen")
+        removeLight(light: light2)
 
     }
+    
+    
+    
  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // Adding a Light to the TableView
+    func addLight(light : lightsCellData){
+        lightsArrayData.append(light)
+    }
+    
+    
+    // Removal of a light from the TableView
+    func removeLight(light :lightsCellData){
+        
+        // Run through each individual index, check if it satisfies the given predicate
+        // return that index
+        let index =    lightsArrayData.index { (lights) -> Bool in
+                light.main == lights.main && light.secondary == lights.secondary
+        }
+        
+        lightsArrayData.remove(at: index!)
+            
+        
+        
     }
     
     

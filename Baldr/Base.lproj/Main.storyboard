@@ -33,6 +33,9 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z7N-3X-pVl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="LightsTable" destination="8SN-mi-yfl" id="nlc-lS-SF9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohI-vO-h42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
