@@ -14,6 +14,7 @@ class MoodsTableViewController: UITableViewController {
     //       ADDMOODVIEW
     //       EDITMOODVIEW
     //       TEST MOODS DELETE/APPEND
+    //       Create IBOutlet
     
     override func viewDidLoad() {
         super.viewDidLoad()
