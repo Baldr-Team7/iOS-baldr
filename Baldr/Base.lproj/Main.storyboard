@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +32,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Lights" id="AaD-ht-CX4">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z7N-3X-pVl"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy">
+                            <connections>
+                                <action selector="goToAddLight:" destination="zRC-D2-9lB" id="a68-A6-jZ0"/>
+                                <segue destination="rsP-Y4-bdg" kind="showDetail" id="Qfy-uY-G7b"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="LightsTable" destination="8SN-mi-yfl" id="nlc-lS-SF9"/>
@@ -40,6 +46,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohI-vO-h42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1634" y="-701"/>
+        </scene>
+        <!--Add Light-->
+        <scene sceneID="Iix-GT-Ir1">
+            <objects>
+                <viewController id="IBF-c9-54t" customClass="AddLightViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mYM-XQ-nvP"/>
+                        <viewControllerLayoutGuide type="bottom" id="UlW-ZY-J2p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TV9-6c-RKP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name Your Light" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rch-WT-Ez4">
+                                <frame key="frameInset" minX="16" minY="72" width="343" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="trailing" secondItem="TV9-6c-RKP" secondAttribute="trailingMargin" id="I2V-jy-SJh"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="top" secondItem="mYM-XQ-nvP" secondAttribute="bottom" constant="8" id="eMz-63-vkc"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="leading" secondItem="TV9-6c-RKP" secondAttribute="leadingMargin" id="vg5-xU-MQ3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Light" id="7k1-Er-c7H">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="NWX-5U-Mge">
+                            <connections>
+                                <action selector="goBack:" destination="IBF-c9-54t" id="IhC-6N-Kca"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-wD-Xoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3872.8000000000002" y="-1234.6326836581711"/>
         </scene>
         <!--Rooms-->
         <scene sceneID="JAf-Jo-mDL">
@@ -181,6 +225,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZF-CI-tNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="697" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4pd-sd-Fvc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rsP-Y4-bdg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8W5-ke-Z4i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IBF-c9-54t" kind="relationship" relationship="rootViewController" id="xSm-L4-mly"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wrp-of-S8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933.5999999999999" y="-1234.6326836581711"/>
         </scene>
     </scenes>
     <resources>
