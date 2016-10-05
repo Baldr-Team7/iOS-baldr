@@ -13,6 +13,7 @@ class MoodsTableViewController: UITableViewController {
     // TODO: Create custom Cell
     //       ADDMOODVIEW
     //       EDITMOODVIEW
+    //       TEST MOODS DELETE/APPEND
     
     override func viewDidLoad() {
         super.viewDidLoad()
