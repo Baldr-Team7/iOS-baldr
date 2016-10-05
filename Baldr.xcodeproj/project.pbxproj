@@ -17,6 +17,7 @@
 		5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */; };
 		5A46E5561D95090D00A63C32 /* BaldrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5551D95090D00A63C32 /* BaldrTests.swift */; };
 		5A46E5611D95090D00A63C32 /* BaldrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5601D95090D00A63C32 /* BaldrUITests.swift */; };
+		5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		5A46E55C1D95090D00A63C32 /* BaldrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaldrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E5601D95090D00A63C32 /* BaldrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaldrUITests.swift; sourceTree = "<group>"; };
 		5A46E5621D95090D00A63C32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLightViewController.swift; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */,
 				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
 				5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */,
+				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
 				5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
@@ -278,6 +281,7 @@
 				5A2DC2951DA186B200CF2119 /* LightsTableViewCell.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
+				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,
 				5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */,
 			);

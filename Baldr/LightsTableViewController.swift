@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 // TODO:
 //      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
@@ -34,6 +35,13 @@ class LightsTableViewController: UITableViewController {
     @IBOutlet var LightsTable: UITableView!
     
     var lightsArrayData = [lightsCellData]()
+    
+    @IBAction func goToAddLight(_ sender: AnyObject) {
+        
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         
