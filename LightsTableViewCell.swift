@@ -20,6 +20,7 @@ class LightsTableViewCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
 
+    // consider having an ID var
     
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
