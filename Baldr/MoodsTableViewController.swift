@@ -10,7 +10,9 @@ import UIKit
 
 class MoodsTableViewController: UITableViewController {
 
-    
+    // TODO: Create custom Cell
+    //       ADDMOODVIEW
+    //       EDITMOODVIEW
     
     override func viewDidLoad() {
         super.viewDidLoad()
