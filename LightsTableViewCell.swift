@@ -23,7 +23,7 @@ class LightsTableViewCell: UITableViewCell {
     @IBOutlet weak var lightSwitch: UISwitch!
     
     @IBAction func switchLight(_ sender: AnyObject) {
-        print("\(mainLabel) pressed")
+        print("\(self.mainLabel.text) pressed")
     }
 
     // consider having an ID var
