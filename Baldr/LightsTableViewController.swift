@@ -48,6 +48,9 @@ class LightsTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
+        
+        // Cells unselectable
+        tableView.allowsSelection = false
      
         lightsArrayData =  [lightsCellData(main: "MASTER", secondary: ""),
                             lightsCellData(main: "MY LIGHT", secondary: "Kitchen"),
