@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lights-->
+        <!--Light-->
         <scene sceneID="dgi-JI-hEh">
             <objects>
                 <tableViewController id="zRC-D2-9lB" customClass="LightsTableViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="zRC-D2-9lB" id="Goc-ig-Eoj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lights" id="AaD-ht-CX4">
+                    <navigationItem key="navigationItem" title="Light" id="AaD-ht-CX4">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z7N-3X-pVl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy">
                             <connections>
@@ -79,13 +79,66 @@
                                 <action selector="goBack:" destination="IBF-c9-54t" id="IhC-6N-Kca"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Jnw-kW-BRy"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-wD-Xoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3872.8000000000002" y="-1234.6326836581711"/>
+            <point key="canvasLocation" x="4087" y="-701"/>
         </scene>
-        <!--Rooms-->
+        <!--Title-->
+        <scene sceneID="TjE-ca-7CP">
+            <objects>
+                <viewController id="B23-CV-pN5" customClass="AddRoomViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a18-vz-NFF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lrx-Mj-PgV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EWN-kp-JuM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="1Um-Tf-Rec">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="O2F-In-cRz">
+                            <connections>
+                                <action selector="goBack:" destination="B23-CV-pN5" id="mVW-2z-ekv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="phc-IS-Zkq"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CpF-hK-qhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4086" y="0.0"/>
+        </scene>
+        <!--Add Mood-->
+        <scene sceneID="qaa-e6-nbf">
+            <objects>
+                <viewController id="6Li-mc-u8K" customClass="AddMoodViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yyx-8y-auu"/>
+                        <viewControllerLayoutGuide type="bottom" id="GkT-os-UKE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UJE-7v-isc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Mood" id="AZ1-bc-hbZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oer-ZQ-WOX">
+                            <connections>
+                                <action selector="goBack:" destination="6Li-mc-u8K" id="Dqd-JI-4JO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hQe-d6-GgT"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ss9-mv-D9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4086" y="753"/>
+        </scene>
+        <!--Room-->
         <scene sceneID="JAf-Jo-mDL">
             <objects>
                 <tableViewController id="MGk-Sv-fPL" customClass="RoomsTableViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
@@ -108,16 +161,20 @@
                             <outlet property="delegate" destination="MGk-Sv-fPL" id="R2h-v6-T3c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Rooms" id="nTa-mk-Yl7">
+                    <navigationItem key="navigationItem" title="Room" id="nTa-mk-Yl7">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="PVV-FL-bMW"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NFS-2F-qP5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NFS-2F-qP5">
+                            <connections>
+                                <segue destination="DQ7-v3-dTB" kind="showDetail" id="KGt-Ba-abw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lY-ox-UxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1633" y="0.0"/>
         </scene>
-        <!--Moods-->
+        <!--Mood-->
         <scene sceneID="EIe-Eq-h1Y">
             <objects>
                 <tableViewController id="K8c-Ui-zp9" customClass="MoodsTableViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,9 +197,13 @@
                             <outlet property="delegate" destination="K8c-Ui-zp9" id="3Zy-tE-KvO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Moods" id="2Bd-px-aqs">
+                    <navigationItem key="navigationItem" title="Mood" id="2Bd-px-aqs">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="znc-8S-vV7"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rxj-3f-PFT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rxj-3f-PFT">
+                            <connections>
+                                <segue destination="hZy-tY-Q3j" kind="showDetail" id="Gyo-Aq-ttZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pI2-M5-aPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,11 +230,11 @@
             </objects>
             <point key="canvasLocation" x="-170" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Light-->
         <scene sceneID="HeU-Nf-j6h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nmd-fc-L2G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="lights" selectedImage="lights" id="9T9-xP-UKl"/>
+                    <tabBarItem key="tabBarItem" title="Light" image="lights" selectedImage="lights" id="9T9-xP-UKl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AF4-GK-rx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -188,11 +249,11 @@
             </objects>
             <point key="canvasLocation" x="697" y="-701"/>
         </scene>
-        <!--Moods-->
+        <!--Mood-->
         <scene sceneID="4xi-o5-k6p">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PzO-7v-sET" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Moods" image="moods" selectedImage="moods" id="36u-D4-443"/>
+                    <tabBarItem key="tabBarItem" title="Mood" image="moods" selectedImage="moods" id="36u-D4-443"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GOM-U9-xki">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -207,11 +268,11 @@
             </objects>
             <point key="canvasLocation" x="697" y="754"/>
         </scene>
-        <!--Rooms-->
+        <!--Room-->
         <scene sceneID="q5p-O6-bGp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0km-oP-Qkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rooms" image="rooms" selectedImage="rooms" id="7az-Bi-ChY"/>
+                    <tabBarItem key="tabBarItem" title="Room" image="rooms" selectedImage="rooms" id="7az-Bi-ChY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W49-qN-Cs2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -242,7 +303,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrp-of-S8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2933.5999999999999" y="-1234.6326836581711"/>
+            <point key="canvasLocation" x="2810" y="-701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2pX-J0-zjS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DQ7-v3-dTB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wtq-V4-1B4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B23-CV-pN5" kind="relationship" relationship="rootViewController" id="U29-fq-fTp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EcA-Ue-d8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JQ9-z2-kAg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hZy-tY-Q3j" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wT9-Yj-whe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Li-mc-u8K" kind="relationship" relationship="rootViewController" id="zmS-Ob-sGH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QzE-hH-jHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="753"/>
         </scene>
     </scenes>
     <resources>
