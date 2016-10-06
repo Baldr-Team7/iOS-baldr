@@ -20,6 +20,8 @@
 		5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */; };
 		5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */; };
 		5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */; };
+		5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */; };
+		5AC6993E1DA67D6F009432E2 /* MasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLightViewController.swift; sourceTree = "<group>"; };
 		5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
 		5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoodViewController.swift; sourceTree = "<group>"; };
+		5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
+		5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,12 +119,14 @@
 				5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */,
 				5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */,
 				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
-				5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */,
-				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
-				5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
+				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
 				5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */,
+				5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */,
+				5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */,
+				5A2DC2931DA186B200CF2119 /* LightsTableViewCell.swift */,
+				5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
 				5A46E54C1D95090D00A63C32 /* Info.plist */,
@@ -260,6 +266,7 @@
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
 				5A2DC2961DA186B200CF2119 /* LightsTableViewCell.xib in Resources */,
 				5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */,
+				5AC6993E1DA67D6F009432E2 /* MasterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +295,7 @@
 				5A2DC2951DA186B200CF2119 /* LightsTableViewCell.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
+				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
 				5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,

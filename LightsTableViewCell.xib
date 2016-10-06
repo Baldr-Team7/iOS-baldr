@@ -31,7 +31,7 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knD-vk-3MD"/>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="knD-vk-3MD" secondAttribute="trailing" constant="19" id="414-sA-DH7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="knD-vk-3MD" secondAttribute="trailing" constant="20" id="414-sA-DH7"/>
                     <constraint firstItem="knD-vk-3MD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4kC-nj-mPQ"/>
                     <constraint firstAttribute="topMargin" secondItem="q4n-me-9Yp" secondAttribute="top" id="96q-Pz-HHt"/>
                     <constraint firstAttribute="leadingMargin" secondItem="po7-QL-4Xx" secondAttribute="leading" id="e6P-hI-BkH"/>

@@ -110,6 +110,16 @@ class LightsTableViewController: UITableViewController {
     // Set the cell to be used
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
+     
+        if indexPath.row == 0 {
+            let cell = Bundle.main.loadNibNamed("MasterTableViewCell", owner: self, options: nil)?.first as! MasterTableViewCell
+            
+            cell.mainLabel.text = lightsArrayData[indexPath.row].main
+            
+            return cell
+            
+        } else {
+        
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
         
         
@@ -117,8 +127,11 @@ class LightsTableViewController: UITableViewController {
         cell.secondaryLabel.text = lightsArrayData[indexPath.row].secondary
         //    cell.lightSwitch.isOn = lightsArrayData[indexPath.row].onOff
         
-    
+        
         return cell
+        
+        }
+        
         
         
     }
@@ -141,17 +154,5 @@ class LightsTableViewController: UITableViewController {
             LightsTable.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    
-//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-//        //        if (self.tableView.isEditing){
-//                   return UITableViewCellEditingStyle.delete
-//      
-//        
-//        // return UITableViewCellEditingStyle.none
-//    }
-   
-    
-
 }
 
