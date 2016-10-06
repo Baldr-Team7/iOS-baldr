@@ -10,7 +10,10 @@ import UIKit
 
 class MasterTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var masterSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
+    @IBAction func switchMaster(_ sender: AnyObject) {
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

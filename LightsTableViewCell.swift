@@ -17,8 +17,14 @@ class LightsTableViewCell: UITableViewCell {
     //      Create Cells for Rooms and Moods
     
     
+    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
+    @IBOutlet weak var lightSwitch: UISwitch!
+    
+    @IBAction func switchLight(_ sender: AnyObject) {
+        print("\(mainLabel) pressed")
+    }
 
     // consider having an ID var
     
