@@ -130,6 +130,21 @@ class LightsTableViewController: UITableViewController {
         return 80
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            lightsArrayData.remove(at: indexPath.row)
+            LightsTable.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//        //        if (self.tableView.isEditing){
+//                   return UITableViewCellEditingStyle.delete
+//      
+//        
+//        // return UITableViewCellEditingStyle.none
+//    }
    
     
 
