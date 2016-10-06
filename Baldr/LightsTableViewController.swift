@@ -135,6 +135,8 @@ class LightsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // Remove Row at specific index pressed
+            // Deletes from array of lights as well
             lightsArrayData.remove(at: indexPath.row)
             LightsTable.deleteRows(at: [indexPath], with: .fade)
         }
