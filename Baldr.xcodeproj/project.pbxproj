@@ -24,6 +24,8 @@
 		5AC6993E1DA67D6F009432E2 /* MasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */; };
 		5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */; };
 		5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */; };
+		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
+		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterTableViewCell.xib; sourceTree = "<group>"; };
 		5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
+		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
+		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,8 @@
 				5A2DC2941DA186B200CF2119 /* LightsTableViewCell.xib */,
 				5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */,
 				5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */,
+				5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */,
+				5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */,
 				5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */,
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
 				5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */,
@@ -313,6 +320,7 @@
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
 				5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */,
+				5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */,
 				5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,
 				5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */,
