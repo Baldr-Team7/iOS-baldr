@@ -21,11 +21,7 @@ struct lightsCellData {
     let secondary: String!
     let onOff: Bool!
 
-    
-    
 }
-
-
 
 class LightsTableViewController: UITableViewController {
 
@@ -68,8 +64,8 @@ class LightsTableViewController: UITableViewController {
         addLight(light: light)
         
         
-        let light2 = lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false)
-        removeLight(light: light2)
+//        let light2 = lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false)
+//        removeLight(light: light2)
 
     }
     
@@ -98,7 +94,11 @@ class LightsTableViewController: UITableViewController {
         }
         
         lightsArrayData.remove(at: index!)
-            
+        
+        // convert index to indexPath to delete the specific Row
+        let indexPath = IndexPath(row: index!, section: 0)
+        LightsTable.deleteRows(at: [indexPath], with: .fade)
+        //LightsTable.deleteRows(at: index!, with: .fade)
         
         
     }
@@ -128,10 +128,7 @@ class LightsTableViewController: UITableViewController {
         
         }
         
-        
-        
     }
-    
     
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
