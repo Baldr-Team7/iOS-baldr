@@ -111,6 +111,7 @@ class LightsTableViewController: UITableViewController {
             let cell = Bundle.main.loadNibNamed("MasterTableViewCell", owner: self, options: nil)?.first as! MasterTableViewCell
             
             cell.mainLabel.text = lightsArrayData[indexPath.row].main
+            cell.masterSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
             
             return cell
             
