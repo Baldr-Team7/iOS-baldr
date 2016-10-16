@@ -17,7 +17,6 @@ class LightsTableViewCell: UITableViewCell {
     //      Create Cells for Rooms and Moods
     
     
-    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
     @IBOutlet weak var lightSwitch: UISwitch!
