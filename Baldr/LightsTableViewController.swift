@@ -13,6 +13,9 @@ import UIKit
 // TODO:
 //      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
+//      Add Delegate that receives information from Adding a Light as well
+//      Add Delegate that passes information to Edit Light Page and updates changes to it afterwards
+//      Store Index ID in the lightsCellData struct for testing.
 
 
 struct lightsCellData {
@@ -29,12 +32,6 @@ class LightsTableViewController: UITableViewController {
     
     var lightsArrayData = [lightsCellData]()
     
-    @IBAction func goToAddLight(_ sender: AnyObject) {
-        
-    }
-    
-    
-    
     
     override func viewDidLoad() {
         
@@ -43,6 +40,7 @@ class LightsTableViewController: UITableViewController {
         
         
         // Cells unselectable
+        // Set this to true when edit button is pressed.
         tableView.allowsSelection = false
      
         lightsArrayData =  [lightsCellData(main: "MASTER", secondary: "", onOff: false),
