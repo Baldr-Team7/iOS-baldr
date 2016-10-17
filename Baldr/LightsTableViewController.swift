@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  LightsTableViewController.swift
 //  Baldr
 //
 //  Created by Thomas Emilsson on 9/23/16.
@@ -13,7 +13,7 @@ import UIKit
 // TODO:
 //      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
-//      Make the Cells unclickable
+
 
 struct lightsCellData {
     
@@ -104,7 +104,7 @@ class LightsTableViewController: UITableViewController {
     }
     
     
-    // Set the cell to be used
+    // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         if indexPath.row == 0 {

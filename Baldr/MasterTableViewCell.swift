@@ -14,6 +14,7 @@ class MasterTableViewCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     
     
+    
     @IBAction func switchMaster(_ sender: AnyObject) {
         
     }
