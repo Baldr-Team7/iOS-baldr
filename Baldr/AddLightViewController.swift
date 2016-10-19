@@ -10,14 +10,38 @@ import UIKit
 
 
 // Naming Delegate
-protocol DataSendDelegate {
-    func light(data: String)
+
+protocol LightCellDelegate {
+    func userEnteredLightData(main: String, secondary: String)
 }
+
 
 
 class AddLightViewController: UIViewController {
 
-    var delegate: DataSendDelegate? = nil
+    var delegate: LightCellDelegate? = nil
+    
+    
+    // Name of the Light
+    @IBOutlet weak var nameLightField: UITextField!
+    
+    
+    
+    // Save the Light
+    @IBAction func saveLight(_ sender: AnyObject) {
+        
+        
+        // Get the Data Entered, send it to previous page
+        if delegate != nil {
+            if nameLightField.text != nil {
+                let name = nameLightField.text
+                delegate?.userEnteredLightData(main: name!, secondary: name!)
+                // exit page
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     
   
     @IBAction func goBack(_ sender: AnyObject) {
@@ -27,6 +51,8 @@ class AddLightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(delegate)
 
         // Do any additional setup after loading the view.
     }

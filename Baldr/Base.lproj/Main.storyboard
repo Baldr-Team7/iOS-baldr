@@ -34,7 +34,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy">
                             <connections>
                                 <action selector="goToAddLight:" destination="zRC-D2-9lB" id="a68-A6-jZ0"/>
-                                <segue destination="rsP-Y4-bdg" kind="showDetail" id="Qfy-uY-G7b"/>
+                                <segue destination="rsP-Y4-bdg" kind="show" identifier="showAddLight" action="showDetailViewController:sender:" id="Qfy-uY-G7b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,8 +85,15 @@
                                 <action selector="goBack:" destination="IBF-c9-54t" id="IhC-6N-Kca"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Jnw-kW-BRy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Jnw-kW-BRy">
+                            <connections>
+                                <action selector="saveLight:" destination="IBF-c9-54t" id="CjO-Bt-2iV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameLightField" destination="IKJ-ui-X8N" id="wdK-6a-gXq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-wD-Xoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -303,6 +310,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6Bl-FS-T6u">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="IBF-c9-54t" kind="relationship" relationship="rootViewController" id="xSm-L4-mly"/>
                     </connections>

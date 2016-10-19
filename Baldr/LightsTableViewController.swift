@@ -13,7 +13,8 @@ import UIKit
 // TODO:
 //      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
-//      Add Delegate that receives information from Adding a Light as well
+//          -- follow up, work with Cache to store data, or a Dictionary
+//      Add Delegate that receives information from Adding a Light as well - DONE
 //      Add Delegate that passes information to Edit Light Page and updates changes to it afterwards
 //      Store Index ID in the lightsCellData struct for testing.
 
@@ -26,11 +27,45 @@ struct lightsCellData {
 
 }
 
-class LightsTableViewController: UITableViewController {
 
-    @IBOutlet var LightsTable: UITableView!
+class LightsTableViewController: UITableViewController, LightCellDelegate {
+
     
-    var lightsArrayData = [lightsCellData]()
+    @IBOutlet var LightsTable: UITableView!
+
+    
+    
+    // Delegate Methods
+    // Receive Data Light Cell
+    func userEnteredLightData(main: String, secondary: String) {
+        let newLight = lightsCellData(main: main, secondary: secondary, onOff: false)
+        print(newLight)
+        lightsArrayData.append(newLight)
+        print(lightsArrayData)
+        self.LightsTable.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Set Delegate
+        if segue.identifier == "showAddLight" {
+            
+            // AddLightVC has a UINavigationController attached to it; need to access the UINC first to get to the AddLightVC
+            let destination = segue.destination as! UINavigationController
+            let addLightViewController: AddLightViewController = destination.topViewController as! AddLightViewController
+            //            let addLightViewController: AddLightViewController = segue.destination as! AddLightViewController
+            
+            addLightViewController.delegate = self
+        }
+    }
+    
+    //var lightsArrayData = [lightsCellData]()
+    
+    var lightsArrayData =  [lightsCellData(main: "MASTER", secondary: "", onOff: false),
+                        lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false),
+                        lightsCellData(main: "Ceiling Light", secondary: "Living Room", onOff: false),
+                        lightsCellData(main: "Kitchen Light Main", secondary: "Kitchen", onOff: false)]
+    
     
     
     override func viewDidLoad() {
@@ -42,34 +77,11 @@ class LightsTableViewController: UITableViewController {
         // Cells unselectable
         // Set this to true when edit button is pressed.
         tableView.allowsSelection = false
-     
-        lightsArrayData =  [lightsCellData(main: "MASTER", secondary: "", onOff: false),
-                            lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false),
-                            lightsCellData(main: "Ceiling Light", secondary: "Living Room", onOff: false),
-                            lightsCellData(main: "Kitchen Light Main", secondary: "Kitchen", onOff: false),
-                            lightsCellData(main: "ASDFASDFASDF", secondary: "asdfjlaksdf", onOff: false),
-                            lightsCellData(main: "rweqrqwerqwer", secondary: "rqwerqwerqwer", onOff: false),
-                            lightsCellData(main: "zxdscvzxcvzxcvzxcv", secondary: "qwerqwerqwerqwer", onOff: false),
-                            lightsCellData(main: "zxcv", secondary: "qwerqwerqwer", onOff: false),
-                            lightsCellData(main: "qwerqwer", secondary: "qwerqwerqwer", onOff: false),
-                            lightsCellData(main: "rqwerqwer", secondary: "qwerqwerqwer", onOff: false)]
         
- 
-        lightsArrayData.append(lightsCellData(main: "test", secondary: "test", onOff: false))
-        
-        
-        let light = lightsCellData(main: "boop", secondary: "boop", onOff: false)
-        addLight(light: light)
-        
-        
-//        let light2 = lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false)
-//        removeLight(light: light2)
+    
 
     }
     
-    
-    
- 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,5 +158,6 @@ class LightsTableViewController: UITableViewController {
             LightsTable.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
 }
 
