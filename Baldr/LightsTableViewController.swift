@@ -21,7 +21,6 @@ import UIKit
 
 struct lightsCellData {
     let main: String!
-    let secondary: String!
     let onOff: Bool!
 }
 
@@ -35,9 +34,9 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
     
     // Delegate Methods
     // Receive Data Light Cell
-    func userEnteredLightData(main: String, secondary: String) {
+    func userEnteredLightData(main: String) {
         
-        let newLight = lightsCellData(main: main, secondary: secondary, onOff: false)
+        let newLight = lightsCellData(main: main, onOff: false)
         //print(newLight)
         lightsArrayData.append(newLight)
         //print(lightsArrayData)
@@ -65,10 +64,10 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
     
     //var lightsArrayData = [lightsCellData]()
     
-    var lightsArrayData =  [lightsCellData(main: "MASTER", secondary: "", onOff: false),
-                        lightsCellData(main: "MY LIGHT", secondary: "Kitchen", onOff: false),
-                        lightsCellData(main: "Ceiling Light", secondary: "Living Room", onOff: false),
-                        lightsCellData(main: "Kitchen Light Main", secondary: "Kitchen", onOff: false)]
+    var lightsArrayData =  [lightsCellData(main: "MASTER", onOff: false),
+                        lightsCellData(main: "MY LIGHT", onOff: false),
+                        lightsCellData(main: "Ceiling Light", onOff: false),
+                        lightsCellData(main: "Kitchen Light Main", onOff: false)]
     
     
     
@@ -102,7 +101,7 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         // Run through each individual index, check if it satisfies the given predicate
         // return that index
         let index =    lightsArrayData.index { (lights) -> Bool in
-                light.main == lights.main && light.secondary == lights.secondary
+                light.main == lights.main
         }
         
         lightsArrayData.remove(at: index!)
@@ -133,7 +132,7 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         
         
         cell.mainLabel.text = lightsArrayData[indexPath.row].main
-        cell.secondaryLabel.text = lightsArrayData[indexPath.row].secondary
+            //cell.secondaryLabel.text = lightsArrayData[indexPath.row].secondary
         //    cell.lightSwitch.isOn = lightsArrayData[indexPath.row].onOff
         cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
         

@@ -12,7 +12,7 @@ import UIKit
 // Naming Delegate
 
 protocol LightCellDelegate {
-    func userEnteredLightData(main: String, secondary: String)
+    func userEnteredLightData(main: String)
 }
 
 
@@ -35,7 +35,7 @@ class AddLightViewController: UIViewController {
         if delegate != nil {
             if nameLightField.text != nil {
                 let name = nameLightField.text
-                delegate?.userEnteredLightData(main: name!, secondary: name!)
+                delegate?.userEnteredLightData(main: name!)
                 // exit page
                 dismiss(animated: true, completion: nil)
             }

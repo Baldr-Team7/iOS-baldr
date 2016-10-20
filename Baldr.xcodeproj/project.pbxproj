@@ -20,8 +20,8 @@
 		5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */; };
 		5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */; };
 		5AC6993E1DA67D6F009432E2 /* MasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */; };
-		5ACA2BDE1DB911A400777F0E /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA2BDC1DB911A400777F0E /* LightsTableViewCell.swift */; };
-		5ACA2BDF1DB911A400777F0E /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA2BDD1DB911A400777F0E /* LightsTableViewCell.xib */; };
+		5ACA2BE21DB9121300777F0E /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACA2BE01DB9121300777F0E /* LightsTableViewCell.swift */; };
+		5ACA2BE31DB9121300777F0E /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA2BE11DB9121300777F0E /* LightsTableViewCell.xib */; };
 		5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */; };
 		5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */; };
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
@@ -66,8 +66,8 @@
 		5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoodViewController.swift; sourceTree = "<group>"; };
 		5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
 		5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterTableViewCell.xib; sourceTree = "<group>"; };
-		5ACA2BDC1DB911A400777F0E /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsTableViewCell.swift; path = ../../../.Trash/LightsTableViewCell.swift; sourceTree = "<group>"; };
-		5ACA2BDD1DB911A400777F0E /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LightsTableViewCell.xib; path = ../../../.Trash/LightsTableViewCell.xib; sourceTree = "<group>"; };
+		5ACA2BE01DB9121300777F0E /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
+		5ACA2BE11DB9121300777F0E /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
 		5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
 		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,14 +160,14 @@
 		5AD0AB6B1DB38FB00012B913 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
-				5ACA2BDC1DB911A400777F0E /* LightsTableViewCell.swift */,
-				5ACA2BDD1DB911A400777F0E /* LightsTableViewCell.xib */,
 				5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */,
 				5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */,
 				5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */,
 				5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */,
 				5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */,
 				5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */,
+				5ACA2BE01DB9121300777F0E /* LightsTableViewCell.swift */,
+				5ACA2BE11DB9121300777F0E /* LightsTableViewCell.xib */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			files = (
 				5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */,
 				5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */,
-				5ACA2BDF1DB911A400777F0E /* LightsTableViewCell.xib in Resources */,
+				5ACA2BE31DB9121300777F0E /* LightsTableViewCell.xib in Resources */,
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
 				5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */,
 				5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */,
@@ -315,7 +315,7 @@
 			files = (
 				5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
-				5ACA2BDE1DB911A400777F0E /* LightsTableViewCell.swift in Sources */,
+				5ACA2BE21DB9121300777F0E /* LightsTableViewCell.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
