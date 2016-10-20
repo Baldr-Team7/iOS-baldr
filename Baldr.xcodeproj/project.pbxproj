@@ -289,6 +289,7 @@
 				TargetAttributes = {
 					5A46E53A1D95090D00A63C32 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7V33P253N4;
 						ProvisioningStyle = Automatic;
 					};
 					5A46E5501D95090D00A63C32 = {
@@ -662,7 +663,7 @@
 			baseConfigurationReference = BB09EA7C99839BCDB3F0CC30 /* Pods-Baldr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7V33P253N4;
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.team7.Baldr;
@@ -676,7 +677,7 @@
 			baseConfigurationReference = 018FF7EFC16388258F57F2C3 /* Pods-Baldr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7V33P253N4;
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.team7.Baldr;

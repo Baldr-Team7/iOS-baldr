@@ -130,7 +130,23 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         
     }
     
+    @IBAction func temporaryMQTTMessage(_ sender: AnyObject) {
+        mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+        print("{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+    }
     
+//    {
+//    “version”: 1,
+//    
+//    “protocolName”:”baldr”,
+//    
+//    “lightCommand” :{
+//    
+//    “clientToken”:”FFFFFFFFFFFFFFF”,
+//    
+//    “state”:”on”
+//}
+
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      

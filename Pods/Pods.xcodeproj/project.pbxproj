@@ -7,35 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0395CC8BE95575542FA05E6735D55284 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
 		0A9CE3EBA03B7A992FC8EA9BDE966A28 /* Pods-Baldr-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDADA9A21B3A72320C268F4F3EE2B0 /* Pods-Baldr-dummy.m */; };
 		0F4CCA91CB8D853565DF3C749030DD65 /* Pods-BaldrUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 972C3435DC041FC111D1FCF026554BBF /* Pods-BaldrUITests-dummy.m */; };
 		10C1DB6C1C0209E07357BA31BB0F659E /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6EF482DADA3772700E3BA662526513 /* CocoaAsyncSocket.framework */; };
 		1B990F6BC6047C4F6BD866CED96302A5 /* Pods-BaldrTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 177A28AFB960CFF1AE9C36025E129293 /* Pods-BaldrTests-dummy.m */; };
 		1B9CCA8DEA4154D4BBEA911FDBD45BE4 /* MSWeakTimer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E468CD3CC6B2C2374A7CCB26349A814A /* MSWeakTimer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20DAF9A8A5382AD2362921325EA2422F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
+		2275D440CA918C053D8866C84D4E3166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
+		2FBB5A70F515CC295604D8CD70A37656 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
 		340172D5DB3DD9ECB485D55EFA6FC9D1 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B2C073F288D4DFC20D2637AE7313C /* MSWeakTimer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3D84BA3FE4830BF548037D1A7E0C4E8B /* CocoaMQTTMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB30131226967841B22701559B82DE3 /* CocoaMQTTMessage.swift */; };
-		579AD4C1804FAF612D79A7B95D3BC533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
-		63A1C29ED510E37820A3F87D3E3B01CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
+		433DEFC48BDDE51A0414946EFF0B654B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2B75242446975CC5DFDD9A064FBAE /* CFNetwork.framework */; };
+		552EA24775FDA26AE3868154CA1771BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
 		6AAFA2F344A6B58F728AF958F3FE6D89 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 505F73A8ED1163C1E8BABF1F274BF9E2 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72403E4E5AA2CBEEB8484C79808F7883 /* CocoaMQTT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C5704F55C4DB710314788436F7573AA /* CocoaMQTT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AC376ACC9366E79E251299EE5A9E41A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
 		800CC622EE4828794B6CE9558790D8F9 /* MSWeakTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF1EDC4E8AB48C8AD914D949915E8F9 /* MSWeakTimer.framework */; };
 		86AFDFCCA72FFEA8A580E1E63E21D519 /* CocoaMQTTFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC61E335F594F8DDF36B9BC5DFAA359D /* CocoaMQTTFrame.swift */; };
 		8A1781BC9FC08A34A9A72054D31F0566 /* MSWeakTimer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B1D5DBE46D5DC7165826B5D15CD60 /* MSWeakTimer-dummy.m */; };
 		8D5FB7E99C4A92B8191FF4581D9385AA /* CocoaMQTT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8861751EC48397494FFA6B070715B9E /* CocoaMQTT.swift */; };
 		92AED971B91C640191A5ABA1567FE358 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BFE627678034FB26AD746ADB86E4C0 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94206DEF982F7065916BA6E85F5DDB07 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6158E7A8C88F256A86C512D496F3FCAF /* Security.framework */; };
+		94C370A1F1D3DB5E382010BBD628F2A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
 		991BFD139F6A45C9B654960C2F6A7F09 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B88D34482CE66222F547A5CD18EE0 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A1687848AE7D5AB0595720DBBA0B72A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */; };
 		AAA7D7AC6189DF4B22460179E1999BFF /* MSWeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2F0026832CE1DFC02974B27050F2A3 /* MSWeakTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACFE60AB34A7FEF697E6EEFB62436A8D /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8CBD24951F49F31939CC4626039300 /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1C36F8E1B1D69D37812562EF03FA7A4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B933D45E90AE16D913A98CFA01D93D28 /* CFNetwork.framework */; };
 		B5C489E62DC47CE9568C8874F0181555 /* Pods-Baldr-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D0BE039D1617C12E62A64E76ECA326C /* Pods-Baldr-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B982D492D57E394B864F58BFC51E9A5E /* CocoaMQTT.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C42424EA3A8D19C48F94C2C8AED17 /* CocoaMQTT.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CEFE28420773FC61D2DB4778ABDC12A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
-		D457EF12AC3DF7520DF22BF636A6478B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */; };
 		D9A44696356E299F3C9A4BFF9E57343F /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CF240A735355A501A220A230ADE318 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F45B40DF0BF596BDCD96B2D85EF848FA /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CD57D19A7EC51CE2F0B735EECCFF14 /* CocoaAsyncSocket-dummy.m */; };
-		F87F607CCD51536EC9CAD7F1488845C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C41DA0C1DE1DB116CC5BE48257D187C /* Security.framework */; };
 		FF4611E63381403792EB04ED6BA1D373 /* CocoaMQTT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C474B006E570389270EDC6EE90C7DC04 /* CocoaMQTT-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +82,6 @@
 		0878F1E482642B89C66696134431A6ED /* Pods-Baldr-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Baldr-frameworks.sh"; sourceTree = "<group>"; };
 		094B1D5DBE46D5DC7165826B5D15CD60 /* MSWeakTimer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSWeakTimer-dummy.m"; sourceTree = "<group>"; };
 		0B2F0026832CE1DFC02974B27050F2A3 /* MSWeakTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
-		0C41DA0C1DE1DB116CC5BE48257D187C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		0F329FDC631E9169C4F20EA083288987 /* Pods-BaldrUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BaldrUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0F9B2C073F288D4DFC20D2637AE7313C /* MSWeakTimer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		157F0FA29990581C337649F25CCB1DC8 /* Pods-BaldrUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BaldrUITests-resources.sh"; sourceTree = "<group>"; };
@@ -102,8 +101,9 @@
 		505F73A8ED1163C1E8BABF1F274BF9E2 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
 		510D7C7F660BC1AC0ADA485201B537D7 /* Pods-BaldrTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BaldrTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		52BDB7B9E282B8EA9D2774B06C4D52EA /* Pods-BaldrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BaldrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		54A2B75242446975CC5DFDD9A064FBAE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		54E89772E954742706D80FC21C926AE2 /* Pods-Baldr-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Baldr-acknowledgements.markdown"; sourceTree = "<group>"; };
-		58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6158E7A8C88F256A86C512D496F3FCAF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		629233BDA1E2276EB0A7FCB94370312D /* Pods-BaldrTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BaldrTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		66834271BB3249F083EBE4C040636E51 /* Pods-Baldr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Baldr.release.xcconfig"; sourceTree = "<group>"; };
 		6E3C42424EA3A8D19C48F94C2C8AED17 /* CocoaMQTT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaMQTT.h; path = Source/CocoaMQTT.h; sourceTree = "<group>"; };
@@ -120,9 +120,9 @@
 		972C3435DC041FC111D1FCF026554BBF /* Pods-BaldrUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BaldrUITests-dummy.m"; sourceTree = "<group>"; };
 		9AAEC2FA91C91DE392C785F8C3D90C9A /* Pods-BaldrUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BaldrUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A34896FBD83ABC2F3E02D59E256A874D /* libPods-BaldrUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BaldrUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A9547748E256E2F6E4E673863EA8E438 /* CocoaMQTT-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaMQTT-prefix.pch"; sourceTree = "<group>"; };
 		AA8CBD24951F49F31939CC4626039300 /* CocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
-		B933D45E90AE16D913A98CFA01D93D28 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		BFA2B3D608E8F7E183F3849BCFC74F5B /* CocoaMQTT.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CocoaMQTT.modulemap; sourceTree = "<group>"; };
 		C1F2D64A3AB71E29DE9FF15262EE4FAE /* Pods-BaldrTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BaldrTests-frameworks.sh"; sourceTree = "<group>"; };
 		C474B006E570389270EDC6EE90C7DC04 /* CocoaMQTT-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaMQTT-dummy.m"; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0395CC8BE95575542FA05E6735D55284 /* Foundation.framework in Frameworks */,
+				A1687848AE7D5AB0595720DBBA0B72A3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D457EF12AC3DF7520DF22BF636A6478B /* Foundation.framework in Frameworks */,
+				7AC376ACC9366E79E251299EE5A9E41A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				579AD4C1804FAF612D79A7B95D3BC533 /* Foundation.framework in Frameworks */,
+				552EA24775FDA26AE3868154CA1771BC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A1C29ED510E37820A3F87D3E3B01CE /* Foundation.framework in Frameworks */,
+				94C370A1F1D3DB5E382010BBD628F2A0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10C1DB6C1C0209E07357BA31BB0F659E /* CocoaAsyncSocket.framework in Frameworks */,
-				20DAF9A8A5382AD2362921325EA2422F /* Foundation.framework in Frameworks */,
+				2FBB5A70F515CC295604D8CD70A37656 /* Foundation.framework in Frameworks */,
 				800CC622EE4828794B6CE9558790D8F9 /* MSWeakTimer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,15 +191,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1C36F8E1B1D69D37812562EF03FA7A4 /* CFNetwork.framework in Frameworks */,
-				CEFE28420773FC61D2DB4778ABDC12A1 /* Foundation.framework in Frameworks */,
-				F87F607CCD51536EC9CAD7F1488845C6 /* Security.framework in Frameworks */,
+				433DEFC48BDDE51A0414946EFF0B654B /* CFNetwork.framework in Frameworks */,
+				2275D440CA918C053D8866C84D4E3166 /* Foundation.framework in Frameworks */,
+				94206DEF982F7065916BA6E85F5DDB07 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		113158322316EA097A52B8CFF108B1D5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				54A2B75242446975CC5DFDD9A064FBAE /* CFNetwork.framework */,
+				A3BF03A620D65EDB5643E01E55BFA3AB /* Foundation.framework */,
+				6158E7A8C88F256A86C512D496F3FCAF /* Security.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		15E715F7B18FEE263AFAA96269E4E0A3 /* CocoaMQTT */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,16 +349,6 @@
 			path = "Target Support Files/Pods-BaldrTests";
 			sourceTree = "<group>";
 		};
-		D4531180CD9CF0693879E2233BE4ABA3 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				B933D45E90AE16D913A98CFA01D93D28 /* CFNetwork.framework */,
-				58FB11D24AE596B2EEF955C31708C7EC /* Foundation.framework */,
-				0C41DA0C1DE1DB116CC5BE48257D187C /* Security.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		DBAE1477AA6F9ED56172A1B064659DAE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,7 +378,7 @@
 			children = (
 				DF6EF482DADA3772700E3BA662526513 /* CocoaAsyncSocket.framework */,
 				1DF1EDC4E8AB48C8AD914D949915E8F9 /* MSWeakTimer.framework */,
-				D4531180CD9CF0693879E2233BE4ABA3 /* iOS */,
+				113158322316EA097A52B8CFF108B1D5 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
