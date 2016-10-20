@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaMQTT
 
 
 
@@ -30,7 +31,7 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
     
     @IBOutlet var LightsTable: UITableView!
 
-    
+    var mqtt : CocoaMQTT?
     
     // Delegate Methods
     // Receive Data Light Cell
@@ -69,7 +70,20 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
                         lightsCellData(main: "Ceiling Light", onOff: false),
                         lightsCellData(main: "Kitchen Light Main", onOff: false)]
     
-    
+    func settingMQTT() {
+        // message = "Hi"
+        let clientIdPid = "CocoaMQTT" + String(ProcessInfo().processIdentifier)
+        mqtt = CocoaMQTT(clientId: clientIdPid, host: "tann.si", port: 8883)
+        if let mqtt = mqtt {
+            mqtt.username = "test"
+            mqtt.password = "public"
+            mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+            mqtt.keepAlive = 90
+            mqtt.delegate = self
+            
+        }
+    }
+
     
     override func viewDidLoad() {
         
@@ -80,6 +94,8 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         // Cells unselectable
         // Set this to true when edit button is pressed.
         tableView.allowsSelection = false
+        settingMQTT()
+        mqtt!.connect()
 
     }
     
@@ -142,6 +158,10 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lightsArrayData.count
@@ -158,6 +178,55 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
             lightsArrayData.remove(at: indexPath.row)
             LightsTable.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+}
+
+
+
+extension LightsTableViewController: CocoaMQTTDelegate {
+    
+    func mqtt(_ mqtt: CocoaMQTT, didConnect host: String, port: Int) {
+        print("didConnect \(host):\(port)")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+            }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+        print("didPublishMessage with message: \(message.string)")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+        print("didPublishAck with id: \(id)")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
+        print("didReceivedMessage: \(message.string) with id \(id)")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
+        print("didSubscribeTopic to \(topic)")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
+        print("didUnsubscribeTopic to \(topic)")
+    }
+    
+    func mqttDidPing(_ mqtt: CocoaMQTT) {
+        print("didPing")
+    }
+    
+    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
+        _console("didReceivePong")
+    }
+    
+    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
+        _console("mqttDidDisconnect")
+    }
+    
+    func _console(_ info: String) {
+        print("Delegate: \(info)")
     }
     
 }

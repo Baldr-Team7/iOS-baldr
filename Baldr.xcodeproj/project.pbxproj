@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45A145B3DC6418ACF8AA037B /* libPods-BaldrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477BB853ED03D1227ED0938E /* libPods-BaldrUITests.a */; };
+		54C473CAE2BC59ADEBB9D256 /* Pods_Baldr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */; };
+		58F9E622981670F5786AE928 /* libPods-BaldrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5282551A3C2213FA5F262158 /* libPods-BaldrTests.a */; };
 		5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E53E1D95090D00A63C32 /* AppDelegate.swift */; };
 		5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */; };
 		5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */; };
@@ -25,6 +28,8 @@
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
+		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
+		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		018FF7EFC16388258F57F2C3 /* Pods-Baldr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baldr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Baldr/Pods-Baldr.release.xcconfig"; sourceTree = "<group>"; };
+		43541D11A501E8EDF43DA821 /* Pods-BaldrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrTests/Pods-BaldrTests.release.xcconfig"; sourceTree = "<group>"; };
+		477BB853ED03D1227ED0938E /* libPods-BaldrUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BaldrUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C7466225909A0D460ED22F /* Pods-BaldrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5282551A3C2213FA5F262158 /* libPods-BaldrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BaldrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E53B1D95090D00A63C32 /* Baldr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baldr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E53E1D95090D00A63C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsTableViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +79,12 @@
 		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
+		76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Baldr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D697801DB918A300200200 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
+		A2D697811DB918A300200200 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
+		ABA94BA0416A01FA452F191D /* Pods-BaldrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB09EA7C99839BCDB3F0CC30 /* Pods-Baldr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baldr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Baldr/Pods-Baldr.debug.xcconfig"; sourceTree = "<group>"; };
+		CA66151C54CEA96964580E22 /* Pods-BaldrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrTests/Pods-BaldrTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C473CAE2BC59ADEBB9D256 /* Pods_Baldr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F9E622981670F5786AE928 /* libPods-BaldrTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,12 +108,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A145B3DC6418ACF8AA037B /* libPods-BaldrUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46BE5C37B243ECE70B399592 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */,
+				5282551A3C2213FA5F262158 /* libPods-BaldrTests.a */,
+				477BB853ED03D1227ED0938E /* libPods-BaldrUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A46E5321D95090C00A63C32 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +132,8 @@
 				5A46E5541D95090D00A63C32 /* BaldrTests */,
 				5A46E55F1D95090D00A63C32 /* BaldrUITests */,
 				5A46E53C1D95090D00A63C32 /* Products */,
+				C4D5233E30FD0F4D86803D0C /* Pods */,
+				46BE5C37B243ECE70B399592 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,16 +187,29 @@
 		5AD0AB6B1DB38FB00012B913 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				A2D697801DB918A300200200 /* LightsTableViewCell.swift */,
+				A2D697811DB918A300200200 /* LightsTableViewCell.xib */,
 				5AC6993B1DA67D6F009432E2 /* MasterTableViewCell.swift */,
 				5AC6993C1DA67D6F009432E2 /* MasterTableViewCell.xib */,
 				5AD0AB6C1DB392E60012B913 /* RoomsTableViewCell.swift */,
 				5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */,
 				5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */,
 				5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */,
-				5ACA2BE01DB9121300777F0E /* LightsTableViewCell.swift */,
-				5ACA2BE11DB9121300777F0E /* LightsTableViewCell.xib */,
 			);
 			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		C4D5233E30FD0F4D86803D0C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB09EA7C99839BCDB3F0CC30 /* Pods-Baldr.debug.xcconfig */,
+				018FF7EFC16388258F57F2C3 /* Pods-Baldr.release.xcconfig */,
+				CA66151C54CEA96964580E22 /* Pods-BaldrTests.debug.xcconfig */,
+				43541D11A501E8EDF43DA821 /* Pods-BaldrTests.release.xcconfig */,
+				47C7466225909A0D460ED22F /* Pods-BaldrUITests.debug.xcconfig */,
+				ABA94BA0416A01FA452F191D /* Pods-BaldrUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A46E5651D95090D00A63C32 /* Build configuration list for PBXNativeTarget "Baldr" */;
 			buildPhases = (
+				18B9A74CDAB94814AA388AEC /* [CP] Check Pods Manifest.lock */,
 				5A46E5371D95090D00A63C32 /* Sources */,
 				5A46E5381D95090D00A63C32 /* Frameworks */,
 				5A46E5391D95090D00A63C32 /* Resources */,
+				18973C5B486117C20A246360 /* [CP] Embed Pods Frameworks */,
+				4165430C7089B71838C18593 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A46E5681D95090D00A63C32 /* Build configuration list for PBXNativeTarget "BaldrTests" */;
 			buildPhases = (
+				755B2EDDE56203B6456EDFA3 /* [CP] Check Pods Manifest.lock */,
 				5A46E54D1D95090D00A63C32 /* Sources */,
 				5A46E54E1D95090D00A63C32 /* Frameworks */,
 				5A46E54F1D95090D00A63C32 /* Resources */,
+				018A3220CF5C6B5E37B7B0B5 /* [CP] Embed Pods Frameworks */,
+				DE13D7F0EB386BA29F19AFAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,9 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A46E56B1D95090D00A63C32 /* Build configuration list for PBXNativeTarget "BaldrUITests" */;
 			buildPhases = (
+				A919DCCDD88F177EED913040 /* [CP] Check Pods Manifest.lock */,
 				5A46E5581D95090D00A63C32 /* Sources */,
 				5A46E5591D95090D00A63C32 /* Frameworks */,
 				5A46E55A1D95090D00A63C32 /* Resources */,
+				A6F8A8EE67B72F5FB92D76D5 /* [CP] Embed Pods Frameworks */,
+				A1B2EB6BC9B711D205309B68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,7 +289,6 @@
 				TargetAttributes = {
 					5A46E53A1D95090D00A63C32 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 7V33P253N4;
 						ProvisioningStyle = Automatic;
 					};
 					5A46E5501D95090D00A63C32 = {
@@ -280,6 +332,7 @@
 			files = (
 				5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */,
 				5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */,
+				A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */,
 				5A46E5481D95090D00A63C32 /* Assets.xcassets in Resources */,
 				5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */,
 				5A46E5461D95090D00A63C32 /* Main.storyboard in Resources */,
@@ -303,6 +356,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		018A3220CF5C6B5E37B7B0B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaldrTests/Pods-BaldrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18973C5B486117C20A246360 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Baldr/Pods-Baldr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18B9A74CDAB94814AA388AEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4165430C7089B71838C18593 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Baldr/Pods-Baldr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		755B2EDDE56203B6456EDFA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A1B2EB6BC9B711D205309B68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6F8A8EE67B72F5FB92D76D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A919DCCDD88F177EED913040 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE13D7F0EB386BA29F19AFAB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaldrTests/Pods-BaldrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5A46E5371D95090D00A63C32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -310,6 +501,7 @@
 			files = (
 				5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
+				A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
@@ -467,9 +659,10 @@
 		};
 		5A46E5661D95090D00A63C32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB09EA7C99839BCDB3F0CC30 /* Pods-Baldr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7V33P253N4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.team7.Baldr;
@@ -480,9 +673,10 @@
 		};
 		5A46E5671D95090D00A63C32 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 018FF7EFC16388258F57F2C3 /* Pods-Baldr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7V33P253N4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.team7.Baldr;
@@ -493,6 +687,7 @@
 		};
 		5A46E5691D95090D00A63C32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA66151C54CEA96964580E22 /* Pods-BaldrTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +703,7 @@
 		};
 		5A46E56A1D95090D00A63C32 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43541D11A501E8EDF43DA821 /* Pods-BaldrTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -523,6 +719,7 @@
 		};
 		5A46E56C1D95090D00A63C32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C7466225909A0D460ED22F /* Pods-BaldrUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7V33P253N4;
@@ -537,6 +734,7 @@
 		};
 		5A46E56D1D95090D00A63C32 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABA94BA0416A01FA452F191D /* Pods-BaldrUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7V33P253N4;
