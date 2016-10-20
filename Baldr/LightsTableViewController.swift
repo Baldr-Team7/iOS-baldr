@@ -38,11 +38,13 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
     // Delegate Methods
     // Receive Data Light Cell
     func userEnteredLightData(main: String, secondary: String) {
+        
         let newLight = lightsCellData(main: main, secondary: secondary, onOff: false)
-        print(newLight)
+        //print(newLight)
         lightsArrayData.append(newLight)
-        print(lightsArrayData)
+        //print(lightsArrayData)
         self.LightsTable.reloadData()
+    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,12 +54,16 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
             
             // AddLightVC has a UINavigationController attached to it; need to access the UINC first to get to the AddLightVC
             let destination = segue.destination as! UINavigationController
+            
             let addLightViewController: AddLightViewController = destination.topViewController as! AddLightViewController
             //            let addLightViewController: AddLightViewController = segue.destination as! AddLightViewController
             
             addLightViewController.delegate = self
         }
     }
+    
+    
+    
     
     //var lightsArrayData = [lightsCellData]()
     
