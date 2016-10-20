@@ -162,6 +162,8 @@
 				5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */,
 				5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */,
 				5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */,
+				5ACA2BE01DB9121300777F0E /* LightsTableViewCell.swift */,
+				5ACA2BE11DB9121300777F0E /* LightsTableViewCell.xib */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
