@@ -20,11 +20,9 @@ import UIKit
 
 
 struct lightsCellData {
-    
     let main: String!
     let secondary: String!
     let onOff: Bool!
-
 }
 
 
@@ -83,8 +81,6 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         // Cells unselectable
         // Set this to true when edit button is pressed.
         tableView.allowsSelection = false
-        
-    
 
     }
     
