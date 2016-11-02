@@ -6,7 +6,10 @@
 //  Copyright © 2016 Thomas Emilsson. All rights reserved.
 //
 
+
 import UIKit
+
+
 
 class MasterTableViewCell: UITableViewCell {
 

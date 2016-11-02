@@ -11,7 +11,7 @@ import UIKit
 
 // Naming Delegate
 
-protocol LightCellDelegate {
+protocol AddLightCellDelegate {
     func userEnteredLightData(main: String)
 }
 
@@ -19,7 +19,7 @@ protocol LightCellDelegate {
 
 class AddLightViewController: UIViewController {
 
-    var delegate: LightCellDelegate? = nil
+    var delegate: AddLightCellDelegate? = nil
     
     
     // Name of the Light
@@ -33,7 +33,7 @@ class AddLightViewController: UIViewController {
         
         // Get the Data Entered, send it to previous page
         if delegate != nil {
-            if nameLightField.text != nil {
+            if nameLightField.text != "" && nameLightField.text!.characters.first != " " {
                 let name = nameLightField.text
                 delegate?.userEnteredLightData(main: name!)
                 // exit page

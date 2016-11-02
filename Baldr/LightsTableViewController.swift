@@ -26,12 +26,23 @@ struct lightsCellData {
 }
 
 
-class LightsTableViewController: UITableViewController, LightCellDelegate {
+
+class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
 
     
     @IBOutlet var LightsTable: UITableView!
 
     var mqtt : CocoaMQTT?
+    
+    func toggleLight(main: String){
+        
+        print(main)
+        // print("Light is now not \(main) and the name of the pressed light is \(test)")
+    }
+
+    
+    
+    // ---------------------------------------------------------------------------------------------
     
     // Delegate Methods
     // Receive Data Light Cell
@@ -61,6 +72,7 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
     }
     
     
+    // ---------------------------------------------------------------------------------------------
     
     
     //var lightsArrayData = [lightsCellData]()
@@ -130,22 +142,7 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         
     }
     
-    @IBAction func temporaryMQTTMessage(_ sender: AnyObject) {
-        mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
-        print("{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
-    }
-    
-//    {
-//    “version”: 1,
-//    
-//    “protocolName”:”baldr”,
-//    
-//    “lightCommand” :{
-//    
-//    “clientToken”:”FFFFFFFFFFFFFFF”,
-//    
-//    “state”:”on”
-//}
+ 
 
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -161,19 +158,17 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         } else {
         
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
-        
-        
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "lightsCell", for: indexPath) as! LightsTableViewCell
         cell.mainLabel.text = lightsArrayData[indexPath.row].main
-            //cell.secondaryLabel.text = lightsArrayData[indexPath.row].secondary
-        //    cell.lightSwitch.isOn = lightsArrayData[indexPath.row].onOff
         cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
+        cell.delegate = self
         
+            
         return cell
         
         }
         
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -196,7 +191,40 @@ class LightsTableViewController: UITableViewController, LightCellDelegate {
         }
     }
     
+     // ---------------------------------------------------------------------------------------------
+    
+    func turnLightOn(){
+         mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+    }
+    
+    func turnLightOff(){
+     mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
+    }
+    
+    // Currently attached to Edit button
+    @IBAction func temporaryMQTTMessage(_ sender: AnyObject) {
+        mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+        
+        //        print("{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+    }
+    
+    //    {
+    //    “version”: 1,
+    //
+    //    “protocolName”:”baldr”,
+    //
+    //    “lightCommand” :{
+    //
+    //    “clientToken”:”FFFFFFFFFFFFFFF”,
+    //    
+    //    “state”:”on”
+    //}
+    
+     // ---------------------------------------------------------------------------------------------
 }
+
+
+
 
 
 

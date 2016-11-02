@@ -8,10 +8,24 @@
 
 import UIKit
 
+
+protocol LightCellDelegate {
+    func toggleLight(main: String)
+    
+    
+    
+}
+
 class LightsTableViewCell: UITableViewCell {
 
-    @IBAction func switchLight(_ sender: AnyObject) {
+    var delegate: LightCellDelegate?
+    
+    
+    @IBAction func toggleLight(_ sender: AnyObject) {
+        delegate?.toggleLight(main: mainLabel.text!)
     }
+
+    
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
     
