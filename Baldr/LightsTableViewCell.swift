@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol LightCellDelegate {
-    func toggleLight(main: String)
+    func toggleLight(main: String, state: Bool)
     
     
     
@@ -22,7 +22,7 @@ class LightsTableViewCell: UITableViewCell {
     
     
     @IBAction func toggleLight(_ sender: AnyObject) {
-        delegate?.toggleLight(main: mainLabel.text!)
+        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn)
     }
 
     

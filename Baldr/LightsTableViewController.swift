@@ -34,10 +34,21 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
     var mqtt : CocoaMQTT?
     
-    func toggleLight(main: String){
+    
+     // ---------------------------------------------------------------------------------------------
+    
+    
+    func toggleLight(main: String, state: Bool){
         
-        print(main)
-        // print("Light is now not \(main) and the name of the pressed light is \(test)")
+        
+        print("\(main) is \(state)")
+        
+        if (state == true){
+            turnLightOn()
+        }
+        else {
+            turnLightOff()
+        }
     }
 
     
@@ -147,15 +158,15 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-        if indexPath.row == 0 {
-            let cell = Bundle.main.loadNibNamed("MasterTableViewCell", owner: self, options: nil)?.first as! MasterTableViewCell
-            
-            cell.mainLabel.text = lightsArrayData[indexPath.row].main
-            cell.masterSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
-            
-            return cell
-            
-        } else {
+//        if indexPath.row == 0 {
+//            let cell = Bundle.main.loadNibNamed("MasterTableViewCell", owner: self, options: nil)?.first as! MasterTableViewCell
+//            
+//            cell.mainLabel.text = lightsArrayData[indexPath.row].main
+//            cell.masterSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
+//            
+//            return cell
+//            
+//        } else {
         
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lightsCell", for: indexPath) as! LightsTableViewCell
@@ -166,7 +177,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             
         return cell
         
-        }
+//        }
         
     }
     
@@ -199,7 +210,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     func turnLightOff(){
      mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
+        
     }
+    
     
     // Currently attached to Edit button
     @IBAction func temporaryMQTTMessage(_ sender: AnyObject) {
