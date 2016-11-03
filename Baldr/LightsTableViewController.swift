@@ -42,13 +42,21 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         print("\(main) is \(state)")
+        let topic: String?
+        if (main == "Light"){
+            topic = "home/FF/Light/FF"
+        } else {
+            topic = "home/AA/Light2/AA"
+        }
         
         if (state == true){
-            turnLightOn()
+            turnLightOn(topic: topic!)
         }
         else {
-            turnLightOff()
+            turnLightOff(topic: topic!)
         }
+        
+        print(topic!)
     }
 
     
@@ -88,8 +96,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     //var lightsArrayData = [lightsCellData]()
     
-    var lightsArrayData =  [lightsCellData(main: "MASTER", onOff: false),
-                        lightsCellData(main: "MY LIGHT", onOff: false),
+    var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
+                        lightsCellData(main: "Light2", onOff: false),
                         lightsCellData(main: "Ceiling Light", onOff: false),
                         lightsCellData(main: "Kitchen Light Main", onOff: false)]
     
@@ -103,7 +111,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
             mqtt.keepAlive = 90
             mqtt.delegate = self
-            
         }
     }
 
@@ -204,12 +211,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
      // ---------------------------------------------------------------------------------------------
     
-    func turnLightOn(){
-         mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+    func turnLightOn(topic: String){
+         mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
     }
     
-    func turnLightOff(){
-     mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
+    func turnLightOff(topic: String){
+     mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
         
     }
     
