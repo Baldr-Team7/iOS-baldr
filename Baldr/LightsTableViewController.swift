@@ -67,9 +67,10 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Receive Data Light Cell
     func userEnteredLightData(main: String) {
         
-        let newLight = lightsCellData(main: main, onOff: false)
+        //let newLight = lightsCellData(main: main, onOff: false)
+        //lightsArrayData.append(newLight)
+        
         //print(newLight)
-        lightsArrayData.append(newLight)
         //print(lightsArrayData)
         self.LightsTable.reloadData()
     
@@ -97,9 +98,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     //var lightsArrayData = [lightsCellData]()
     
     var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
-                        lightsCellData(main: "Light2", onOff: false),
-                        lightsCellData(main: "Ceiling Light", onOff: false),
-                        lightsCellData(main: "Kitchen Light Main", onOff: false)]
+                            lightsCellData(main: "Light2", onOff: false)]
+    
     
     func settingMQTT() {
         // message = "Hi"
@@ -156,7 +156,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         let indexPath = IndexPath(row: index!, section: 0)
         LightsTable.deleteRows(at: [indexPath], with: .fade)
         //LightsTable.deleteRows(at: index!, with: .fade)
-        
         
     }
     
@@ -242,10 +241,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
      // ---------------------------------------------------------------------------------------------
 }
-
-
-
-
 
 
 extension LightsTableViewController: CocoaMQTTDelegate {
