@@ -52,7 +52,7 @@ class AddLightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(delegate)
+        print(delegate!)
 
         // Do any additional setup after loading the view.
     }

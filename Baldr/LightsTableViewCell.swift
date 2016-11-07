@@ -21,13 +21,17 @@ class LightsTableViewCell: UITableViewCell {
     var delegate: LightCellDelegate?
     
     
-    @IBAction func toggleLight(_ sender: AnyObject) {
-        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn)
-    }
+   
 
     
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
+    
+    
+    @IBAction func toggleLight(_ sender: AnyObject) {
+        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn)
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

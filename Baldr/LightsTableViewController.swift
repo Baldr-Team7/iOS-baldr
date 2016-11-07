@@ -125,17 +125,26 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         navigationItem.leftBarButtonItem = editButtonItem
-        // testing
+        
+        
+        // Only allow selection during Edit
         LightsTable.allowsSelectionDuringEditing = true
+        // Set this to true when edit button is pressed.
+        tableView.allowsSelection = false
+        
+        tableView.layoutMargins = UIEdgeInsets.zero
+        tableView.separatorInset = UIEdgeInsets.zero
+        
+       
         
         
         // Cells unselectable
-        // Set this to true when edit button is pressed.
-        tableView.allowsSelection = false
+     
         settingMQTT()
         mqtt!.connect()
 
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -167,7 +176,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
- 
 
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -188,16 +196,17 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
         cell.delegate = self
         
-        //cell.accessoryType = .disclosureIndicator
-        
+        cell.accessoryType = .none
         return cell
 
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//    }
+    
+    
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lightsArrayData.count
@@ -207,9 +216,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         return 80
     }
     
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 
         // Return false if you do not want the specified item to be editable.
+        
         return true
     }
     
@@ -222,10 +233,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         } else if editingStyle == .insert {
             
         }
+        
     }
-    
-    
-  
     
     
      // ---------------------------------------------------------------------------------------------
