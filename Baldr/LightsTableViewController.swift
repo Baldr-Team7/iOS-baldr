@@ -137,8 +137,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         
-        // test usage of hex to string converter
+        // test usage of hex to UIColor converter
         self.view.backgroundColor = UIColor(hexString: "#ffe700")
+        
+        // test usage of UIColor to hex converter
+        let green = UIColor.green.toHex()
+        print(green)
+        self.view.backgroundColor = UIColor(hexString: green)
         
         // Cells unselectable
      
@@ -290,6 +295,19 @@ extension UIColor {
             }
         }
         return nil
+    }
+    
+    func toHex() -> String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        let rgb:Int = (Int)(red*255) << 16 | (Int)(green*255) << 8 | (Int)(blue*255)<<0
+        
+        return NSString(format:"#%06x", rgb) as String
     }
 }
 
