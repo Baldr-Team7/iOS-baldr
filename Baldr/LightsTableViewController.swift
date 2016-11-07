@@ -10,16 +10,11 @@ import UIKit
 import CocoaMQTT
 
 
-
-
-
 // TODO:
-//      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
 //          -- follow up, work with Cache to store data, or a Dictionary
 //      Add Delegate that receives information from Adding a Light as well - DONE
 //      Add Delegate that passes information to Edit Light Page and updates changes to it afterwards
-//      Store Index ID in the lightsCellData struct for testing.
 
 
 struct lightsCellData {
@@ -40,9 +35,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
      // ---------------------------------------------------------------------------------------------
     
     
+    // toggle the light, send the appropriate message to the broker
     func toggleLight(main: String, state: Bool){
-        
-        
         print("\(main) is \(state)")
         let topic: String?
         if (main == "Light"){
@@ -72,8 +66,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         let newLight = lightsCellData(main: main, onOff: false)
         lightsArrayData.append(newLight)
         
-        //print(newLight)
-        //print(lightsArrayData)
         self.LightsTable.reloadData()
     
     }
@@ -97,12 +89,44 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // ---------------------------------------------------------------------------------------------
     
     
-    //var lightsArrayData = [lightsCellData]()
-    
+    // Hard coded Data, temporary
     var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
                             lightsCellData(main: "Light2", onOff: false)]
     
     
+    override func viewDidLoad() {
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        super.viewDidLoad()
+        
+        
+        // Add Edit Button to nagivation bar programmatically
+        navigationItem.leftBarButtonItem = editButtonItem
+        
+        
+        // Only allow selection during Edit
+        LightsTable.allowsSelectionDuringEditing = true
+         // Cells unselectable (only selectable during Editing
+        tableView.allowsSelection = false
+        
+    
+        // test usage of hex to UIColor converter
+        self.view.backgroundColor = UIColor(hexString: "#ffe700")
+        
+        // test usage of UIColor to hex converter
+        let green = UIColor.green.toHex()
+        print(green)
+        self.view.backgroundColor = UIColor(hexString: green)
+        
+       
+     
+        settingMQTT()
+        mqtt!.connect()
+        
+    
+    }
+    
+    // Set up the MQTT connection
     func settingMQTT() {
         // message = "Hi"
         let clientIdPid = "CocoaMQTT" + String(ProcessInfo().processIdentifier)
@@ -115,43 +139,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             mqtt.delegate = self
         }
     }
-
-    
-    override func viewDidLoad() {
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        super.viewDidLoad()
-        
-        
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-        
-        // Only allow selection during Edit
-        LightsTable.allowsSelectionDuringEditing = true
-        // Set this to true when edit button is pressed.
-        tableView.allowsSelection = false
-        
-        tableView.layoutMargins = UIEdgeInsets.zero
-        tableView.separatorInset = UIEdgeInsets.zero
-        
-        
-        
-        // test usage of hex to UIColor converter
-        self.view.backgroundColor = UIColor(hexString: "#ffe700")
-        
-        // test usage of UIColor to hex converter
-        let green = UIColor.green.toHex()
-        print(green)
-        self.view.backgroundColor = UIColor(hexString: green)
-        
-        // Cells unselectable
-     
-        settingMQTT()
-        mqtt!.connect()
-
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -187,16 +174,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-//        if indexPath.row == 0 {
-//            let cell = Bundle.main.loadNibNamed("MasterTableViewCell", owner: self, options: nil)?.first as! MasterTableViewCell
-//            
-//            cell.mainLabel.text = lightsArrayData[indexPath.row].main
-//            cell.masterSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
-//            
-//            return cell
-//            
-//        } else {
-        
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lightsCell", for: indexPath) as! LightsTableViewCell
         cell.mainLabel.text = lightsArrayData[indexPath.row].main
@@ -209,28 +186,17 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//    }
-    
-    
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lightsArrayData.count
     }
     
+    // Force height to be 80 for the rows
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-
-        // Return false if you do not want the specified item to be editable.
-        
-        return true
-    }
-    
+    // Specify what happens when a cell is edited in some way
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Remove Row at specific index pressed
@@ -244,30 +210,28 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     
     
-     // ---------------------------------------------------------------------------------------------
     
+    // Turn Light on Message
     func turnLightOn(topic: String){
          mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
     }
     
+    // Turn Light Off Message
     func turnLightOff(topic: String){
      mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
 
     }
     
-    //    {
-    //    “version”: 1,
-    //
-    //    “protocolName”:”baldr”,
-    //
-    //    “lightCommand” :{
-    //
-    //    “clientToken”:”FFFFFFFFFFFFFFF”,
-    //    
-    //    “state”:”on”
-    //}
-    
-     // ---------------------------------------------------------------------------------------------
+    // Change Color Message, with parameter as a UIColor
+    func changeColor(topic: String, color: UIColor){
+        let hex = color.toHex()
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"color\":\"\(hex)\"}}")
+    }
+
+    // Change Color Message, with parameter as a hexadecimal String
+    func changeColor(topic: String, hex: String){
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"color\":\"\(hex)\"}}")
+    }
 }
 
 
@@ -276,24 +240,35 @@ extension UIColor {
         let red, green, blue: CGFloat
         
         if hexString.hasPrefix("#"){
-            // remove the prefix
+            // remove the prefix '#'
             let start = hexString.index(hexString.startIndex, offsetBy: 1)
+            // specify the hex part of the string
             let hexColor = hexString.substring(from: start)
             
+            
+            // Can be modified to accept 8 hexadecimal characters to be able to 
+            // accept alpha as a part of the entered string (change to UInt64)
+        
             if hexColor.characters.count == 6 {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt32 = 0
 
+                
                 if scanner.scanHexInt32(&hexNumber){
+                    // check first pair of values
                     red = CGFloat((hexNumber & 0xff0000) >> 16) / 255
+                    // check second pair of values
                     green = CGFloat((hexNumber & 0x00ff00) >> 8) / 255
+                    // check third pair of values
                     blue = CGFloat((hexNumber & 0x0000ff)) / 255
                     
+                    // initialize the number with alpha set to 1.0 always
                     self.init(red: red, green: green, blue: blue, alpha: 1.0)
                     return
                 }
             }
         }
+        
         return nil
     }
     
@@ -304,6 +279,7 @@ extension UIColor {
         var alpha: CGFloat = 0
         
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
         
         let rgb:Int = (Int)(red*255) << 16 | (Int)(green*255) << 8 | (Int)(blue*255)<<0
         
