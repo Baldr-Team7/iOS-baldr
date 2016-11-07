@@ -30,11 +30,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Light" id="AaD-ht-CX4">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z7N-3X-pVl">
-                            <connections>
-                                <action selector="temporaryMQTTMessage:" destination="zRC-D2-9lB" id="J46-p3-fpc"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy">
                             <connections>
                                 <action selector="goToAddLight:" destination="zRC-D2-9lB" id="a68-A6-jZ0"/>

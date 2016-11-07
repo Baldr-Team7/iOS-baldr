@@ -11,6 +11,8 @@ import CocoaMQTT
 
 
 
+
+
 // TODO:
 //      Have master turn off all lights
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
@@ -26,9 +28,9 @@ struct lightsCellData {
 }
 
 
-
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
 
+    
     
     @IBOutlet var LightsTable: UITableView!
 
@@ -66,9 +68,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Delegate Methods
     // Receive Data Light Cell
     func userEnteredLightData(main: String) {
-        
-        //let newLight = lightsCellData(main: main, onOff: false)
-        //lightsArrayData.append(newLight)
+    
+        let newLight = lightsCellData(main: main, onOff: false)
+        lightsArrayData.append(newLight)
         
         //print(newLight)
         //print(lightsArrayData)
@@ -119,6 +121,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
+        
+        
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        // testing
+        LightsTable.allowsSelectionDuringEditing = true
         
         
         // Cells unselectable
@@ -180,12 +188,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
         cell.delegate = self
         
-            
+        //cell.accessoryType = .disclosureIndicator
+        
         return cell
-        
-//        }
-        
+
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -199,14 +207,26 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         return 80
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Remove Row at specific index pressed
             // Deletes from array of lights as well
             lightsArrayData.remove(at: indexPath.row)
             LightsTable.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
         }
     }
+    
+    
+  
+    
     
      // ---------------------------------------------------------------------------------------------
     
@@ -216,15 +236,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     func turnLightOff(topic: String){
      mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
-        
-    }
-    
-    
-    // Currently attached to Edit button
-    @IBAction func temporaryMQTTMessage(_ sender: AnyObject) {
-        mqtt!.publish("baldr-test", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
-        
-        //        print("{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+
     }
     
     //    {
