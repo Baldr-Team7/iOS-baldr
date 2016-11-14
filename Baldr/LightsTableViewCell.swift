@@ -19,10 +19,8 @@ protocol LightCellDelegate {
 class LightsTableViewCell: UITableViewCell {
 
     var delegate: LightCellDelegate?
-    
-    
-   
-
+    var expand = false
+    let inset = 15.0
     
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
@@ -42,6 +40,10 @@ class LightsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func expandCell(_ sender: Any) {
+        expand = true
     }
     
 }

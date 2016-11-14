@@ -26,7 +26,6 @@ struct lightsCellData {
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
 
     
-    
     @IBOutlet var LightsTable: UITableView!
 
     var mqtt : CocoaMQTT?
@@ -99,6 +98,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
+//        self.tableView.estimatedRowHeight = 80
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         // Add Edit Button to nagivation bar programmatically
         navigationItem.leftBarButtonItem = editButtonItem
@@ -117,7 +118,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         let green = UIColor.green.toHex()
         print(green)
         self.view.backgroundColor = UIColor(hexString: green)
-        
+
        
      
         settingMQTT()
@@ -125,7 +126,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     
     }
-    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        
+    }
     // Set up the MQTT connection
     func settingMQTT() {
         // message = "Hi"
@@ -170,7 +175,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
-
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
@@ -185,15 +189,26 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+    }
     
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lightsArrayData.count
     }
     
-    // Force height to be 80 for the rows
+    //  Force height to be 80 for the rows
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
+        
+        print(cell.expand)
+        if cell.expand == true{
+            return 120
+        }
+        else {
+            return 80
+        }
     }
     
     // Specify what happens when a cell is edited in some way
@@ -206,9 +221,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         } else if editingStyle == .insert {
             
         }
-        
     }
-    
     
     
     // Turn Light on Message
@@ -248,7 +261,7 @@ extension UIColor {
             
             // Can be modified to accept 8 hexadecimal characters to be able to 
             // accept alpha as a part of the entered string (change to UInt64)
-        
+            
             if hexColor.characters.count == 6 {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt32 = 0
