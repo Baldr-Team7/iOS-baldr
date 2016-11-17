@@ -7,13 +7,74 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
     var window: UIWindow?
+    var container: NSPersistentContainer!
 
-
+    
+    
+    // CORE DATA
+    
+    func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
+        //return appDelegate.persistentContainer.viewContext
+    }
+    
+    func storeLightCell(name: String, color: String, state: Bool, expanded: Bool) {
+        let context = getContext()
+        
+        // retrieve entity
+        let entity = NSEntityDescription.entity(forEntityName: "LightCell", in: context)
+        
+        let transaction = NSManagedObject(entity: entity!, insertInto: context)
+    
+        // update entity values
+        
+        transaction.setValue(name, forKey: "name")
+        transaction.setValue(color, forKey: "color")
+        transaction.setValue(state, forKey: "state")
+        transaction.setValue(expanded, forKey: "expanded")
+        
+        // Save Object
+        
+        do {
+            try context.save()
+            print("saved Object")
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+    }
+    
+    func retrieveLightCells() {
+        let fetchRequest: NSFetchRequest<LightCell> = LightCell.fetchRequest()
+        
+        do {
+            
+            let searchResults = try.getContext().fetch(fetchRequest)
+            
+            print("number of results = \(searchResults.count)")
+            
+            for lightCells in searchResults as [NSManagedObject] {
+                
+                print("\(lightCells.value(forKey: "name"))")
+                print("\(lightCells.value(forKey: "color"))")
+                print("\(lightCells.value(forKey: "state"))")
+                print("\(lightCells.value(forKey: "expanded"))")
+                
+            }
+        } catch {
+            print("Error with request \(error)")
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

@@ -11,16 +11,15 @@ import UIKit
 
 protocol LightCellDelegate {
     func toggleLight(main: String, state: Bool)
-    
-    
-    
+    func reload()
 }
 
 class LightsTableViewCell: UITableViewCell {
 
     var delegate: LightCellDelegate?
     var expand = false
-    let inset = 15.0
+    
+    //let inset = 15.0
     
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
@@ -43,7 +42,10 @@ class LightsTableViewCell: UITableViewCell {
     }
     
     @IBAction func expandCell(_ sender: Any) {
-        expand = true
+        self.expand = true
+        print("asdfasd \(expand)")
+        self.setNeedsLayout()
+        delegate?.reload()
     }
     
 }

@@ -28,6 +28,7 @@
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
+		5AF59D301DDA06750053700C /* LightModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AF59D2E1DDA06750053700C /* LightModel.xcdatamodeld */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
 		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
+		5AF59D2F1DDA06750053700C /* LightModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LightModel.xcdatamodel; sourceTree = "<group>"; };
 		76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Baldr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D697801DB918A300200200 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
 		A2D697811DB918A300200200 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				5AD0AB6B1DB38FB00012B913 /* CustomCells */,
 				5A46E53E1D95090D00A63C32 /* AppDelegate.swift */,
 				5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */,
+				5AF59D2E1DDA06750053700C /* LightModel.xcdatamodeld */,
 				5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */,
 				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
@@ -500,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF59D301DDA06750053700C /* LightModel.xcdatamodeld in Sources */,
 				5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */,
@@ -592,6 +596,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -643,6 +648,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -792,6 +798,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5AF59D2E1DDA06750053700C /* LightModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5AF59D2F1DDA06750053700C /* LightModel.xcdatamodel */,
+			);
+			currentVersion = 5AF59D2F1DDA06750053700C /* LightModel.xcdatamodel */;
+			path = LightModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5A46E5331D95090C00A63C32 /* Project object */;
 }

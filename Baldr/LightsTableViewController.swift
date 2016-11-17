@@ -22,13 +22,14 @@ struct lightsCellData {
     let onOff: Bool!
 }
 
-
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
 
     
     @IBOutlet var LightsTable: UITableView!
 
     var mqtt : CocoaMQTT?
+    
+ 
     
     
      // ---------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func toggleLight(main: String, state: Bool){
         print("\(main) is \(state)")
         let topic: String?
+        
         if (main == "Light"){
             topic = "home/FF/Light/FF"
         } else {
@@ -54,7 +56,15 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         print(topic!)
     }
 
-    
+    func reload() {
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+        //self.LightsTable.beginUpdates()
+        //self.LightsTable.updates
+        
+    }
     
     // ---------------------------------------------------------------------------------------------
     
@@ -126,6 +136,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     
     }
+    
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -200,15 +212,23 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     //  Force height to be 80 for the rows
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
+     
         
-        print(cell.expand)
-        if cell.expand == true{
-            return 120
-        }
-        else {
+        //  let cell = self.LightsTable.cellForRow(at: indexPath) as? LightsTableViewCell
+        //  let cell = self.LightsTable.cellForRow(at: indexPath)
+        // let cell = lightsArrayData[indexPath]
+        // print(cell.expand)
+        //  print(cell?.expand as Any)
+        
+        
+        //  if cell?.expand == true{
+        //    return 120
+        // }
+        // else {
             return 80
-        }
+        // }
+    
+        
     }
     
     // Specify what happens when a cell is edited in some way
