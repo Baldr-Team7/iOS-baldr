@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let transaction = NSManagedObject(entity: entity!, insertInto: context)
     
         // update entity values
-        
         transaction.setValue(name, forKey: "name")
         transaction.setValue(color, forKey: "color")
         transaction.setValue(state, forKey: "state")
@@ -58,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do {
             
-            let searchResults = try.getContext().fetch(fetchRequest)
+            let searchResults = try getContext().fetch(fetchRequest)
             
             print("number of results = \(searchResults.count)")
             
