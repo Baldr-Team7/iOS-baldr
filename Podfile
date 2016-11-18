@@ -5,6 +5,7 @@ target 'Baldr' do
   
   use_frameworks!
   pod ‘CocoaMQTT’
+  
 end
   # Pods for Baldr
 
