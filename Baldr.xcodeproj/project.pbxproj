@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		45A145B3DC6418ACF8AA037B /* libPods-BaldrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477BB853ED03D1227ED0938E /* libPods-BaldrUITests.a */; };
-		54C473CAE2BC59ADEBB9D256 /* Pods_Baldr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */; };
 		58F9E622981670F5786AE928 /* libPods-BaldrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5282551A3C2213FA5F262158 /* libPods-BaldrTests.a */; };
 		5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E53E1D95090D00A63C32 /* AppDelegate.swift */; };
 		5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */; };
@@ -29,8 +28,8 @@
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
-		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		5AF59D301DDA06750053700C /* LightModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AF59D2E1DDA06750053700C /* LightModel.xcdatamodeld */; };
+		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
 		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -695,6 +694,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaAsyncSocket\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaMQTT\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MSWeakTimer\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
 				);
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -719,6 +719,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaAsyncSocket\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaMQTT\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MSWeakTimer\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
 				);
 				INFOPLIST_FILE = Baldr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

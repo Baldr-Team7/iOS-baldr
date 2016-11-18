@@ -18,6 +18,7 @@ class Light{
     var color: String
     var state: String
     var room: String
+    
     //lightCommand:(color: String,state: String,room: String)
     //var json: Data
     
