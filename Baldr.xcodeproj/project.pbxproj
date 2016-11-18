@@ -28,6 +28,7 @@
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
+		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
 		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 		76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Baldr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2206C451DD9EE8C00C2205E /* Light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		A2D697801DB918A300200200 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
 		A2D697811DB918A300200200 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
 		ABA94BA0416A01FA452F191D /* Pods-BaldrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
 				5A46E54C1D95090D00A63C32 /* Info.plist */,
+				A2206C451DD9EE8C00C2205E /* Light.swift */,
 			);
 			path = Baldr;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
+				A2206C461DD9EE8C00C2205E /* Light.swift in Sources */,
 				5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */,
 				5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */,
 				5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */,
@@ -638,7 +642,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

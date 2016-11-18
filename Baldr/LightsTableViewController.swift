@@ -28,7 +28,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     @IBOutlet var LightsTable: UITableView!
 
+    
+    //var light = Light(message: <#T##String#>, protocolName: <#T##String#>, color: <#T##String#>, state: <#T##String#>, room: <#T##String#>, json: <#T##Data#>)
+    
+    
+    
     var mqtt : CocoaMQTT?
+    //var receievedMessage : String?
     
     
      // ---------------------------------------------------------------------------------------------
@@ -59,7 +65,15 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // ---------------------------------------------------------------------------------------------
     
     // Delegate Methods
+    // Get message from recieved
+    
+    
+//    func getMessage() -> String{
+//        return receievedMessage!
+//    }
+    
     // Receive Data Light Cell
+
     func userEnteredLightData(main: String) {
     
         let newLight = lightsCellData(main: main, onOff: false)
@@ -130,6 +144,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         super.setEditing(editing, animated: animated)
         
         
+       // print("The JSON MESSAGE is \(light?.message)")
     }
     // Set up the MQTT connection
     func settingMQTT() {
@@ -223,15 +238,19 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         }
     }
     
-    
+    func getMessage(topic: String){
+        mqtt!.subscribe("\(topic)")
+    }
     // Turn Light on Message
     func turnLightOn(topic: String){
-         mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+         mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+        
+        
     }
     
     // Turn Light Off Message
     func turnLightOff(topic: String){
-     mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
 
     }
     
@@ -285,6 +304,7 @@ extension UIColor {
         return nil
     }
     
+    
     func toHex() -> String {
         var red: CGFloat = 0
         var green: CGFloat = 0
@@ -312,14 +332,17 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         print("didPublishMessage with message: \(message.string)")
+        
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
         print("didPublishAck with id: \(id)")
+        
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         print("didReceivedMessage: \(message.string) with id \(id)")
+        
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
