@@ -9,19 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-// Naming protocol
-protocol LightDelegate {
-    func getMessage() -> String
-    
-}
-
-//struct LightData {
-//    
-//    let protocalName : String
-//    let lightCommand :(color: String, state: String, room: String)
-//    
-//}
-
 class Light{
     
     // identify classes to get messages
@@ -40,10 +27,8 @@ class Light{
         self.color = color
         self.state = state
         self.room = room
-        
-        
-        
-        }
+    
+    }
     
     // Parsing JSON message so the value can be extracted
     init(message: String){
@@ -56,9 +41,7 @@ class Light{
         self.room = json["lightCommand"]["room"].stringValue
         
         print("the JSON DATA is \(protocolName) \(color) \(state) \(room)")
-        
-
     }
- }
+}
 
 
