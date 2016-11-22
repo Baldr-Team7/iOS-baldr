@@ -160,10 +160,20 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         // how to create a CoreLightCell Object
-        let firstObject = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: container.viewContext) as! CoreLightCell
-        
+//        let firstObject = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: container.viewContext) as! CoreLightCell
+//        
+//      
+//        firstObject.version = "1"
+//        firstObject.name = "Baldr"
+//        firstObject.state = false
+//        firstObject.expanded = false
+//        firstObject.color = "FFFFFF"
         
         objects.append(firstObject)
+        
+       
+        
+        loadSavedData()
        
     
     }
@@ -178,55 +188,49 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         }
     }
     
+    func loadSavedData() {
+        let request = CoreLightCell.createFetchRequest()
+        let sort = NSSortDescriptor(key: "room", ascending: false)
+        request.sortDescriptors = [sort]
+    
+        do {
+            objects = try container.viewContext.fetch(request)
+            print("Got \(objects.count) lights")
+            tableView.reloadData()
+        } catch {
+            print("Fetch failed")
+        }
+    }
     
     func fetchLights() {
 
-        let light = CoreLightCell()
-        let message = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\": \"FFFFFF\", \"state\":\"on\", \"room\":\"Kitchen\"}}"
-    
-        let jsonData = message.data(using: .utf8)
-        let json = JSON(data: jsonData!)
-        
-        configure(coreLightCell: light, usingJSON: json)
-        
-        print("Light = \(light.version) \(light.name) \(light.state) \(light.color) \(light.expanded)")
-        
-        //      self.message = message
-        //let jsonData = message.data(using: .utf8)
-        //let json = JSON(data: jsonData!)
-        
-        // should work with MQTT final version
-        // 
-        //
-        //
-        //
-        //
-//        if let data = try? Data(contentsOf: URL(string: "fix")!) {
-//            let jsonData = JSON(data: data)
-//            let jsonDataArray = jsonData.arrayValue
-//            
-//            print("Received \(jsonDataArray.count) lights")
-//            
-//            DispatchQueue.main.async { [unowned self] in
-//                for jsonData in jsonDataArray {
-//                    // Handling each individual light
-//                    
-//                    let light = CoreLightCell(context: self.container.viewContext)
-//                    self.configure(coreLightCell: light, usingJSON: jsonData)
-//                }
-//                
-//                self.saveContext()
-//            }
-//        }
+        if let data = try? Data(contentsOf: URL(string: "fix")!) {
+            let jsonData = JSON(data: data)
+            let jsonDataArray = jsonData.arrayValue
+            
+            print("Received \(jsonDataArray.count) lights")
+            
+            DispatchQueue.main.async { [unowned self] in
+                for jsonData in jsonDataArray {
+                    // Handling each individual light
+                    let light = CoreLightCell(context: self.container.viewContext)
+                    self.configure(coreLightCell: light, usingJSON: jsonData)
+                }
+                
+                self.saveContext()
+                  self.loadSavedData()
+            }
+        }
     }
+    
     
     func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
         
         coreLightCell.version = json["version"].stringValue
         coreLightCell.name = json["protocolName"].stringValue
-        coreLightCell.state = json["lightCommand"]["state"].stringValue.lowercased() == "true"
+        coreLightCell.state = json["lightCommand"]["state"].stringValue.lowercased() == "on"
         coreLightCell.color = json["lightCommand"]["color"].stringValue
-        coreLightCell.expanded = json["lightCommand"]["room"].stringValue.lowercased() == "true"
+        coreLightCell.expanded = json["lightCommand"]["room"].stringValue.lowercased() == "on"
        
     }
     
@@ -289,15 +293,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         let coreLightCell = objects[indexPath.row]
-
-        
-        // changes data: temporary test
-//        coreLightCell.version = "1"
-//        coreLightCell.name = "Baldr"
-//        coreLightCell.state = false
-//        coreLightCell.expanded = false
-//        coreLightCell.color = "FFFFFF"
-        
         cell.mainLabel!.text = coreLightCell.name
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
