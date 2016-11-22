@@ -19,34 +19,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuW-fD-2Nn">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuW-fD-2Nn">
                         <rect key="frame" x="8" y="8" width="280" height="64"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Niu-Re-jrL">
-                        <rect key="frame" x="324" y="25" width="51" height="31"/>
+                        <rect key="frame" x="324" y="24" width="51" height="31"/>
                         <connections>
                             <action selector="toggleLight:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Fys-Gl-cwh"/>
                         </connections>
                     </switch>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8q2-kg-pS9">
-                        <rect key="frame" x="294" y="29" width="22" height="22"/>
+                        <rect key="frame" x="294" y="29" width="22" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="KZg-TA-cBf"/>
+                        </constraints>
                         <connections>
                             <action selector="expandCell:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BmU-mR-vYd"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5tW-fh-0SS"/>
-                    <constraint firstItem="8q2-kg-pS9" firstAttribute="centerY" secondItem="kuW-fD-2Nn" secondAttribute="centerY" id="C5E-NZ-om6"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Niu-Re-jrL" secondAttribute="trailing" constant="19" id="DbR-Dh-97L"/>
-                    <constraint firstItem="8q2-kg-pS9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="21" id="EvI-yw-QRq"/>
-                    <constraint firstItem="Niu-Re-jrL" firstAttribute="leading" secondItem="8q2-kg-pS9" secondAttribute="trailing" constant="8" id="Ofy-VI-XF6"/>
-                    <constraint firstItem="Niu-Re-jrL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qbe-FP-Cia"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="8q2-kg-pS9" secondAttribute="bottom" constant="21" id="Y8m-Gi-cQJ"/>
-                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="khL-4f-Fnw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Niu-Re-jrL" secondAttribute="trailing" constant="19" id="0bB-qL-fsf"/>
+                    <constraint firstItem="Niu-Re-jrL" firstAttribute="leading" secondItem="8q2-kg-pS9" secondAttribute="trailing" constant="8" symbolic="YES" id="6Wa-Os-IUD"/>
+                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hz2-dd-1kU"/>
+                    <constraint firstItem="8q2-kg-pS9" firstAttribute="leading" secondItem="kuW-fD-2Nn" secondAttribute="trailing" constant="6" id="KlS-wU-v61"/>
+                    <constraint firstItem="8q2-kg-pS9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="21" id="M5T-GI-4sa"/>
+                    <constraint firstItem="8q2-kg-pS9" firstAttribute="centerY" secondItem="Niu-Re-jrL" secondAttribute="centerY" id="kqw-rk-F6k"/>
+                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="centerY" secondItem="8q2-kg-pS9" secondAttribute="centerY" id="rN5-N1-1UO"/>
+                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="xEh-iJ-def"/>
+                    <constraint firstItem="kuW-fD-2Nn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="zul-ii-mvH"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

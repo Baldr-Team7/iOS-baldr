@@ -8,7 +8,8 @@
 
 import UIKit
 import CocoaMQTT
-
+import CoreData
+import SwiftyJSON
 
 // TODO:
 //      Don't handle light switched on viewDidLoad(), they automatically turn on
@@ -28,13 +29,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     @IBOutlet var LightsTable: UITableView!
 
     
-    //var light = Light(message: <#T##String#>, protocolName: <#T##String#>, color: <#T##String#>, state: <#T##String#>, room: <#T##String#>, json: <#T##Data#>)
-    
-    
-    
-    var mqtt : CocoaMQTT?
-    //var receievedMessage : String?
-    
+    var mqtt : CocoaMQTT! // change to '?' maybe
+    var container: NSPersistentContainer!
  
     
     
@@ -122,9 +118,15 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
-//        self.tableView.estimatedRowHeight = 80
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
+
+        let container = NSPersistentContainer(name: "Baldr")
         
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error {
+                print("Unresolved error \(error)")
+            }
+        
+        }
         // Add Edit Button to nagivation bar programmatically
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -148,9 +150,55 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         settingMQTT()
         mqtt!.connect()
         
+      
+        // GATHER ALL LIGHTS FROM BROKER
+        performSelector(inBackground: #selector(fetchLights), with: nil)
+        
     
     }
     
+    func saveContext() {
+        if container.viewContext.hasChanges {
+            do {
+                try container.viewContext.save()
+            } catch {
+                print("An error occured while saving: \(error)")
+            }
+        }
+    }
+    
+    
+    func fetchLights() {
+        if let data = try? Data(contentsOf: URL(string: "fix")!) {
+            let jsonData = JSON(data: data)
+            let jsonDataArray = jsonData.arrayValue
+            
+            print("Received \(jsonDataArray.count) lights")
+            
+            DispatchQueue.main.async { [unowned self] in
+                for jsonData in jsonDataArray {
+                    // Handling each individual light
+                    
+                    let light = CoreLightCell(context: self.container.viewContext)
+                    self.configure(coreLightCell: light, usingJSON: jsonData)
+                }
+                
+                self.saveContext()
+            }
+        }
+    }
+    
+    
+    
+    func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
+        
+        coreLightCell.version = json["version"].stringValue
+        coreLightCell.name = json["protocolName"].stringValue
+        coreLightCell.state = json["lightCommand"]["state"].stringValue.lowercased() == "true"
+        coreLightCell.color = json["lightCommand"]["color"].stringValue
+        coreLightCell.expanded = json["lightCommand"]["room"].stringValue.lowercased() == "true"
+       
+    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
