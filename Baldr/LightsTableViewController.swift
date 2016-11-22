@@ -31,6 +31,15 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     var mqtt : CocoaMQTT! // change to '?' maybe
     var container: NSPersistentContainer!
+    
+    
+    var objects = [CoreLightCell]()
+    
+    // Hard coded Data, temporary
+    var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
+                            lightsCellData(main: "Light2", onOff: false)]
+    
+    
  
     
     
@@ -107,12 +116,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // ---------------------------------------------------------------------------------------------
     
-    
-    // Hard coded Data, temporary
-    var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
-                            lightsCellData(main: "Light2", onOff: false)]
-    
-    
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -152,8 +155,16 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
       
         // GATHER ALL LIGHTS FROM BROKER
-        performSelector(inBackground: #selector(fetchLights), with: nil)
+        //performSelector(inBackground: #selector(fetchLights), with: nil)
+        //fetchLights()
         
+        
+        // how to create a CoreLightCell Object
+        let firstObject = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: container.viewContext) as! CoreLightCell
+        
+        
+        objects.append(firstObject)
+       
     
     }
     
@@ -169,26 +180,45 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     
     func fetchLights() {
-        if let data = try? Data(contentsOf: URL(string: "fix")!) {
-            let jsonData = JSON(data: data)
-            let jsonDataArray = jsonData.arrayValue
-            
-            print("Received \(jsonDataArray.count) lights")
-            
-            DispatchQueue.main.async { [unowned self] in
-                for jsonData in jsonDataArray {
-                    // Handling each individual light
-                    
-                    let light = CoreLightCell(context: self.container.viewContext)
-                    self.configure(coreLightCell: light, usingJSON: jsonData)
-                }
-                
-                self.saveContext()
-            }
-        }
+
+        let light = CoreLightCell()
+        let message = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\": \"FFFFFF\", \"state\":\"on\", \"room\":\"Kitchen\"}}"
+    
+        let jsonData = message.data(using: .utf8)
+        let json = JSON(data: jsonData!)
+        
+        configure(coreLightCell: light, usingJSON: json)
+        
+        print("Light = \(light.version) \(light.name) \(light.state) \(light.color) \(light.expanded)")
+        
+        //      self.message = message
+        //let jsonData = message.data(using: .utf8)
+        //let json = JSON(data: jsonData!)
+        
+        // should work with MQTT final version
+        // 
+        //
+        //
+        //
+        //
+//        if let data = try? Data(contentsOf: URL(string: "fix")!) {
+//            let jsonData = JSON(data: data)
+//            let jsonDataArray = jsonData.arrayValue
+//            
+//            print("Received \(jsonDataArray.count) lights")
+//            
+//            DispatchQueue.main.async { [unowned self] in
+//                for jsonData in jsonDataArray {
+//                    // Handling each individual light
+//                    
+//                    let light = CoreLightCell(context: self.container.viewContext)
+//                    self.configure(coreLightCell: light, usingJSON: jsonData)
+//                }
+//                
+//                self.saveContext()
+//            }
+//        }
     }
-    
-    
     
     func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
         
@@ -255,9 +285,26 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
      
         let cell = Bundle.main.loadNibNamed("LightsTableViewCell", owner: self, options: nil)?.first as! LightsTableViewCell
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lightsCell", for: indexPath) as! LightsTableViewCell
-        cell.mainLabel.text = lightsArrayData[indexPath.row].main
-        cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
-        cell.delegate = self
+        
+        
+        
+        let coreLightCell = objects[indexPath.row]
+
+        
+        // changes data: temporary test
+//        coreLightCell.version = "1"
+//        coreLightCell.name = "Baldr"
+//        coreLightCell.state = false
+//        coreLightCell.expanded = false
+//        coreLightCell.color = "FFFFFF"
+        
+        cell.mainLabel!.text = coreLightCell.name
+        cell.expand = coreLightCell.expanded
+        cell.lightSwitch.setOn(coreLightCell.state, animated: true)
+        
+//        cell.mainLabel.text = lightsArrayData[indexPath.row].main
+//        cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
+//        cell.delegate = self
         
         cell.accessoryType = .none
         return cell
@@ -270,7 +317,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lightsArrayData.count
+        return objects.count
     }
     
     //  Force height to be 80 for the rows
