@@ -33,7 +33,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     var container: NSPersistentContainer!
     
     
-    var objects = [CoreLightCell]()
+    var lights: [CoreLightCell] = []
     
     // Hard coded Data, temporary
     var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
@@ -122,14 +122,20 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         super.viewDidLoad()
         
 
-        let container = NSPersistentContainer(name: "Baldr")
+        container = NSPersistentContainer(name: "Baldr")
+        
+        print(container.name)
         
         container.loadPersistentStores { storeDescription, error in
+            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
             if let error = error {
                 print("Unresolved error \(error)")
             }
         
         }
+        
+        
         // Add Edit Button to nagivation bar programmatically
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -152,29 +158,17 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
      
         settingMQTT()
         mqtt!.connect()
-        
-      
-        // GATHER ALL LIGHTS FROM BROKER
-        //performSelector(inBackground: #selector(fetchLights), with: nil)
-        //fetchLights()
-        
-        
-        // how to create a CoreLightCell Object
-//        let firstObject = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: container.viewContext) as! CoreLightCell
-//        
-//      
-//        firstObject.version = "1"
-//        firstObject.name = "Baldr"
-//        firstObject.state = false
-//        firstObject.expanded = false
-//        firstObject.color = "FFFFFF"
-        
-        objects.append(firstObject)
-        
-       
-        
+    
+        //getData()
         loadSavedData()
        
+    
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        getData()
+//        tableView.reloadData()
     
     }
     
@@ -188,20 +182,37 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         }
     }
     
+    
+    // Working
+    func getData() {
+        let context = container.viewContext
+        
+        do {
+            lights = try context.fetch(CoreLightCell.createFetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+    }
+    
+    
+    // TODO: Fix sorting
+    // Figure out key for "room" as it is inside lightInfo
     func loadSavedData() {
         let request = CoreLightCell.createFetchRequest()
-        let sort = NSSortDescriptor(key: "room", ascending: false)
-        request.sortDescriptors = [sort]
+        //  let sort = NSSortDescriptor(key: "room", ascending: false)
+        //request.sortDescriptors = [sort]
     
         do {
-            objects = try container.viewContext.fetch(request)
-            print("Got \(objects.count) lights")
+            lights = try container.viewContext.fetch(request)
+            print("Got \(lights.count) lights")
             tableView.reloadData()
         } catch {
             print("Fetch failed")
         }
     }
     
+    
+    // Unused, consider removing
     func fetchLights() {
 
         if let data = try? Data(contentsOf: URL(string: "fix")!) {
@@ -215,25 +226,47 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
                     // Handling each individual light
                     let light = CoreLightCell(context: self.container.viewContext)
                     self.configure(coreLightCell: light, usingJSON: jsonData)
+                    
                 }
                 
                 self.saveContext()
-                  self.loadSavedData()
+                self.loadSavedData()
             }
         }
     }
     
     
+    
+    // Working CoreLightCell initializer
+    func createCoreLight(message: String) {
+        DispatchQueue.main.async { [unowned self] in
+            print(self.container.name)
+            //      print(container.name)
+            let light = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: self.container.viewContext) as! CoreLightCell
+            let json = message.data(using: .utf8)
+            let jsonData = JSON(data: json!)
+            self.configure(coreLightCell: light, usingJSON: jsonData)
+            self.lights.append(light)
+            self.saveContext()
+            self.LightsTable.reloadData()
+        }
+    }
+    
+    
+    
+    // intricacies of the coreLightCell creation
     func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
         
         coreLightCell.version = json["version"].stringValue
         coreLightCell.name = json["protocolName"].stringValue
-        coreLightCell.state = json["lightCommand"]["state"].stringValue.lowercased() == "on"
-        coreLightCell.color = json["lightCommand"]["color"].stringValue
-        coreLightCell.expanded = json["lightCommand"]["room"].stringValue.lowercased() == "on"
+        coreLightCell.state = json["lightInfo"]["state"].stringValue.lowercased() == "on"
+        coreLightCell.color = json["lightInfo"]["color"].stringValue
+        coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
        
     }
+
     
+    // When Edit button is pressed, do stuff
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -261,6 +294,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     
     // Adding a Light to the TableView
+    // Not used; append is better
     func addLight(light : lightsCellData){
         lightsArrayData.append(light)
     }
@@ -292,8 +326,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         
-        let coreLightCell = objects[indexPath.row]
-        cell.mainLabel!.text = coreLightCell.name
+        let coreLightCell = lights[indexPath.row]
+        cell.mainLabel?.text = coreLightCell.name!
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
         
@@ -312,7 +346,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return lights.count
     }
     
     //  Force height to be 80 for the rows
@@ -341,8 +375,14 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         if editingStyle == .delete {
             // Remove Row at specific index pressed
             // Deletes from array of lights as well
-            lightsArrayData.remove(at: indexPath.row)
+            //           lightsArrayData.remove(at: indexPath.row)
+            let light = lights[indexPath.row]
+            container.viewContext.delete(light)
+            lights.remove(at: indexPath.row)
             LightsTable.deleteRows(at: [indexPath], with: .fade)
+            
+            saveContext()
+            
         } else if editingStyle == .insert {
             
         }
@@ -355,8 +395,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func turnLightOn(topic: String){
          mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
         
-        
     }
+    
     
     // Turn Light Off Message
     func turnLightOff(topic: String){
@@ -435,6 +475,7 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didConnect host: String, port: Int) {
         print("didConnect \(host):\(port)")
+        mqtt.subscribe("lightcontrol/home/asdf/light/+/info")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
@@ -452,6 +493,20 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         print("didReceivedMessage: \(message.string) with id \(id)")
+      
+        createCoreLight(message: message.string!)
+       
+        //self.configure(coreLightCell: light, usingJSON: jsonData)
+        
+       
+        
+//        let light = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: self.container.viewContext) as! CoreLightCell
+        
+//        //        let light = CoreLightCell()
+//        
+
+
+        
         
     }
     
