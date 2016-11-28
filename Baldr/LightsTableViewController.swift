@@ -26,6 +26,8 @@ struct lightsCellData {
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
 
     
+    
+    
     @IBOutlet var LightsTable: UITableView!
 
     
@@ -89,6 +91,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // Receive Data Light Cell
 
+    
     func userEnteredLightData(main: String) {
     
         let newLight = lightsCellData(main: main, onOff: false)
@@ -115,6 +118,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     
     // ---------------------------------------------------------------------------------------------
+    
+    
     
     override func viewDidLoad() {
         
@@ -161,6 +166,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
         //getData()
         loadSavedData()
+        
+        
        
     
     }
@@ -197,6 +204,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // TODO: Fix sorting
     // Figure out key for "room" as it is inside lightInfo
+    
+    
     func loadSavedData() {
         let request = CoreLightCell.createFetchRequest()
         //  let sort = NSSortDescriptor(key: "room", ascending: false)
@@ -239,6 +248,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // Working CoreLightCell initializer
     func createCoreLight(message: String) {
+        
         DispatchQueue.main.async { [unowned self] in
             print(self.container.name)
             //      print(container.name)
@@ -246,7 +256,32 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             let json = message.data(using: .utf8)
             let jsonData = JSON(data: json!)
             self.configure(coreLightCell: light, usingJSON: jsonData)
-            self.lights.append(light)
+            
+            
+            var indexPath = 0
+            var duplicate = false
+            
+            
+            for index in self.lights {
+                // should be replaced with id checking
+//
+                if light.name == index.name {
+                    duplicate = true
+                    print("\(light.name!) + \(index.name!)")
+                    indexPath = self.lights.index(of: index)!
+//                   //self.lights.index
+                    
+                    self.container.viewContext.delete(self.lights[indexPath])
+                    self.lights[indexPath] = light
+//                    
+                } 
+            }
+
+            if (duplicate == false){
+                self.lights.append(light)
+            }
+            
+            
             self.saveContext()
             self.LightsTable.reloadData()
         }
@@ -258,7 +293,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
         
         coreLightCell.version = json["version"].stringValue
-        coreLightCell.name = json["protocolName"].stringValue
+        //        coreLightCell.name = json["protocolName"].stringValue
+        coreLightCell.name = json["lightInfo"]["id"].stringValue
         coreLightCell.state = json["lightInfo"]["state"].stringValue.lowercased() == "on"
         coreLightCell.color = json["lightInfo"]["color"].stringValue
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
@@ -367,7 +403,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             return 80
         // }
     
-        
     }
     
     // Specify what happens when a cell is edited in some way
@@ -397,7 +432,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
-    
     // Turn Light Off Message
     func turnLightOff(topic: String){
         mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
@@ -415,7 +449,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"color\":\"\(hex)\"}}")
     }
 }
-
 
 extension UIColor {
     public convenience init?(hexString: String){
@@ -494,20 +527,10 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         print("didReceivedMessage: \(message.string) with id \(id)")
       
+        
+        
         createCoreLight(message: message.string!)
        
-        //self.configure(coreLightCell: light, usingJSON: jsonData)
-        
-       
-        
-//        let light = NSEntityDescription.insertNewObject(forEntityName: "CoreLightCell", into: self.container.viewContext) as! CoreLightCell
-        
-//        //        let light = CoreLightCell()
-//        
-
-
-        
-        
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
