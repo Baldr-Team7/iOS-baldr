@@ -42,7 +42,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
                             lightsCellData(main: "Light2", onOff: false)]
     
     
- 
     
     
      // ---------------------------------------------------------------------------------------------
@@ -71,8 +70,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
     func reload() {
         
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        LightsTable.beginUpdates()
+        LightsTable.endUpdates()
         
         //self.LightsTable.beginUpdates()
         //self.LightsTable.updates
@@ -157,6 +156,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // test usage of UIColor to hex converter
         let green = UIColor.green.toHex()
         print(green)
+        
         self.view.backgroundColor = UIColor(hexString: green)
 
        
@@ -258,7 +258,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             self.configure(coreLightCell: light, usingJSON: jsonData)
             
             
-            var indexPath = 0
+            // var indexPath = 0
             var duplicate = false
             
             
@@ -268,11 +268,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
                 if light.name == index.name {
                     duplicate = true
                     print("\(light.name!) + \(index.name!)")
-                    indexPath = self.lights.index(of: index)!
+                    // indexPath = self.lights.index(of: index)!
 //                   //self.lights.index
                     
-                    self.container.viewContext.delete(self.lights[indexPath])
-                    self.lights[indexPath] = light
+                    self.configure(coreLightCell: index, usingJSON: jsonData)
+                    //self.container.viewContext.delete(self.lights[indexPath])
+                    self.container.viewContext.delete(light)
+                    //                    self.lights[indexPath] = light
 //                    
                 } 
             }
@@ -283,6 +285,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             
             
             self.saveContext()
+            
             self.LightsTable.reloadData()
         }
     }
@@ -468,7 +471,6 @@ extension UIColor {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt32 = 0
 
-                
                 if scanner.scanHexInt32(&hexNumber){
                     // check first pair of values
                     red = CGFloat((hexNumber & 0xff0000) >> 16) / 255
