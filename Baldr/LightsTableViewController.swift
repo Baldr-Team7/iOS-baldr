@@ -72,7 +72,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         LightsTable.beginUpdates()
         LightsTable.endUpdates()
-        
+    
         //self.LightsTable.beginUpdates()
         //self.LightsTable.updates
         
@@ -166,9 +166,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
         //getData()
         loadSavedData()
-        
-        
-       
     
     }
 
@@ -298,6 +295,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.state = json["lightInfo"]["state"].stringValue.lowercased() == "on"
         coreLightCell.color = json["lightInfo"]["color"].stringValue
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
+        coreLightCell.protocolName = json["protocolName"].stringValue
+        coreLightCell.lightID = json["lightInfo"]["id"].stringValue
        
     }
     

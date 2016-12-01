@@ -3,11 +3,13 @@
     <entity name="CoreLightCell" representedClassName="CoreLightCell" syncable="YES">
         <attribute name="color" attributeType="String" minValueString="7" maxValueString="7" syncable="YES"/>
         <attribute name="expanded" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lightID" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="protocolName" attributeType="String" syncable="YES"/>
         <attribute name="state" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="version" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CoreLightCell" positionX="-135" positionY="131" width="128" height="118"/>
+        <element name="CoreLightCell" positionX="-135" positionY="131" width="128" height="150"/>
     </elements>
 </model>
