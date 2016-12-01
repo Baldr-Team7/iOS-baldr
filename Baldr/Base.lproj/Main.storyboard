@@ -65,29 +65,54 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your Light" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rch-WT-Ez4">
                                 <rect key="frame" x="16" y="72" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="wG4-Jf-DDW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Light Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKJ-ui-X8N">
                                 <rect key="frame" x="37" y="128" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="i7d-u4-2IE"/>
-                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTw-s0-dkp">
+                                <rect key="frame" x="37" y="189" width="300" height="182"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3TI-UB-EV6">
+                                <rect key="frame" x="37" y="407" width="300" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Vxb-6e-VVH"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1.5" maxValue="100.5" translatesAutoresizingMaskIntoConstraints="NO" id="u4d-Ml-YUQ">
+                                <rect key="frame" x="35" y="484" width="304" height="31"/>
+                                <connections>
+                                    <action selector="changeColors:" destination="IBF-c9-54t" eventType="valueChanged" id="BpR-dr-k9c"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rch-WT-Ez4" firstAttribute="top" secondItem="mYM-XQ-nvP" secondAttribute="bottom" constant="8" symbolic="YES" id="Lu3-xY-e8x"/>
-                            <constraint firstItem="rch-WT-Ez4" firstAttribute="trailing" secondItem="TV9-6c-RKP" secondAttribute="trailingMargin" id="Rrc-Sc-ZMq"/>
-                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="top" secondItem="rch-WT-Ez4" secondAttribute="bottom" constant="8" symbolic="YES" id="WQW-10-q5I"/>
-                            <constraint firstItem="rch-WT-Ez4" firstAttribute="leading" secondItem="TV9-6c-RKP" secondAttribute="leadingMargin" id="gWB-EF-m2J"/>
-                            <constraint firstItem="UlW-ZY-J2p" firstAttribute="top" secondItem="IKJ-ui-X8N" secondAttribute="bottom" constant="460" id="hkM-0l-czz"/>
-                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="leading" secondItem="TV9-6c-RKP" secondAttribute="leadingMargin" constant="21" id="kWG-3K-kHX"/>
-                            <constraint firstItem="rch-WT-Ez4" firstAttribute="centerX" secondItem="IKJ-ui-X8N" secondAttribute="centerX" id="loe-0Q-RGI"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="trailing" secondItem="TV9-6c-RKP" secondAttribute="trailingMargin" id="6HF-Va-ut5"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="centerX" secondItem="IKJ-ui-X8N" secondAttribute="centerX" id="8ox-WF-KEA"/>
+                            <constraint firstItem="u4d-Ml-YUQ" firstAttribute="top" secondItem="3TI-UB-EV6" secondAttribute="bottom" constant="25" id="Bc5-5z-yQy"/>
+                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="trailing" secondItem="GTw-s0-dkp" secondAttribute="trailing" id="EEH-jO-b1u"/>
+                            <constraint firstItem="u4d-Ml-YUQ" firstAttribute="leading" secondItem="3TI-UB-EV6" secondAttribute="leading" id="Eih-tN-YEe"/>
+                            <constraint firstItem="GTw-s0-dkp" firstAttribute="top" secondItem="IKJ-ui-X8N" secondAttribute="bottom" constant="31" id="Joe-fc-xKB"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="top" secondItem="mYM-XQ-nvP" secondAttribute="bottom" constant="8" symbolic="YES" id="KX8-AF-I4h"/>
+                            <constraint firstItem="UlW-ZY-J2p" firstAttribute="top" secondItem="u4d-Ml-YUQ" secondAttribute="bottom" constant="104" id="Og9-i9-39C"/>
+                            <constraint firstItem="rch-WT-Ez4" firstAttribute="leading" secondItem="TV9-6c-RKP" secondAttribute="leadingMargin" id="R30-rg-dtY"/>
+                            <constraint firstItem="3TI-UB-EV6" firstAttribute="trailing" secondItem="GTw-s0-dkp" secondAttribute="trailing" id="YkB-iG-aDW"/>
+                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="top" secondItem="rch-WT-Ez4" secondAttribute="bottom" constant="8" symbolic="YES" id="Zpf-kG-k4Y"/>
+                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="leading" secondItem="GTw-s0-dkp" secondAttribute="leading" id="afA-EZ-M0F"/>
+                            <constraint firstItem="3TI-UB-EV6" firstAttribute="leading" secondItem="GTw-s0-dkp" secondAttribute="leading" id="g5s-VO-FZJ"/>
+                            <constraint firstItem="3TI-UB-EV6" firstAttribute="top" secondItem="GTw-s0-dkp" secondAttribute="bottom" constant="36" id="jGy-Co-iQQ"/>
+                            <constraint firstItem="u4d-Ml-YUQ" firstAttribute="trailing" secondItem="3TI-UB-EV6" secondAttribute="trailing" id="n9n-07-GtI"/>
+                            <constraint firstItem="IKJ-ui-X8N" firstAttribute="leading" secondItem="TV9-6c-RKP" secondAttribute="leadingMargin" constant="21" id="ynq-dc-86D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Light" id="7k1-Er-c7H">
@@ -103,12 +128,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nameLightField" destination="IKJ-ui-X8N" id="wdK-6a-gXq"/>
+                        <outlet property="colorIndicator" destination="3TI-UB-EV6" id="wHh-of-bed"/>
+                        <outlet property="colorSlider" destination="u4d-Ml-YUQ" id="SpA-os-ICa"/>
+                        <outlet property="displayColorView" destination="GTw-s0-dkp" id="HLP-Th-Q8k"/>
+                        <outlet property="nameLightField" destination="IKJ-ui-X8N" id="bzd-eL-BqI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-wD-Xoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086" y="-1496"/>
+            <point key="canvasLocation" x="4085.5999999999999" y="-1496.4017991004498"/>
         </scene>
         <!--Edit Light-->
         <scene sceneID="Ohn-kg-R9W">

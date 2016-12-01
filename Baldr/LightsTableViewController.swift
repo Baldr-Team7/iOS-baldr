@@ -384,7 +384,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         cell.ID = coreLightCell.lightID!
         cell.name = coreLightCell.name!
         cell.room = coreLightCell.room!
-        cell.color = coreLightCell.color
+        cell.color = coreLightCell.color!
         
 //        cell.mainLabel.text = lightsArrayData[indexPath.row].main
 //        cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
