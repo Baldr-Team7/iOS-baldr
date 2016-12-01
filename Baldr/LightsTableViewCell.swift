@@ -21,6 +21,7 @@ class LightsTableViewCell: UITableViewCell {
     var ID: String = ""
     var name: String = ""
     var room: String = ""
+    var color: String = ""
     
     //let inset = 15.0
     
