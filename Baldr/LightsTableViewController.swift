@@ -261,21 +261,20 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             // var indexPath = 0
             var duplicate = false
             
-            
             for index in self.lights {
                 // should be replaced with id checking
-//
+
                 if light.name == index.name {
                     duplicate = true
                     print("\(light.name!) + \(index.name!)")
                     // indexPath = self.lights.index(of: index)!
-//                   //self.lights.index
+                   //self.lights.index
                     
                     self.configure(coreLightCell: index, usingJSON: jsonData)
                     //self.container.viewContext.delete(self.lights[indexPath])
                     self.container.viewContext.delete(light)
                     //                    self.lights[indexPath] = light
-//                    
+                    
                 } 
             }
 
@@ -290,8 +289,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         }
     }
     
-    
-    
     // intricacies of the coreLightCell creation
     func configure(coreLightCell: CoreLightCell, usingJSON json: JSON){
         
@@ -303,14 +300,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
        
     }
-
     
     // When Edit button is pressed, do stuff
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        
-       // print("The JSON MESSAGE is \(light?.message)")
     }
     // Set up the MQTT connection
     func settingMQTT() {
