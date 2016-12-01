@@ -39,7 +39,6 @@
                     <navigationItem key="navigationItem" title="Light" id="AaD-ht-CX4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I0D-1D-8Qy">
                             <connections>
-                                <action selector="goToAddLight:" destination="zRC-D2-9lB" id="a68-A6-jZ0"/>
                                 <segue destination="rsP-Y4-bdg" kind="show" identifier="showAddLight" action="showDetailViewController:sender:" id="Qfy-uY-G7b"/>
                             </connections>
                         </barButtonItem>
@@ -114,7 +113,7 @@
         <!--Edit Light-->
         <scene sceneID="Ohn-kg-R9W">
             <objects>
-                <viewController id="tsm-Rw-PZ7" customClass="EditLightViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditLightViewController" id="tsm-Rw-PZ7" customClass="EditLightViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nYn-Yt-iwf"/>
                         <viewControllerLayoutGuide type="bottom" id="eO5-Yu-Tng"/>

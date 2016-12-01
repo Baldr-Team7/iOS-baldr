@@ -23,5 +23,6 @@ extension CoreLightCell {
     @NSManaged public var version: String?
     @NSManaged public var protocolName: String?
     @NSManaged public var lightID: String?
+    @NSManaged public var room: String?
 
 }

@@ -48,16 +48,16 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     
     // toggle the light, send the appropriate message to the broker
-    func toggleLight(main: String, state: Bool){
-        print("\(main) is \(state)")
+    func toggleLight(main: String, state: Bool, lightID: String){
+        print("Hello")
+        
+        //print("\(main) is \(state)")
+        
+        
         let topic: String?
         
-        if (main == "Light"){
-            topic = "home/FF/Light/FF"
-        } else {
-            topic = "home/AA/Light2/AA"
-        }
-        
+        topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
+
         if (state == true){
             turnLightOn(topic: topic!)
         }
@@ -70,6 +70,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
     func reload() {
         
+        print("reload")
         LightsTable.beginUpdates()
         LightsTable.endUpdates()
     
@@ -102,6 +103,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
+        print(segue.identifier!)
         // Set Delegate
         if segue.identifier == "showAddLight" {
             
@@ -112,13 +115,28 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             //            let addLightViewController: AddLightViewController = segue.destination as! AddLightViewController
             
             addLightViewController.delegate = self
+            
+            
+        } else if segue.identifier == "showEditLight" {
+            
+            
+            
+            
         }
+        
     }
     
     
     // ---------------------------------------------------------------------------------------------
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        performSegue(withIdentifier: "showEditLight", sender: self)
+        setEditing(false, animated: true)
     
+        
+    }
     
     override func viewDidLoad() {
         
@@ -297,6 +315,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
         coreLightCell.protocolName = json["protocolName"].stringValue
         coreLightCell.lightID = json["lightInfo"]["id"].stringValue
+        coreLightCell.room = json["lightInfo"]["id"].stringValue
        
     }
     
@@ -362,18 +381,18 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         cell.mainLabel?.text = coreLightCell.name!
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
+        cell.ID = coreLightCell.lightID!
+        cell.name = coreLightCell.name!
+        cell.room = coreLightCell.room!
         
 //        cell.mainLabel.text = lightsArrayData[indexPath.row].main
 //        cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
 //        cell.delegate = self
         
+        cell.delegate = self
         cell.accessoryType = .none
         return cell
 
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
     }
     
     // Keep track of the number of rows in the view
@@ -424,13 +443,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     // Turn Light on Message
     func turnLightOn(topic: String){
-         mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"on\"}}")
+         mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
         
     }
     
     // Turn Light Off Message
     func turnLightOff(topic: String){
-        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"state\":\"off\"}}")
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
 
     }
     

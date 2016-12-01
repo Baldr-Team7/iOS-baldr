@@ -8,9 +8,13 @@
 
 import UIKit
 
+//protocol EditLightCellDelegate {
+//    func userEnteredLightData(main: String)
+//}
+
 class EditLightViewController: UIViewController {
 
-    
+    //  var delegate: EditLightCellDelegate? = nil
     
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
