@@ -2,7 +2,7 @@
 //  EditLightViewController.swift
 //  Baldr
 //
-//  Created by Thomas Emilsson on 10/6/16.
+//  Created by Thomas Emilsson on 12/1/16.
 //  Copyright © 2016 Thomas Emilsson. All rights reserved.
 //
 
@@ -10,10 +10,12 @@ import UIKit
 
 class EditLightViewController: UIViewController {
 
-    @IBAction func goBack(_ sender: UIBarButtonItem) {
+    
+    
+    @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

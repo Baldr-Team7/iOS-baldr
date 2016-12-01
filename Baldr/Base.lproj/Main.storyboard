@@ -26,6 +26,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ghP-S8-u0e" kind="show" identifier="showEditLight" id="TSN-0C-7En"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -47,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohI-vO-h42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-701"/>
+            <point key="canvasLocation" x="1788" y="-701"/>
         </scene>
         <!--Add Light-->
         <scene sceneID="Iix-GT-Ir1">
@@ -106,7 +109,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-wD-Xoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4085.5999999999999" y="-701.19940029985014"/>
+            <point key="canvasLocation" x="4086" y="-1496"/>
+        </scene>
+        <!--Edit Light-->
+        <scene sceneID="Ohn-kg-R9W">
+            <objects>
+                <viewController id="tsm-Rw-PZ7" customClass="EditLightViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nYn-Yt-iwf"/>
+                        <viewControllerLayoutGuide type="bottom" id="eO5-Yu-Tng"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CfG-Xq-fpZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Light" id="VjC-lI-1xS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ftj-TN-yHE">
+                            <connections>
+                                <action selector="goBack:" destination="tsm-Rw-PZ7" id="lvj-Vp-Jju"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mFV-Y8-GyG"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GyQ-cx-QMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4086" y="-701"/>
         </scene>
         <!--Title-->
         <scene sceneID="TjE-ca-7CP">
@@ -329,7 +358,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrp-of-S8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2810" y="-701"/>
+            <point key="canvasLocation" x="2809" y="-1496"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2pX-J0-zjS">
@@ -366,6 +395,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzE-hH-jHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2809" y="753"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hCq-2h-2DV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ghP-S8-u0e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ngc-sf-NA0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tsm-Rw-PZ7" kind="relationship" relationship="rootViewController" id="zck-sj-TkJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5m4-Mt-vz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="-701"/>
         </scene>
     </scenes>
     <resources>

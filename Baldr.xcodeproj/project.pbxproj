@@ -30,6 +30,7 @@
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
+		5AE675C01DF05D2A0063DF87 /* EditLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */; };
 		5AF59D301DDA06750053700C /* Baldr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AF59D2E1DDA06750053700C /* Baldr.xcdatamodeld */; };
 		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
@@ -86,6 +87,7 @@
 		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
+		5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLightViewController.swift; sourceTree = "<group>"; };
 		5AF59D2F1DDA06750053700C /* Baldr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Baldr.xcdatamodel; sourceTree = "<group>"; };
 		5AF59D311DDDF2BE0053700C /* CocoaMQTT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaMQTT.framework; path = "Pods/../build/Release-iphoneos/CocoaMQTT/CocoaMQTT.framework"; sourceTree = "<group>"; };
 		5AF59D331DDDF2CB0053700C /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = "Pods/../build/Release-iphoneos/CocoaAsyncSocket/CocoaAsyncSocket.framework"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
 				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
+				5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
 				5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
@@ -527,6 +530,7 @@
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */,
 				5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */,
+				5AE675C01DF05D2A0063DF87 /* EditLightViewController.swift in Sources */,
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
 				A2206C461DD9EE8C00C2205E /* Light.swift in Sources */,
