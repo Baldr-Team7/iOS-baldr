@@ -149,7 +149,59 @@
                     <view key="view" contentMode="scaleToFill" id="CfG-Xq-fpZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your Light" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rt-LP-I0l">
+                                <rect key="frame" x="16" y="112" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0VR-ya-bDR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Light Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsq-BP-oHZ">
+                                <rect key="frame" x="37" y="168" width="300" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SR4-nw-VCO">
+                                <rect key="frame" x="37" y="229" width="300" height="182"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hOS-F8-gFB">
+                                <rect key="frame" x="37" y="447" width="300" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="JSV-jd-b7Z"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="1.5" maxValue="100.5" translatesAutoresizingMaskIntoConstraints="NO" id="ey2-sE-Wsl">
+                                <rect key="frame" x="35" y="525" width="304" height="31"/>
+                                <connections>
+                                    <action selector="changeColors:" destination="tsm-Rw-PZ7" eventType="valueChanged" id="3C5-yv-hel"/>
+                                    <action selector="changeColors:" destination="IBF-c9-54t" eventType="valueChanged" id="oVS-sU-UdF"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hOS-F8-gFB" firstAttribute="leading" secondItem="SR4-nw-VCO" secondAttribute="leading" id="205-x6-t9s"/>
+                            <constraint firstItem="5Rt-LP-I0l" firstAttribute="trailing" secondItem="CfG-Xq-fpZ" secondAttribute="trailingMargin" id="42D-wS-XJy"/>
+                            <constraint firstItem="SR4-nw-VCO" firstAttribute="top" secondItem="bsq-BP-oHZ" secondAttribute="bottom" constant="31" id="AVc-ln-ifZ"/>
+                            <constraint firstItem="bsq-BP-oHZ" firstAttribute="centerX" secondItem="5Rt-LP-I0l" secondAttribute="centerX" id="DWb-VM-Kxo"/>
+                            <constraint firstItem="5Rt-LP-I0l" firstAttribute="top" secondItem="nYn-Yt-iwf" secondAttribute="bottom" constant="48" id="EXr-Nz-h9T"/>
+                            <constraint firstItem="SR4-nw-VCO" firstAttribute="trailing" secondItem="bsq-BP-oHZ" secondAttribute="trailing" id="GIf-w9-o6M"/>
+                            <constraint firstItem="hOS-F8-gFB" firstAttribute="trailing" secondItem="SR4-nw-VCO" secondAttribute="trailing" id="P9J-dQ-YrI"/>
+                            <constraint firstItem="ey2-sE-Wsl" firstAttribute="trailing" secondItem="hOS-F8-gFB" secondAttribute="trailing" id="S6o-Wb-GB7"/>
+                            <constraint firstItem="5Rt-LP-I0l" firstAttribute="leading" secondItem="CfG-Xq-fpZ" secondAttribute="leadingMargin" id="Wpn-bx-2hH"/>
+                            <constraint firstItem="ey2-sE-Wsl" firstAttribute="top" secondItem="hOS-F8-gFB" secondAttribute="bottom" constant="26" id="X8c-1D-45u"/>
+                            <constraint firstItem="ey2-sE-Wsl" firstAttribute="leading" secondItem="hOS-F8-gFB" secondAttribute="leading" id="ZUk-ab-sab"/>
+                            <constraint firstItem="bsq-BP-oHZ" firstAttribute="leading" secondItem="CfG-Xq-fpZ" secondAttribute="leadingMargin" constant="21" id="Zy8-fL-BoZ"/>
+                            <constraint firstItem="SR4-nw-VCO" firstAttribute="leading" secondItem="bsq-BP-oHZ" secondAttribute="leading" id="fAa-3g-9Mv"/>
+                            <constraint firstItem="hOS-F8-gFB" firstAttribute="top" secondItem="SR4-nw-VCO" secondAttribute="bottom" constant="36" id="h1s-WH-9py"/>
+                            <constraint firstAttribute="bottom" secondItem="SR4-nw-VCO" secondAttribute="bottom" constant="256" id="tiT-Ed-3Cf"/>
+                            <constraint firstItem="bsq-BP-oHZ" firstAttribute="top" secondItem="5Rt-LP-I0l" secondAttribute="bottom" constant="8" symbolic="YES" id="zpa-1R-hug"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Light" id="VjC-lI-1xS">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ftj-TN-yHE">
@@ -157,8 +209,18 @@
                                 <action selector="goBack:" destination="tsm-Rw-PZ7" id="lvj-Vp-Jju"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mFV-Y8-GyG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mFV-Y8-GyG">
+                            <connections>
+                                <action selector="saveLight:" destination="tsm-Rw-PZ7" id="Tuh-vo-0wv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="colorIndicator" destination="hOS-F8-gFB" id="lNN-Ci-6Rt"/>
+                        <outlet property="colorSlider" destination="ey2-sE-Wsl" id="ECk-uJ-bdG"/>
+                        <outlet property="displayColorView" destination="SR4-nw-VCO" id="XDb-jt-ddY"/>
+                        <outlet property="nameLightField" destination="bsq-BP-oHZ" id="evj-gt-zZO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyQ-cx-QMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

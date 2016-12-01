@@ -23,7 +23,7 @@ struct lightsCellData {
     let onOff: Bool!
 }
 
-class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate {
+class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
 
     
     
@@ -33,7 +33,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     var mqtt : CocoaMQTT! // change to '?' maybe
     var container: NSPersistentContainer!
-    
+    var editIndex: Int = 0
     
     var lights: [CoreLightCell] = []
     
@@ -79,6 +79,20 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
+    func userEditedData(main: String, color: String) {
+        
+        print("\(main) = \(color)")
+        
+        let lightID = lights[editIndex].lightID
+        
+        print("\(lightID)")
+        
+        let topic = "lightcontrol/home/asdf/light/\(lightID!)/commands"
+        changeColor(topic: topic, hex: color)
+        
+
+    }
+    
     // ---------------------------------------------------------------------------------------------
     
     // Delegate Methods
@@ -119,9 +133,23 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             
         } else if segue.identifier == "showEditLight" {
             
+            let destination = segue.destination as! UINavigationController
             
+            let editLightViewController: EditLightViewController = destination.topViewController as! EditLightViewController
             
+            let newColor = UIColor(hexString: lights[editIndex].color!)
+            editLightViewController.myColor = newColor
+            print("\(newColor)")
+            var hue: CGFloat = 0
+            newColor!.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
             
+            let value = Float(hue)
+          
+            editLightViewController.mySlider = value
+            
+            editLightViewController.myName = lights[editIndex].name
+            
+            editLightViewController.delegate = self
         }
         
     }
@@ -131,8 +159,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        editIndex = indexPath.row
         performSegue(withIdentifier: "showEditLight", sender: self)
+    
         setEditing(false, animated: true)
     
         
@@ -391,6 +420,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 //        cell.delegate = self
         
         cell.delegate = self
+        
         cell.accessoryType = .none
         return cell
 
@@ -457,12 +487,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Change Color Message, with parameter as a UIColor
     func changeColor(topic: String, color: UIColor){
         let hex = color.toHex()
-        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"color\":\"\(hex)\"}}")
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
     }
 
     // Change Color Message, with parameter as a hexadecimal String
     func changeColor(topic: String, hex: String){
-        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"clientToken\": \"FFFFFFFFFFFFFFF\", \"color\":\"\(hex)\"}}")
+        mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
     }
 }
 

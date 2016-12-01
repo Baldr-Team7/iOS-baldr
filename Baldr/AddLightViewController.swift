@@ -21,6 +21,9 @@ class AddLightViewController: UIViewController {
     
     var delegate: AddLightCellDelegate? = nil
     var myColor: UIColor?
+    
+    
+    // Name of the Light
     @IBOutlet weak var nameLightField: UITextField!
     @IBOutlet weak var displayColorView: UIView!
     @IBOutlet weak var colorSlider: UISlider!
@@ -37,8 +40,6 @@ class AddLightViewController: UIViewController {
         print(myColor!.toHex())
     }
     
-    // Name of the Light
-   
     
         
     
