@@ -8,11 +8,17 @@
 
 import UIKit
 
+//protocol MoodCellDelegate {
+//    func toggleMood()
+//    <#function body#>
+//    
+//}
 class MoodsTableViewCell: UITableViewCell {
 
   
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var moodSwitch: UISwitch!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
