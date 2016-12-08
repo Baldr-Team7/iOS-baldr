@@ -16,13 +16,13 @@ extension CoreLightCell {
         return NSFetchRequest<CoreLightCell>(entityName: "CoreLightCell");
     }
 
-    @NSManaged public var color: String?
+    @NSManaged public var color: String
     @NSManaged public var expanded: Bool
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var state: Bool
-    @NSManaged public var version: String?
-    @NSManaged public var protocolName: String?
-    @NSManaged public var lightID: String?
-    @NSManaged public var room: String?
+    @NSManaged public var version: String
+    @NSManaged public var protocolName: String
+    @NSManaged public var lightID: String
+    @NSManaged public var room: String
 
 }
