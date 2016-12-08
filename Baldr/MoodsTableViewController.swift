@@ -13,20 +13,34 @@ import CocoaMQTT
 
 struct moodsCellData{
     let mood: String!
-    let moodOnOff: Bool!
-    let lightsOn: Int!
-    let lightsOff: Int!
+//    let moodOnOff: Bool!
+//    let lightsOn: Int!
+//    let lightsOff: Int!
 }
 
-class MoodsTableViewController: UITableViewController {
+class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
     
     
-    var moodsArrayData = [moodsCellData]()
+    //var moodsArrayData = [moodsCellData]()
     
+    //Temporary cells testing
+    @IBOutlet var MoodsTable: UITableView!
+    var moodsArrayData = [moodsCellData(mood: "Pissed"),
+                          moodsCellData(mood: "Happy"),
+                          moodsCellData(mood: "Depressed ")]
+    
+    
+    //when user entered new mood, save the input and pass it to the protocol func
+    func userEnteredMoodData(mood: String) {
+        let newMood = moodsCellData(mood: mood)
+        moodsArrayData.append(newMood)
+        
+        self.MoodsTable.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        moodsArrayData = [moodsCellData(mood: "Pissed",moodOnOff: false, lightsOn: 2, lightsOff: 0) ]
+       
         
         // Do any additional setup after loading the view.
     }
@@ -41,7 +55,7 @@ class MoodsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("MoodsTableViewCell", owner: self, options: nil)?.first as! MoodsTableViewCell
         cell.mainLabel.text = moodsArrayData[indexPath.row].mood
-        cell.moodSwitch.setOn(moodsArrayData[indexPath.row].moodOnOff, animated:false)
+        //cell.moodSwitch.setOn(moodsArrayData[indexPath.row].moodOnOff, animated:false)
         //cell.delegate = self
         return cell
         
@@ -51,7 +65,9 @@ class MoodsTableViewController: UITableViewController {
         return 80
     }
     
-    
+    func addMood(mood : moodsCellData){
+        moodsArrayData.append(mood)
+    }
 //    func toggleMood()
 //    
 //}

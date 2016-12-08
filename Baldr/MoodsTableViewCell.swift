@@ -8,11 +8,11 @@
 
 import UIKit
 
-//protocol MoodCellDelegate {
-//    func toggleMood()
-//    <#function body#>
-//    
-//}
+protocol MoodCellDelegate {
+    func userdidEnterName(main: String)
+    
+    
+}
 class MoodsTableViewCell: UITableViewCell {
 
   

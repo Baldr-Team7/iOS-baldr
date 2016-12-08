@@ -8,9 +8,31 @@
 
 import UIKit
 
+
+// protocol that pass the name user entered for every new Mood
+
+protocol AddMoodCellDelegate{
+    func userEnteredMoodData(mood: String)
+}
+
 class AddMoodViewController: UIViewController {
 
+    @IBOutlet weak var nameMoodField: UITextField!
+    var delegate: AddMoodCellDelegate? = nil
     
+    //Get the data user entered then sedn it to the previous page
+    
+    @IBAction func saveMood(_ sender: Any) {
+        
+        if delegate != nil{
+            if nameMoodField.text != "" && nameMoodField.text!.characters.first != " " {
+                let name = nameMoodField.text
+                delegate?.userEnteredMoodData(mood: name!)
+                dismiss(animated: true, completion: nil)
+            
+            }
+        }
+    }
     @IBAction func goBack(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
