@@ -23,6 +23,8 @@ struct lightsCellData {
     let onOff: Bool!
 }
 
+// Struct that holds the core data for the lights
+// accessible globally 
 struct myLights {
     static var lights: [CoreLightCell] = []
 }

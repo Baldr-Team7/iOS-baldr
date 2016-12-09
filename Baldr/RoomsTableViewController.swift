@@ -43,6 +43,7 @@ class RoomsTableViewController: UITableViewController {
             }
         }
         
+        // create an array of only the unique rooms in the list of rooms
         myRooms = Array(Set(rooms))
     }
     
