@@ -38,6 +38,21 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
         self.MoodsTable.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //set Delegate 
+        if segue.identifier == "showAddMood" {
+            let destination = segue.destination as! UINavigationController
+            
+            let addMoodViewController: AddMoodViewController = destination.topViewController as! AddMoodViewController
+            
+            addMoodViewController.delegate = self
+        }else if segue.identifier == "showEditMood"{
+            
+        
+        
+    }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        

@@ -15,7 +15,8 @@ protocol MoodCellDelegate {
 }
 class MoodsTableViewCell: UITableViewCell {
 
-  
+    
+    var delegate: moodsCellData?
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var moodSwitch: UISwitch!
     

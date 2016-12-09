@@ -302,7 +302,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nameMoodField" destination="rne-OU-GCa" id="iP6-mH-3ug"/>
+                        <outlet property="nameMoodField" destination="rne-OU-GCa" id="M1S-ND-X5S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss9-mv-D9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,7 +372,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="znc-8S-vV7"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rxj-3f-PFT">
                             <connections>
-                                <segue destination="hZy-tY-Q3j" kind="showDetail" id="Gyo-Aq-ttZ"/>
+                                <segue destination="hZy-tY-Q3j" kind="showDetail" identifier="showAddMood" id="Gyo-Aq-ttZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
