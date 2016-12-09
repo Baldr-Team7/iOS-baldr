@@ -198,13 +198,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     
         // test usage of hex to UIColor converter
-        self.view.backgroundColor = UIColor(hexString: "#ffe700")
+        //self.view.backgroundColor = UIColor(hexString: "#ffe700")
         
         // test usage of UIColor to hex converter
-        let green = UIColor.green.toHex()
-        print(green)
+        //let green = UIColor.green.toHex()
+        //print(green)
         
-        self.view.backgroundColor = UIColor(hexString: green)
+        //self.view.backgroundColor = UIColor(hexString: green)
 
        
      
@@ -338,7 +338,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         coreLightCell.version = json["version"].stringValue
         //        coreLightCell.name = json["protocolName"].stringValue
-        coreLightCell.name = json["lightInfo"]["id"].stringValue
+        coreLightCell.name = json["lightInfo"]["name"].stringValue
         coreLightCell.state = json["lightInfo"]["state"].stringValue.lowercased() == "on"
         coreLightCell.color = json["lightInfo"]["color"].stringValue
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
