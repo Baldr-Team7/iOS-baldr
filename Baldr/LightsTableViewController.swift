@@ -23,6 +23,10 @@ struct lightsCellData {
     let onOff: Bool!
 }
 
+struct myLights {
+    static var lights: [CoreLightCell] = []
+}
+
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
 
     
@@ -35,7 +39,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     var container: NSPersistentContainer!
     var editIndex: Int = 0
     
-    var lights: [CoreLightCell] = []
     
     // Hard coded Data, temporary
     var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
@@ -52,7 +55,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         print("Hello")
         
         //print("\(main) is \(state)")
-        
         
         let topic: String?
         
@@ -83,7 +85,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         print("\(main) = \(color)")
         
-        let lightID = lights[editIndex].lightID
+        let lightID = myLights.lights[editIndex].lightID
         
         print("\(lightID)")
         
@@ -137,7 +139,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             
             let editLightViewController: EditLightViewController = destination.topViewController as! EditLightViewController
             
-            let newColor = UIColor(hexString: lights[editIndex].color)
+            let newColor = UIColor(hexString: myLights.lights[editIndex].color)
             editLightViewController.myColor = newColor
             print("\(newColor)")
             var hue: CGFloat = 0
@@ -147,7 +149,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
           
             editLightViewController.mySlider = value
             
-            editLightViewController.myName = lights[editIndex].name
+            editLightViewController.myName = myLights.lights[editIndex].name
             
             editLightViewController.delegate = self
         }
@@ -239,7 +241,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         let context = container.viewContext
         
         do {
-            lights = try context.fetch(CoreLightCell.createFetchRequest())
+            myLights.lights = try context.fetch(CoreLightCell.createFetchRequest())
         } catch {
             print("Fetching Failed")
         }
@@ -256,8 +258,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         //request.sortDescriptors = [sort]
     
         do {
-            lights = try container.viewContext.fetch(request)
-            print("Got \(lights.count) lights")
+            myLights.lights = try container.viewContext.fetch(request)
+            print("Got \(myLights.lights.count) lights")
             tableView.reloadData()
         } catch {
             print("Fetch failed")
@@ -305,7 +307,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             // var indexPath = 0
             var duplicate = false
             
-            for index in self.lights {
+            for index in myLights.lights {
                 // should be replaced with id checking
 
                 if light.name == index.name {
@@ -323,7 +325,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             }
 
             if (duplicate == false){
-                self.lights.append(light)
+                myLights.lights.append(light)
             }
             
             
@@ -344,7 +346,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.expanded = json["lightInfo"]["room"].stringValue.lowercased() == "on"
         coreLightCell.protocolName = json["protocolName"].stringValue
         coreLightCell.lightID = json["lightInfo"]["id"].stringValue
-        coreLightCell.room = json["lightInfo"]["id"].stringValue
+        coreLightCell.room = json["lightInfo"]["room"].stringValue
+        
+        
+        
+        
        
     }
     
@@ -406,7 +412,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         
-        let coreLightCell = lights[indexPath.row]
+        let coreLightCell = myLights.lights[indexPath.row]
         cell.mainLabel?.text = coreLightCell.name
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
@@ -428,7 +434,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     // Keep track of the number of rows in the view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lights.count
+        return myLights.lights.count
     }
     
     //  Force height to be 80 for the rows
@@ -457,9 +463,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             // Remove Row at specific index pressed
             // Deletes from array of lights as well
             //           lightsArrayData.remove(at: indexPath.row)
-            let light = lights[indexPath.row]
+            let light = myLights.lights[indexPath.row]
             container.viewContext.delete(light)
-            lights.remove(at: indexPath.row)
+            myLights.lights.remove(at: indexPath.row)
             LightsTable.deleteRows(at: [indexPath], with: .fade)
             
             saveContext()

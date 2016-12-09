@@ -333,7 +333,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Room" id="nTa-mk-Yl7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="PVV-FL-bMW"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="PVV-FL-bMW">
+                            <connections>
+                                <action selector="printCount:" destination="MGk-Sv-fPL" id="G45-Lt-dpd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NFS-2F-qP5">
                             <connections>
                                 <segue destination="DQ7-v3-dTB" kind="showDetail" id="KGt-Ba-abw"/>
