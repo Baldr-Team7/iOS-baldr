@@ -87,7 +87,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         print("\(lightID)")
         
-        let topic = "lightcontrol/home/asdf/light/\(lightID!)/commands"
+        let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
         changeColor(topic: topic, hex: color)
         
 
@@ -137,7 +137,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             
             let editLightViewController: EditLightViewController = destination.topViewController as! EditLightViewController
             
-            let newColor = UIColor(hexString: lights[editIndex].color!)
+            let newColor = UIColor(hexString: lights[editIndex].color)
             editLightViewController.myColor = newColor
             print("\(newColor)")
             var hue: CGFloat = 0
@@ -310,7 +310,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
                 if light.name == index.name {
                     duplicate = true
-                    print("\(light.name!) + \(index.name!)")
+                    print("\(light.name) + \(index.name)")
                     // indexPath = self.lights.index(of: index)!
                    //self.lights.index
                     
@@ -407,13 +407,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         
         let coreLightCell = lights[indexPath.row]
-        cell.mainLabel?.text = coreLightCell.name!
+        cell.mainLabel?.text = coreLightCell.name
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
-        cell.ID = coreLightCell.lightID!
-        cell.name = coreLightCell.name!
-        cell.room = coreLightCell.room!
-        cell.color = coreLightCell.color!
+        cell.ID = coreLightCell.lightID
+        cell.name = coreLightCell.name
+        cell.room = coreLightCell.room
+        cell.color = coreLightCell.color
         
 //        cell.mainLabel.text = lightsArrayData[indexPath.row].main
 //       cell.lightSwitch.setOn(lightsArrayData[indexPath.row].onOff, animated: false)
