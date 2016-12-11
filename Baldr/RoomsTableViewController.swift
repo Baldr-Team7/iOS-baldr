@@ -38,7 +38,7 @@ class RoomsTableViewController: UITableViewController {
    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        print(myRooms[0])
+        //print(myRooms[0])
         
     }
     
@@ -53,10 +53,10 @@ class RoomsTableViewController: UITableViewController {
         
         
         var rooms = [String]()
+        
         for index in myLights.lights {
             //if (index.room != "undefined"){
                 rooms.append(index.room)
-            
             //}
         }
         
@@ -64,9 +64,14 @@ class RoomsTableViewController: UITableViewController {
         myRooms = Array(Set(rooms))
     }
     
-    
-
-    
+    func setRoomToUndefined(light: CoreLightCell){
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+        
+        
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -100,7 +105,7 @@ class RoomsTableViewController: UITableViewController {
             for index in myLights.lights {
                 if index.room == room {
                     // change to undefined
-                    
+                    setRoomToUndefined(light: index)
                 }
                 
             }

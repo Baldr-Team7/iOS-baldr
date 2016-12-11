@@ -29,8 +29,9 @@ struct myLights {
     static var lights: [CoreLightCell] = []
 }
 
-struct MQTT {
+struct DATA {
     static var mqtt: CocoaMQTT!
+    static var homeID = "asdf"
 }
 
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
@@ -217,7 +218,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
        
      
         settingMQTT()
-        MQTT.mqtt!.connect()
+        DATA.mqtt!.connect()
     
         //getData()
         loadSavedData()
@@ -371,8 +372,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func settingMQTT() {
         // message = "Hi"
         let clientIdPid = "CocoaMQTT" + String(ProcessInfo().processIdentifier)
-        MQTT.mqtt = CocoaMQTT(clientId: clientIdPid, host: "tann.si", port: 8883)
-        if let mqtt = MQTT.mqtt {
+        DATA.mqtt = CocoaMQTT(clientId: clientIdPid, host: "tann.si", port: 8883)
+        if let mqtt = DATA.mqtt {
             mqtt.username = "test"
             mqtt.password = "public"
             mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
@@ -484,29 +485,29 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     
     func getMessage(topic: String){
-        MQTT.mqtt!.subscribe("\(topic)")
+        DATA.mqtt!.subscribe("\(topic)")
     }
     // Turn Light on Message
     func turnLightOn(topic: String){
-         MQTT.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
+         DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
         
     }
     
     // Turn Light Off Message
     func turnLightOff(topic: String){
-        MQTT.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
 
     }
     
     // Change Color Message, with parameter as a UIColor
     func changeColor(topic: String, color: UIColor){
         let hex = color.toHex()
-        MQTT.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
     }
 
     // Change Color Message, with parameter as a hexadecimal String
     func changeColor(topic: String, hex: String){
-        MQTT.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
     }
 }
 
