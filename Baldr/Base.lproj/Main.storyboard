@@ -226,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="4085.5999999999999" y="-701.19940029985014"/>
         </scene>
-        <!--Title-->
+        <!--Add Room-->
         <scene sceneID="TjE-ca-7CP">
             <objects>
                 <viewController id="B23-CV-pN5" customClass="AddRoomViewController" customModule="Baldr" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,20 +237,43 @@
                     <view key="view" contentMode="scaleToFill" id="EWN-kp-JuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0zL-9e-4wh">
+                                <rect key="frame" x="16" y="193" width="343" height="417"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="B23-CV-pN5" id="FgF-QX-6Vp"/>
+                                    <outlet property="delegate" destination="B23-CV-pN5" id="PMT-qF-uJv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="trailing" secondItem="EWN-kp-JuM" secondAttribute="trailingMargin" id="1uT-0C-lwv"/>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="top" secondItem="a18-vz-NFF" secondAttribute="bottom" constant="129" id="5bo-bX-OUu"/>
+                            <constraint firstItem="Lrx-Mj-PgV" firstAttribute="top" secondItem="0zL-9e-4wh" secondAttribute="bottom" constant="8" symbolic="YES" id="Dyc-9n-iPC"/>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="leading" secondItem="EWN-kp-JuM" secondAttribute="leadingMargin" id="xXa-gY-VJj"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="1Um-Tf-Rec">
+                    <navigationItem key="navigationItem" title="Add Room" id="1Um-Tf-Rec">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="O2F-In-cRz">
                             <connections>
                                 <action selector="goBack:" destination="B23-CV-pN5" id="mVW-2z-ekv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="phc-IS-Zkq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="phc-IS-Zkq">
+                            <connections>
+                                <action selector="saveRoom:" destination="B23-CV-pN5" id="c8D-cd-LpP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="0zL-9e-4wh" id="pWg-Ze-31d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpF-hK-qhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086" y="0.0"/>
+            <point key="canvasLocation" x="4085.5999999999999" y="-0.44977511244377816"/>
         </scene>
         <!--Add Mood-->
         <scene sceneID="qaa-e6-nbf">

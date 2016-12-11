@@ -8,15 +8,37 @@
 
 import UIKit
 
-class AddRoomViewController: UIViewController {
+class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var noRoomLights = [CoreLightCell]()
+    
+    @IBAction func saveRoom(_ sender: Any) {
+        //tableView.reloadData()
+    }
+    
     @IBAction func goBack(_ sender: AnyObject) {
+        //    print(noRoomLights)
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getLights()
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+       
         // Do any additional setup after loading the view.
+        
+    }
+    
+    func getLights(){
+        for index in myLights.lights {
+            if index.room == "undefined" {
+                noRoomLights.append(index)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +46,35 @@ class AddRoomViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // show only lights without rooms
+        
+        return noRoomLights.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // your cell coding
+        // let cell = UITableViewCell()
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let light = noRoomLights[indexPath.row]
+        cell.textLabel?.text = light.name
+        
+        print(light.name)
+        cell.accessoryType = .none
+        
+        return cell
+
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(noRoomLights[indexPath.row].name)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
 
     /*
     // MARK: - Navigation
@@ -34,5 +85,3 @@ class AddRoomViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
