@@ -361,6 +361,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         super.setEditing(editing, animated: animated)
         
     }
+    
+    
     // Set up the MQTT connection
     func settingMQTT() {
         // message = "Hi"

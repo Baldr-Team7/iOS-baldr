@@ -384,17 +384,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Room" id="nTa-mk-Yl7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="PVV-FL-bMW">
-                            <connections>
-                                <action selector="printCount:" destination="MGk-Sv-fPL" id="G45-Lt-dpd"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NFS-2F-qP5">
                             <connections>
                                 <segue destination="DQ7-v3-dTB" kind="show" identifier="showAddRoom" action="showDetailViewController:sender:" id="KGt-Ba-abw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="RoomsTable" destination="rxU-wt-7Fx" id="0qo-6G-pIF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lY-ox-UxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

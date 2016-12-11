@@ -15,6 +15,7 @@ import CoreData
 class RoomsTableViewController: UITableViewController {
     
     
+    @IBOutlet var RoomsTable: UITableView!
     var myRooms = [String]()
     
     
@@ -22,10 +23,25 @@ class RoomsTableViewController: UITableViewController {
         super.viewDidLoad()
         updateRooms()
         
-        print(myRooms)
+        navigationItem.leftBarButtonItem = editButtonItem
+        
+        
+        // Only allow selection during Edit
+        RoomsTable.allowsSelectionDuringEditing = true
+        // Cells unselectable (only selectable during Editing
+        tableView.allowsSelection = false
+
+        
+        print("rooms: \(myRooms) ")
         // Do any additional setup after loading the view, typically from a nib.
     }
    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        print(myRooms[0])
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,13 +54,38 @@ class RoomsTableViewController: UITableViewController {
         
         var rooms = [String]()
         for index in myLights.lights {
-            if (index.room != "undefined"){
+            //if (index.room != "undefined"){
                 rooms.append(index.room)
-            }
+            //}
         }
         
         // create an array of only the unique rooms in the list of rooms
         myRooms = Array(Set(rooms))
+    }
+    
+    
+
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = Bundle.main.loadNibNamed("RoomsTableViewCell", owner: self, options: nil)?.first as! RoomsTableViewCell
+
+        let roomCell = myRooms[indexPath.row]
+        cell.mainLabel.text = roomCell
+        cell.roomSwitch.isOn = false
+        
+        cell.accessoryType = .none
+        return cell
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myRooms.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
     
@@ -76,6 +117,7 @@ extension RoomsTableViewController: CocoaMQTTDelegate {
         print("didReceivedMessage: \(message.string) with id \(id)")
         
         //createCoreLight(message: message.string!)
+        updateRooms()
         
     }
     
