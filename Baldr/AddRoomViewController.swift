@@ -8,16 +8,42 @@
 
 import UIKit
 
-class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol AddRoomCellDelegate {
+    func userEnteredRoomData(main: String)
+}
 
+class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var delegate: AddRoomCellDelegate? = nil
     
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var nameRoomField: UITextField!
     
     var noRoomLights = [CoreLightCell]()
     
     @IBAction func saveRoom(_ sender: Any) {
         //tableView.reloadData()
+        
+        if delegate != nil {
+            if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
+                let name = nameRoomField.text
+                delegate?.userEnteredRoomData(main: name!)
+                
+                for index in 0...noRoomLights.count {
+                    
+                    if (tableView.cellForRow(at: [index])?.isSelected)!{
+                        updateRoomForLight(light: noRoomLights[index], room: name!)
+                    }
+                }
+            }
+            
+            // go through all lights in the table and update selected lights
+            
+            // exit page
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func goBack(_ sender: AnyObject) {
@@ -45,6 +71,15 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
                 noRoomLights.append(index)
             }
         }
+    }
+    
+    func updateRoomForLight(light: CoreLightCell, room: String){
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+        
+        
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
+        
     }
 
     override func didReceiveMemoryWarning() {

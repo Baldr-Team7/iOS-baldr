@@ -246,13 +246,46 @@
                                     <outlet property="delegate" destination="B23-CV-pN5" id="PMT-qF-uJv"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-on-ZBh">
+                                <rect key="frame" x="16" y="72" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="duf-dp-qgH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Room Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynt-MN-EiR">
+                                <rect key="frame" x="37" y="128" width="300" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Lights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-1r-QXa">
+                                <rect key="frame" x="16" y="200" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="lYS-Uw-zbY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0zL-9e-4wh" firstAttribute="trailing" secondItem="EWN-kp-JuM" secondAttribute="trailingMargin" id="1uT-0C-lwv"/>
-                            <constraint firstItem="0zL-9e-4wh" firstAttribute="top" secondItem="a18-vz-NFF" secondAttribute="bottom" constant="129" id="5bo-bX-OUu"/>
-                            <constraint firstItem="Lrx-Mj-PgV" firstAttribute="top" secondItem="0zL-9e-4wh" secondAttribute="bottom" constant="8" symbolic="YES" id="Dyc-9n-iPC"/>
-                            <constraint firstItem="0zL-9e-4wh" firstAttribute="leading" secondItem="EWN-kp-JuM" secondAttribute="leadingMargin" id="xXa-gY-VJj"/>
+                            <constraint firstItem="ru5-on-ZBh" firstAttribute="leading" secondItem="EWN-kp-JuM" secondAttribute="leadingMargin" id="562-OU-dSO"/>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="leading" secondItem="uqW-1r-QXa" secondAttribute="leading" id="5Kj-zz-Z07"/>
+                            <constraint firstItem="ynt-MN-EiR" firstAttribute="centerX" secondItem="ru5-on-ZBh" secondAttribute="centerX" id="5Yy-Jj-sLt"/>
+                            <constraint firstItem="uqW-1r-QXa" firstAttribute="top" secondItem="ynt-MN-EiR" secondAttribute="bottom" constant="42" id="Aul-rG-lGg"/>
+                            <constraint firstItem="ynt-MN-EiR" firstAttribute="leading" secondItem="EWN-kp-JuM" secondAttribute="leadingMargin" constant="21" id="NW4-rL-uKG"/>
+                            <constraint firstItem="ru5-on-ZBh" firstAttribute="top" secondItem="a18-vz-NFF" secondAttribute="bottom" constant="8" symbolic="YES" id="WOb-px-LIw"/>
+                            <constraint firstItem="uqW-1r-QXa" firstAttribute="leading" secondItem="ru5-on-ZBh" secondAttribute="leading" id="ZCw-Iv-anx"/>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="top" secondItem="ynt-MN-EiR" secondAttribute="bottom" constant="35" id="cZW-Pi-CYl"/>
+                            <constraint firstItem="ynt-MN-EiR" firstAttribute="top" secondItem="ru5-on-ZBh" secondAttribute="bottom" constant="8" symbolic="YES" id="inT-8e-qKL"/>
+                            <constraint firstItem="ru5-on-ZBh" firstAttribute="trailing" secondItem="EWN-kp-JuM" secondAttribute="trailingMargin" id="jCs-tZ-gWk"/>
+                            <constraint firstItem="uqW-1r-QXa" firstAttribute="trailing" secondItem="ru5-on-ZBh" secondAttribute="trailing" id="jFL-v2-BdS"/>
+                            <constraint firstItem="0zL-9e-4wh" firstAttribute="trailing" secondItem="uqW-1r-QXa" secondAttribute="trailing" id="sJ1-Yk-wDh"/>
+                            <constraint firstItem="Lrx-Mj-PgV" firstAttribute="top" secondItem="0zL-9e-4wh" secondAttribute="bottom" constant="8" symbolic="YES" id="uIX-3k-oFQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Room" id="1Um-Tf-Rec">
@@ -268,6 +301,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="nameRoomField" destination="ynt-MN-EiR" id="uGh-Ur-V6C"/>
                         <outlet property="tableView" destination="0zL-9e-4wh" id="pWg-Ze-31d"/>
                     </connections>
                 </viewController>

@@ -12,7 +12,7 @@ import CocoaMQTT
 import CoreData
 
 
-class RoomsTableViewController: UITableViewController {
+class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
     
     
     @IBOutlet var RoomsTable: UITableView!
@@ -70,6 +70,15 @@ class RoomsTableViewController: UITableViewController {
         
         
         DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
+        
+    }
+    
+    
+    func userEnteredRoomData(main: String) {
+        
+            myRooms.append("\(main)")
+            
+            self.RoomsTable.reloadData()
         
     }
     
