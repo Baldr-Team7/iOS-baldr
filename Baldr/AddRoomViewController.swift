@@ -28,6 +28,12 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         getLights()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+//        self.tableView.clipsToBounds = true
+//        self.tableView.layer.masksToBounds = false
+//        self.tableView.layer.borderColor = UIColor.black.cgColor
+//        self.tableView.layer.borderWidth = 2.0
+        
        
         // Do any additional setup after loading the view.
         
@@ -62,15 +68,32 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print(light.name)
         cell.accessoryType = .none
-        
+        cell.selectionStyle = .none
+    
         return cell
 
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(noRoomLights[indexPath.row].name)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .none
+            
+        }
+    
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
+            
+            
+        }
+    }
+ 
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
