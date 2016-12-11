@@ -35,6 +35,7 @@
 		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
 		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
+		A2E59ACE1DFD9CF000434BD7 /* EditMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		A2206C451DD9EE8C00C2205E /* Light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		A2D697801DB918A300200200 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
 		A2D697811DB918A300200200 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
+		A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMoodViewController.swift; sourceTree = "<group>"; };
 		ABA94BA0416A01FA452F191D /* Pods-BaldrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrUITests/Pods-BaldrUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BB09EA7C99839BCDB3F0CC30 /* Pods-Baldr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baldr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Baldr/Pods-Baldr.debug.xcconfig"; sourceTree = "<group>"; };
 		CA66151C54CEA96964580E22 /* Pods-BaldrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaldrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaldrTests/Pods-BaldrTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
 				5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */,
+				A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
 				5A46E54C1D95090D00A63C32 /* Info.plist */,
@@ -533,6 +536,7 @@
 				5AE675C01DF05D2A0063DF87 /* EditLightViewController.swift in Sources */,
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
+				A2E59ACE1DFD9CF000434BD7 /* EditMoodViewController.swift in Sources */,
 				A2206C461DD9EE8C00C2205E /* Light.swift in Sources */,
 				5AC26AA51DE3FD990090ECAC /* CoreLightCell+CoreDataProperties.swift in Sources */,
 				5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */,

@@ -18,13 +18,14 @@ struct moodsCellData{
 //    let lightsOff: Int!
 }
 
-class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
+class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, editMoodCellDelegate {
     
     
     //var moodsArrayData = [moodsCellData]()
     
     //Temporary cells testing
     @IBOutlet var MoodsTable: UITableView!
+    var editIndex: Int = 0
     var moodsArrayData = [moodsCellData(mood: "Pissed"),
                           moodsCellData(mood: "Happy"),
                           moodsCellData(mood: "Depressed ")]
@@ -38,6 +39,12 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
         self.MoodsTable.reloadData()
     }
     
+    func userEditedData(mood: String) {
+        let editedMood = mood
+        
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //set Delegate 
         if segue.identifier == "showAddMood" {
@@ -47,10 +54,21 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
             
             addMoodViewController.delegate = self
         }else if segue.identifier == "showEditMood"{
+            let destination = segue.destination as! UINavigationController
+            
+            let editMoodViewController: EditMoodViewController = destination.topViewController as! EditMoodViewController
+            
+            editMoodViewController.currentMoodName = moodsArrayData[editIndex].mood
+            
+            editMoodViewController.delegate = self
             
         
         
+        }
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
     }
     
     override func viewDidLoad() {
@@ -64,6 +82,14 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        editIndex = indexPath.row
+        performSegue(withIdentifier: "showEditMood", sender: self)
+        setEditing(false, animated: true)
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moodsArrayData.count
     }
