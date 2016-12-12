@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddRoomCellDelegate {
-    func userEnteredRoomData(main: String)
+    func userEnteredRoomData(room: String)
 }
 
 class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -29,7 +29,7 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         if delegate != nil {
             if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
                 let name = nameRoomField.text
-                delegate?.userEnteredRoomData(main: name!)
+                delegate?.userEnteredRoomData(room: name!)
                 
                 for index in 0...noRoomLights.count {
                     

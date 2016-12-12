@@ -8,18 +8,19 @@
 
 import UIKit
 
-class EditRoomViewController: UIViewController {
+class EditRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     
     var roomName: String?
+    var myRoomLights = [CoreLightCell]()
     
     @IBOutlet weak var nameRoomField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func goBack(_ sender: Any) {
-    
+        dismiss(animated: true, completion: nil)
     }
    
     // Save the Edited Room
@@ -28,10 +29,21 @@ class EditRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getLights()
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
         // Do any additional setup after loading the view.
     }
 
+    
+    func getLights(){
+        for index in myLights.lights {
+            if (index.room == "undefined") || (index.room == roomName) {
+                myRoomLights.append(index)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,5 +59,55 @@ class EditRoomViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // show only lights without rooms
+        
+        return 0 //noRoomLights.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // your cell coding
+        // let cell = UITableViewCell()
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        
+        let light = myRoomLights[indexPath.row]
+        
+        cell.textLabel?.text = light.name
+        
+        if (light.room == roomName) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+        return cell
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .none
+            
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
+            
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 
 }

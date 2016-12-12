@@ -78,9 +78,9 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
     
     // Delegate Method
     
-    func userEnteredRoomData(main: String) {
+    func userEnteredRoomData(room: String) {
         
-            myRooms.append("\(main)")
+            myRooms.append("\(room)")
             
             self.RoomsTable.reloadData()
         
@@ -104,6 +104,8 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
             let destination = segue.destination as! UINavigationController
             
             let editRoomViewController: EditRoomViewController = destination.topViewController as! EditRoomViewController
+            
+            editRoomViewController.roomName = myRooms[editIndex]
             
         }
     
