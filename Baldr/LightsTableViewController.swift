@@ -79,13 +79,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
     func reload() {
         
-        print("reload")
+        //print("reload")
         LightsTable.beginUpdates()
         LightsTable.endUpdates()
-    
-        //self.LightsTable.beginUpdates()
-        //self.LightsTable.updates
-        
     }
     
   
@@ -180,8 +176,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
-//        self.refreshControl?.addTarget(self, action: #selector(LightsTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        
         self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
         container = NSPersistentContainer(name: "Baldr")
@@ -197,7 +191,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         }
         
-        self.tableView.reloadData()
+        self.reload()
+        // self.tableView.reloadData()
         
         
         // Add Edit Button to nagivation bar programmatically
@@ -234,7 +229,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
         myLights.lights.sort() { $0.room < $1.room }
         
-        self.tableView.reloadData()
+        self.reload()
+        //        self.tableView.reloadData()
         refreshControl.endRefreshing()
         
     }
@@ -281,7 +277,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         do {
             myLights.lights = try container.viewContext.fetch(request)
             print("Got \(myLights.lights.count) lights")
-            tableView.reloadData()
+            self.reload()
+            //tableView.reloadData()
         } catch {
             print("Fetch failed")
         }
@@ -323,8 +320,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             let json = message.data(using: .utf8)
             let jsonData = JSON(data: json!)
             self.configure(coreLightCell: light, usingJSON: jsonData)
-            
-            
+
             // var indexPath = 0
             var duplicate = false
             
@@ -334,25 +330,41 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
                 if light.lightID == index.lightID {
                     duplicate = true
                     //print("\(light.name) + \(index.name)")
-                    // indexPath = self.lights.index(of: index)!
+                    //let indexPath = myLights.lights.index(of: index)!
                     //self.lights.index
                     
                     self.configure(coreLightCell: index, usingJSON: jsonData)
                     //self.container.viewContext.delete(self.lights[indexPath])
                     self.container.viewContext.delete(light)
                     //                    self.lights[indexPath] = light
+                    //self.LightsTable.reloadRows(at: [indexPath], with: .none)
                     
                 } 
             }
 
             if (duplicate == false){
                 myLights.lights.append(light)
+                
             }
             
+            self.LightsTable.reloadData()
+            //        UITableView.performWithoutAnimation {
+            //   self.LightsTable.reloadRows(at: myLights.lights.index(of: index), with: .none)
+            //}
             
             self.saveContext()
             
-            self.LightsTable.reloadData()
+            
+            
+            //UITableView.performWithoutAnimation {
+            // self.reload()
+            //   self.LightsTable.reloadData()
+            //}
+ 
+            //UIView.performWithoutAnimation {
+                
+            //  self.LightsTable.reloadData()
+            //}
             
             
         }
@@ -429,6 +441,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
+    
     // Set the cell to be used when creating the list of lightCells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
@@ -440,11 +453,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         let coreLightCell = myLights.lights[indexPath.row]
         cell.mainLabel?.text = coreLightCell.name
         
+        
         if (coreLightCell.room != "undefined"){
             cell.roomLabel?.text = coreLightCell.room
         }
+        
         cell.expand = coreLightCell.expanded
-        cell.lightSwitch.setOn(coreLightCell.state, animated: true)
+        cell.lightSwitch.setOn(coreLightCell.state, animated: false)
         cell.ID = coreLightCell.lightID
         cell.name = coreLightCell.name
         cell.room = coreLightCell.room
@@ -587,7 +602,7 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didConnect host: String, port: Int) {
         print("didConnect \(host):\(port)")
-        mqtt.subscribe("lightcontrol/home/asdf/light/+/info")
+        mqtt.subscribe("lightcontrol/home/\(DATA.homeID)/light/+/info")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
@@ -605,9 +620,6 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         print("didReceivedMessage: \(message.string) with id \(id)")
-      
-        
-        
         createCoreLight(message: message.string!)
        
     }

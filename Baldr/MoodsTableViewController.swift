@@ -37,14 +37,18 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         let newMood = moodsCellData(mood: mood)
         moodsArrayData.append(newMood)
         
-        self.MoodsTable.reloadData()
+        UIView.performWithoutAnimation {
+            self.MoodsTable.reloadData()
+        }
     }
     
     func userEditedData(mood: String) {
         
         print(mood)
         moodsArrayData[editIndex].mood = mood
-        self.MoodsTable.reloadData()
+        UIView.performWithoutAnimation {
+            self.MoodsTable.reloadData()
+        }
         
     }
     
@@ -111,7 +115,10 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         navigationItem.leftBarButtonItem = editButtonItem
         MoodsTable.allowsSelectionDuringEditing = true
         tableView.allowsSelection = false
-        self.tableView.reloadData()
+        
+        UIView.performWithoutAnimation {
+            self.tableView.reloadData()
+        }
         
         
         // Do any additional setup after loading the view.
