@@ -12,7 +12,7 @@ import UIKit
 // Naming Delegate
 
 protocol AddLightCellDelegate {
-    func userEnteredLightData(main: String)
+    func userEnteredLightData(discoveryCode: String)
 }
 
 
@@ -23,23 +23,7 @@ class AddLightViewController: UIViewController {
     var myColor: UIColor?
     
     
-    // Name of the Light
-    @IBOutlet weak var nameLightField: UITextField!
-    @IBOutlet weak var displayColorView: UIView!
-    @IBOutlet weak var colorSlider: UISlider!
-    @IBOutlet weak var colorIndicator: UIImageView!
-    @IBAction func changeColors(_ sender: Any) {
-        
-        displayColorView.backgroundColor = UIColor(hue: round(CGFloat(colorSlider.value))/100.0,saturation: 1, brightness: 1, alpha: 1.0)
-        
-        myColor = UIColor(hue: round(CGFloat(colorSlider.value)) / 100, saturation: 1, brightness: 1, alpha: 1)
-        
-
-    }
-    @IBAction func printHex(_ sender: Any) {
-        print(myColor!.toHex())
-    }
-    
+    @IBOutlet weak var discoveryCode: UITextField!
     
         
     
@@ -49,9 +33,9 @@ class AddLightViewController: UIViewController {
         
         // Get the Data Entered, send it to previous page
         if delegate != nil {
-            if nameLightField.text != "" && nameLightField.text!.characters.first != " " {
-                let name = nameLightField.text
-                delegate?.userEnteredLightData(main: name!)
+            if discoveryCode.text != "" && discoveryCode.text!.characters.first != " " {
+                let code = discoveryCode.text
+                delegate?.userEnteredLightData(discoveryCode: code!)
                 // exit page
                 dismiss(animated: true, completion: nil)
             }
@@ -65,9 +49,6 @@ class AddLightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.colorIndicator.image = UIImage(named: "ColorSpectrum")
-        displayColorView.backgroundColor = UIColor(hue: 1 ,saturation: 1, brightness: 1, alpha: 1.0)
-        print(delegate!)
         
         // Do any additional setup after loading the view.
     }

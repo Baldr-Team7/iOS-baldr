@@ -103,25 +103,22 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Receive Data Light Cell
 
     
-    func userEnteredLightData(main: String) {
+    func userEnteredLightData(discoveryCode code: String) {
     
-        let newLight = lightsCellData(main: main, onOff: false)
-        lightsArrayData.append(newLight)
+        DATA.mqtt!.publish("lightcontrol/discovery", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"discovery\" : {\"discoveryCode\":\"\(code)\", \"home\": \"\(DATA.homeID)\"}}")
         
-        self.LightsTable.reloadData()
-    
     }
     
-    func userEditedData(main: String, color: String) {
+    func userEditedData(name: String, color: String) {
         
-        print("\(main) = \(color)")
+        print("\(name) = \(color)")
         
         let lightID = myLights.lights[editIndex].lightID
         
         print("\(lightID)")
         
         let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
-        changeColor(topic: topic, hex: color)
+        changeNameAndColor(topic: topic, hex: color, name: name)
         
         
     }
@@ -183,6 +180,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
+//        self.refreshControl?.addTarget(self, action: #selector(LightsTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
         container = NSPersistentContainer(name: "Baldr")
         
@@ -225,6 +225,16 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         //getData()
         loadSavedData()
     
+    }
+
+    func handleRefresh(refreshControl: UIRefreshControl) {
+
+    
+        myLights.lights.sort() { $0.room < $1.room }
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -451,7 +461,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     //  Force height to be 80 for the rows
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
-        
         //  let cell = self.LightsTable.cellForRow(at: indexPath) as? LightsTableViewCell
         //  let cell = self.LightsTable.cellForRow(at: indexPath)
         // let cell = lightsArrayData[indexPath]
@@ -502,14 +511,14 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     
     // Change Color Message, with parameter as a UIColor
-    func changeColor(topic: String, color: UIColor){
+    func changeNameAndColor(topic: String, color: UIColor, name: String){
         let hex = color.toHex()
         DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
     }
 
     // Change Color Message, with parameter as a hexadecimal String
-    func changeColor(topic: String, hex: String){
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
+    func changeNameAndColor(topic: String, hex: String, name: String){
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\", \"name\":\"\(name)\"}}")
     }
 }
 

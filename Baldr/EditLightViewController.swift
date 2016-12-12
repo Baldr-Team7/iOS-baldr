@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditLightCellDelegate {
-    func userEditedData(main: String, color: String)
+    func userEditedData(name: String, color: String)
     
     
 }
@@ -52,7 +52,7 @@ class EditLightViewController: UIViewController {
             if nameLightField.text != "" && nameLightField.text!.characters.first != " " {
                 
                 let name = nameLightField.text
-                delegate?.userEditedData(main: name!, color: (myColor?.toHex())!)
+                delegate?.userEditedData(name: name!, color: (myColor?.toHex())!)
                 // exit page
                 dismiss(animated: true, completion: nil)
             }
