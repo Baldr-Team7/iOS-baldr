@@ -382,9 +382,10 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.protocolName = json["protocolName"].stringValue
         coreLightCell.lightID = json["lightInfo"]["id"].stringValue
         coreLightCell.room = json["lightInfo"]["room"].stringValue
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomTableView"), object: nil)
         
+        // Notification message to update room
+        NotificationCenter.default.post(name: .reload, object: nil)
+                
     }
     
     // When Edit button is pressed, do stuff
@@ -645,6 +646,9 @@ extension LightsTableViewController: CocoaMQTTDelegate {
     func _console(_ info: String) {
         print("Delegate: \(info)")
     }
-    
+}
+
+extension Notification.Name {
+    static let reload = Notification.Name("reload")
 }
 

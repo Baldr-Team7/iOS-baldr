@@ -31,10 +31,17 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         RoomsTable.allowsSelectionDuringEditing = true
         // Cells unselectable (only selectable during Editing
         tableView.allowsSelection = false
-        NotificationCenter.default.addObserver(self, selector: Selector(("reloadRoomTable:")), name:NSNotification.Name(rawValue: "reloadRoomTableView"), object: nil)
-        
         print("rooms: \(myRooms) ")
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        // Checks for Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
+        
+    }
+    
+    func reloadRoomTableData(_ notification: Notification) {
+        self.tableView.reloadData()
     }
    
     func reloadRoomTable(notification: NSNotification){
@@ -215,57 +222,5 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         } else if editingStyle == .insert {
             
         }
-    }
-}
-
-
-extension RoomsTableViewController: CocoaMQTTDelegate {
-
-    func mqtt(_ mqtt: CocoaMQTT, didConnect host: String, port: Int) {
-        print("didConnect \(host):\(port)")
-        mqtt.subscribe("lightcontrol/home/\(DATA.homeID)/light/+/info")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
-        print("didPublishMessage with message: \(message.string)")
-        
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
-        print("didPublishAck with id: \(id)")
-        
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
-        print("didReceivedMessage: \(message.string) with id \(id)")
-        print("test")
-        self.RoomsTable.reloadData()
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
-        print("didSubscribeTopic to \(topic)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        print("didUnsubscribeTopic to \(topic)")
-    }
-    
-    func mqttDidPing(_ mqtt: CocoaMQTT) {
-        print("didPing")
-    }
-    
-    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        _console("didReceivePong")
-    }
-    
-    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-        _console("mqttDidDisconnect")
-    }
-    
-    func _console(_ info: String) {
-        print("Delegate: \(info)")
     }
 }
