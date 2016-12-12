@@ -17,6 +17,8 @@
 		5A46E54B1D95090D00A63C32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */; };
 		5A46E5561D95090D00A63C32 /* BaldrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5551D95090D00A63C32 /* BaldrTests.swift */; };
 		5A46E5611D95090D00A63C32 /* BaldrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5601D95090D00A63C32 /* BaldrUITests.swift */; };
+		5A6190651DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6190631DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift */; };
+		5A6190661DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6190641DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift */; };
 		5A6AB7001DDE00060076B3F2 /* Pods_Baldr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */; };
 		5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */; };
@@ -77,6 +79,8 @@
 		5A46E55C1D95090D00A63C32 /* BaldrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaldrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A46E5601D95090D00A63C32 /* BaldrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaldrUITests.swift; sourceTree = "<group>"; };
 		5A46E5621D95090D00A63C32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A6190631DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreMoodCell+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5A6190641DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreMoodCell+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLightViewController.swift; sourceTree = "<group>"; };
 		5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
 		5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoodViewController.swift; sourceTree = "<group>"; };
@@ -174,11 +178,14 @@
 		5A46E53D1D95090D00A63C32 /* Baldr */ = {
 			isa = PBXGroup;
 			children = (
-				5AC26AA21DE3FD990090ECAC /* CoreLightCell+CoreDataClass.swift */,
+				5A6190631DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift */,
+				5A6190641DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift */,
 				5AC26AA31DE3FD990090ECAC /* CoreLightCell+CoreDataProperties.swift */,
+				5AC26AA21DE3FD990090ECAC /* CoreLightCell+CoreDataClass.swift */,
 				5AD0AB6B1DB38FB00012B913 /* CustomCells */,
 				5A46E53E1D95090D00A63C32 /* AppDelegate.swift */,
 				5A46E5401D95090D00A63C32 /* LightsTableViewController.swift */,
+				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
 				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
 				5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */,
 				5AF59D2E1DDA06750053700C /* Baldr.xcdatamodeld */,
@@ -186,7 +193,6 @@
 				5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
 				5AD580D41DFE161C006FC824 /* EditRoomViewController.swift */,
-				5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */,
 				5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */,
 				A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
@@ -548,7 +554,9 @@
 				5A9DABF71DA6698F00E67B56 /* AddMoodViewController.swift in Sources */,
 				5AC26AA41DE3FD990090ECAC /* CoreLightCell+CoreDataClass.swift in Sources */,
 				5A46E53F1D95090D00A63C32 /* AppDelegate.swift in Sources */,
+				5A6190651DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift in Sources */,
 				5A46E5411D95090D00A63C32 /* LightsTableViewController.swift in Sources */,
+				5A6190661DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

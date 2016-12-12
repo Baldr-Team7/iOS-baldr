@@ -35,9 +35,6 @@ struct DATA {
 }
 
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
-
-    
-    
     
     @IBOutlet var LightsTable: UITableView!
 
@@ -51,9 +48,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     var lightsArrayData =  [lightsCellData(main: "Light", onOff: false),
                             lightsCellData(main: "Light2", onOff: false)]
     
-    
-    
-    
+
      // ---------------------------------------------------------------------------------------------
     
     
@@ -180,7 +175,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
         container = NSPersistentContainer(name: "Baldr")
         
-        print(container.name)
+        //print(container.name)
         
         container.loadPersistentStores { storeDescription, error in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy

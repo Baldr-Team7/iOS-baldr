@@ -34,7 +34,6 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         print("rooms: \(myRooms) ")
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         // Checks for Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
         

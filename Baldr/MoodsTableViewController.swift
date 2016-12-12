@@ -20,7 +20,7 @@ struct moodsCellData{
 
 class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate {
     
-    
+    var container2: NSPersistentContainer!
     //var moodsArrayData = [moodsCellData]()
     
     //Temporary cells testing
@@ -112,16 +112,36 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        container2 = NSPersistentContainer(name: "Baldr")
+
+        container2.loadPersistentStores { storeDescription, error in
+            self.container2.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
+            if let error = error {
+                print("Unresolved error \(error)")
+            }
+            
+        }
+
+        
         navigationItem.leftBarButtonItem = editButtonItem
         MoodsTable.allowsSelectionDuringEditing = true
         tableView.allowsSelection = false
         
-        UIView.performWithoutAnimation {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func saveContext() {
+        if container2.viewContext.hasChanges {
+            do {
+                try container2.viewContext.save()
+            } catch {
+                print("An error occured while saving: \(error)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
