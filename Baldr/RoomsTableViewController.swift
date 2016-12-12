@@ -31,16 +31,25 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         RoomsTable.allowsSelectionDuringEditing = true
         // Cells unselectable (only selectable during Editing
         tableView.allowsSelection = false
-
+        NotificationCenter.default.addObserver(self, selector: Selector(("reloadRoomTable:")), name:NSNotification.Name(rawValue: "reloadRoomTableView"), object: nil)
         
         print("rooms: \(myRooms) ")
         // Do any additional setup after loading the view, typically from a nib.
     }
    
+    func reloadRoomTable(notification: NSNotification){
+        self.RoomsTable.reloadData()
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         //print(myRooms[0])
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

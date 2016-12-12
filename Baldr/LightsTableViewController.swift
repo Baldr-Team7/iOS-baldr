@@ -382,11 +382,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.protocolName = json["protocolName"].stringValue
         coreLightCell.lightID = json["lightInfo"]["id"].stringValue
         coreLightCell.room = json["lightInfo"]["room"].stringValue
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadRoomTableView"), object: nil)
         
-        
-        
-        
-       
     }
     
     // When Edit button is pressed, do stuff
