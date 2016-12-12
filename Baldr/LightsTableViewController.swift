@@ -197,6 +197,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         }
         
+        self.tableView.reloadData()
+        
         
         // Add Edit Button to nagivation bar programmatically
         navigationItem.leftBarButtonItem = editButtonItem
@@ -329,11 +331,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             for index in myLights.lights {
                 // should be replaced with id checking
 
-                if light.name == index.name {
+                if light.lightID == index.lightID {
                     duplicate = true
-                    print("\(light.name) + \(index.name)")
+                    //print("\(light.name) + \(index.name)")
                     // indexPath = self.lights.index(of: index)!
-                   //self.lights.index
+                    //self.lights.index
                     
                     self.configure(coreLightCell: index, usingJSON: jsonData)
                     //self.container.viewContext.delete(self.lights[indexPath])
@@ -351,6 +353,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             self.saveContext()
             
             self.LightsTable.reloadData()
+            
+            
         }
     }
     
@@ -435,6 +439,11 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         let coreLightCell = myLights.lights[indexPath.row]
         cell.mainLabel?.text = coreLightCell.name
+        cell.lightIDLabel?.text = coreLightCell.lightID
+        
+        if (coreLightCell.room != "undefined"){
+            cell.roomLabel?.text = coreLightCell.room
+        }
         cell.expand = coreLightCell.expanded
         cell.lightSwitch.setOn(coreLightCell.state, animated: true)
         cell.ID = coreLightCell.lightID

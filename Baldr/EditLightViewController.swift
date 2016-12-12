@@ -11,7 +11,6 @@ import UIKit
 protocol EditLightCellDelegate {
     func userEditedData(name: String, color: String)
     
-    
 }
 
 class EditLightViewController: UIViewController {

@@ -27,8 +27,9 @@ class LightsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
     
-    
+    @IBOutlet weak var lightIDLabel: UILabel!
     @IBAction func toggleLight(_ sender: AnyObject) {
         //delegate?.reload()
         delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn, lightID: ID)

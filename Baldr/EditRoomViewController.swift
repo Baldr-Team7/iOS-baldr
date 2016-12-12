@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol EditRoomCellDelegate {
+    func userEditedRoomData(room: String)
+}
+
 class EditRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+    var delegate: EditRoomCellDelegate? = nil
     
     var roomName: String?
     var myRoomLights = [CoreLightCell]()
@@ -25,12 +29,56 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
    
     // Save the Edited Room
     @IBAction func saveRoom(_ sender: Any) {
+        if delegate != nil {
+            
+            if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
+                
+                let name = nameRoomField.text
+                delegate?.userEditedRoomData(room: name!)
+                // exit page
+                
+                for index in 0...(myRoomLights.count - 1) {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    //print(tableView.cellForRow(at: indexPath)!)//{
+                    if (tableView.cellForRow(at: indexPath)?.isSelected)! {
+                        //print("hello")
+                        updateRoomForLight(light: myRoomLights[index], room: name!)
+                        print((tableView.cellForRow(at: indexPath)?.isSelected)!)
+                    } else {
+                        setRoomToUndefined(light: myRoomLights[index])
+                    }
+                
+                }
+                
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func updateRoomForLight(light: CoreLightCell, room: String){
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+        
+        
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
+        
+    }
+    
+    
+    func setRoomToUndefined(light: CoreLightCell) {
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+        
+        
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        nameRoomField.text = roomName
         
         // Do any additional setup after loading the view.
     }
@@ -65,7 +113,7 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         
         // show only lights without rooms
         
-        return 0 //noRoomLights.count
+        return myRoomLights.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,9 +127,13 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         
         if (light.room == roomName) {
             cell.accessoryType = .checkmark
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
         } else {
             cell.accessoryType = .none
+            //cell.isSelected = false
         }
+        cell.selectionStyle = .none
+        
         
         return cell
         
@@ -91,7 +143,7 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .none
+            cell.accessoryType = .checkmark
             
         }
         
@@ -100,7 +152,7 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
+            cell.accessoryType = .none
             
         }
     }

@@ -111,6 +111,7 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         navigationItem.leftBarButtonItem = editButtonItem
         MoodsTable.allowsSelectionDuringEditing = true
         tableView.allowsSelection = false
+        self.tableView.reloadData()
         
         
         // Do any additional setup after loading the view.

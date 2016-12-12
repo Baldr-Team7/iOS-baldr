@@ -12,7 +12,7 @@ import CocoaMQTT
 import CoreData
 
 
-class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
+class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate {
     
     
     @IBOutlet var RoomsTable: UITableView!
@@ -26,7 +26,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        
+        self.tableView.reloadData()
         // Only allow selection during Edit
         RoomsTable.allowsSelectionDuringEditing = true
         // Cells unselectable (only selectable during Editing
@@ -69,7 +69,6 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
         
         let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
         
-        
         DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
         
     }
@@ -80,14 +79,21 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
     
     func userEnteredRoomData(room: String) {
         
-            myRooms.append("\(room)")
+        myRooms.append("\(room)")
             
-            self.RoomsTable.reloadData()
+        self.RoomsTable.reloadData()
         
     }
     
-    func userEditedRoomData(main: String) {
+    func userEditedRoomData(room: String) {
+
+        //print(room)
+        myRooms[editIndex] = room
         
+        self.RoomsTable.reloadData()
+        
+        // let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
+        //changeNameAndColor(topic: topic, hex: color, name: name)
     }
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +113,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
             
             editRoomViewController.roomName = myRooms[editIndex]
             
+            editRoomViewController.delegate = self
         }
     
     }
@@ -158,7 +165,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
                 
             }
             
-            myLights.lights.remove(at: indexPath.row)
+            //myLights.lights.remove(at: indexPath.row)
             RoomsTable.deleteRows(at: [indexPath], with: .fade)
             
             

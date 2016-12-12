@@ -30,10 +30,12 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
             if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
                 let name = nameRoomField.text
                 delegate?.userEnteredRoomData(room: name!)
-                
-                for index in 0...noRoomLights.count {
-                    
-                    if (tableView.cellForRow(at: [index])?.isSelected)!{
+                print(name!)
+                for index in 0...(noRoomLights.count - 1) {
+                    // let indexPath = IndexPath(row: index, section: 0)
+                    //print(tableView.cellForRow(at: indexPath)!)//{
+                    if (tableView.cellForRow(at: IndexPath(row: index, section: 0))?.isSelected)! {
+                        //print("hello")
                         updateRoomForLight(light: noRoomLights[index], room: name!)
                     }
                 }
@@ -105,7 +107,8 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .none
+            cell.accessoryType = .checkmark
+            //cell.isSelected = true
             
         }
     
@@ -114,7 +117,9 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
+            cell.accessoryType = .none
+            // cell.isSelected = false
+            
             
             
         }
