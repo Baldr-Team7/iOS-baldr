@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol editMoodCellDelegate {
+protocol EditMoodCellDelegate {
     func userEditedData(mood: String)
     
 }
@@ -16,7 +16,7 @@ protocol editMoodCellDelegate {
 class EditMoodViewController: UIViewController {
 
     
-    var delegate: editMoodCellDelegate? = nil
+    var delegate: EditMoodCellDelegate? = nil
     
     var currentMoodName: String?
     @IBOutlet weak var nameMoodField: UITextField!

@@ -474,6 +474,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="E0O-Df-tCS" kind="show" identifier="showEditMood" id="A5V-oe-6FU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -482,11 +485,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Mood" id="2Bd-px-aqs">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="znc-8S-vV7">
-                            <connections>
-                                <segue destination="E0O-Df-tCS" kind="show" identifier="showEditMood" id="4e1-In-3Dq"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rxj-3f-PFT">
                             <connections>
                                 <segue destination="hZy-tY-Q3j" kind="show" identifier="showAddMood" action="showDetailViewController:sender:" id="Gyo-Aq-ttZ"/>

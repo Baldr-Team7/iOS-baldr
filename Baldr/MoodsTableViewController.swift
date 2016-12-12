@@ -12,13 +12,13 @@ import CoreData
 import CocoaMQTT
 
 struct moodsCellData{
-    let mood: String!
+    var mood: String!
 //    let moodOnOff: Bool!
 //    let lightsOn: Int!
 //    let lightsOff: Int!
 }
 
-class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, editMoodCellDelegate {
+class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate {
     
     
     //var moodsArrayData = [moodsCellData]()
@@ -26,6 +26,7 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, edit
     //Temporary cells testing
     @IBOutlet var MoodsTable: UITableView!
     var editIndex: Int = 0
+    
     var moodsArrayData = [moodsCellData(mood: "Pissed"),
                           moodsCellData(mood: "Happy"),
                           moodsCellData(mood: "Depressed ")]
@@ -40,8 +41,10 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, edit
     }
     
     func userEditedData(mood: String) {
-        let editedMood = mood
         
+        print(mood)
+        moodsArrayData[editIndex].mood = mood
+        self.MoodsTable.reloadData()
         
     }
     
@@ -67,13 +70,48 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, edit
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        editIndex = indexPath.row
+        performSegue(withIdentifier: "showEditMood", sender: self)
+        setEditing(false, animated: true)
+        
+    }
+    
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+    }
+    
+    // Specify what happens when a cell is edited in some way
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove Row at specific index pressed
+            // Deletes from array of lights as well
+            //           lightsArrayData.remove(at: indexPath.row)
+//            let light = myLights.lights[indexPath.row]
+//            container.viewContext.delete(light)
+//            myLights.lights.remove(at: indexPath.row)
+//            LightsTable.deleteRows(at: [indexPath], with: .fade)
+            
+//            saveContext()/
+            
+         //   let mood = moodsArrayData[indexPath.row]
+            moodsArrayData.remove(at: indexPath.row)
+            
+            MoodsTable.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        navigationItem.leftBarButtonItem = editButtonItem
+        MoodsTable.allowsSelectionDuringEditing = true
+        tableView.allowsSelection = false
+        
         
         // Do any additional setup after loading the view.
     }
@@ -83,21 +121,21 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, edit
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        editIndex = indexPath.row
-        performSegue(withIdentifier: "showEditMood", sender: self)
-        setEditing(false, animated: true)
-        
-    }
+  
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moodsArrayData.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = Bundle.main.loadNibNamed("MoodsTableViewCell", owner: self, options: nil)?.first as! MoodsTableViewCell
         cell.mainLabel.text = moodsArrayData[indexPath.row].mood
         //cell.moodSwitch.setOn(moodsArrayData[indexPath.row].moodOnOff, animated:false)
         //cell.delegate = self
+        
+        //cell.delegate = self
+        cell.accessoryType = .none
+        
         return cell
         
     }
