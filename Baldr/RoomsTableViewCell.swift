@@ -8,11 +8,22 @@
 
 import UIKit
 
+protocol RoomCellDelegate {
+    func toggleRoom(room: String, state: Bool)
+
+}
+
 class RoomsTableViewCell: UITableViewCell {
 
+    var delegate: RoomCellDelegate?
+    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var roomSwitch: UISwitch!
     
+    
+    @IBAction func toggleRoom(_ sender: Any) {
+        delegate?.toggleRoom(room: mainLabel.text!, state: roomSwitch.isOn)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

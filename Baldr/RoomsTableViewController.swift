@@ -12,7 +12,7 @@ import CocoaMQTT
 import CoreData
 
 
-class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate {
+class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate {
     
     
     @IBOutlet var RoomsTable: UITableView!
@@ -48,17 +48,14 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         // Dispose of any resources that can be recreated.
     }
 
-    
-    
     func updateRooms(){
-        
         
         var rooms = [String]()
         
         for index in myLights.lights {
-            //if (index.room != "undefined"){
+            if (index.room != "undefined"){
                 rooms.append(index.room)
-            //}
+            }
         }
         
         // create an array of only the unique rooms in the list of rooms
@@ -95,6 +92,41 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         // let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
         //changeNameAndColor(topic: topic, hex: color, name: name)
     }
+    
+    func toggleRoom(room: String, state: Bool) {
+        print("\(room) + \(state)")
+        
+        for index in myLights.lights {
+            if (index.room == room){
+                toggleLight(light: index, room: room, state: state)
+            }
+        }
+    }
+
+    func toggleLight(light: CoreLightCell, room: String, state: Bool) {
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/room/\(room)/commands"
+        
+        if (state == true){
+            turnRoomOn(topic: topic)
+        }
+        else {
+            turnRoomOff(topic: topic)
+        }
+        
+    }
+    
+    func turnRoomOn(topic: String){
+        DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
+        
+    }
+    
+    // Turn Light Off Message
+    func turnRoomOff(topic: String){
+        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
+        
+    }
+    
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -137,6 +169,8 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         cell.roomSwitch.isOn = false
         
         cell.accessoryType = .none
+        cell.delegate = self
+        
         return cell
         
     }

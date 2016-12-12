@@ -29,7 +29,6 @@ class LightsTableViewCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     
-    @IBOutlet weak var lightIDLabel: UILabel!
     @IBAction func toggleLight(_ sender: AnyObject) {
         //delegate?.reload()
         delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn, lightID: ID)
@@ -47,12 +46,4 @@ class LightsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    @IBAction func expandCell(_ sender: Any) {
-        self.expand = true
-        print("asdfasd \(expand)")
-        self.setNeedsLayout()
-        delegate?.reload()
-    }
-    
 }

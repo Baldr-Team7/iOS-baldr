@@ -65,7 +65,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         let topic: String?
         
-        topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
+        topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
 
         if (state == true){
             turnLightOn(topic: topic!)
@@ -439,7 +439,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         let coreLightCell = myLights.lights[indexPath.row]
         cell.mainLabel?.text = coreLightCell.name
-        cell.lightIDLabel?.text = coreLightCell.lightID
         
         if (coreLightCell.room != "undefined"){
             cell.roomLabel?.text = coreLightCell.room
