@@ -88,19 +88,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
     }
     
-    func userEditedData(main: String, color: String) {
-        
-        print("\(main) = \(color)")
-        
-        let lightID = myLights.lights[editIndex].lightID
-        
-        print("\(lightID)")
-        
-        let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
-        changeColor(topic: topic, hex: color)
-        
-
-    }
+  
     
     // ---------------------------------------------------------------------------------------------
     
@@ -122,6 +110,20 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         self.LightsTable.reloadData()
     
+    }
+    
+    func userEditedData(main: String, color: String) {
+        
+        print("\(main) = \(color)")
+        
+        let lightID = myLights.lights[editIndex].lightID
+        
+        print("\(lightID)")
+        
+        let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
+        changeColor(topic: topic, hex: color)
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

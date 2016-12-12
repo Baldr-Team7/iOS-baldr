@@ -17,6 +17,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
     
     @IBOutlet var RoomsTable: UITableView!
     var myRooms = [String]()
+    var editIndex: Int = 0 // keep track of button pressed
     
     
     override func viewDidLoad() {
@@ -74,11 +75,47 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate {
     }
     
     
+    
+    // Delegate Method
+    
     func userEnteredRoomData(main: String) {
         
             myRooms.append("\(main)")
             
             self.RoomsTable.reloadData()
+        
+    }
+    
+    func userEditedRoomData(main: String) {
+        
+    }
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showAddRoom" {
+
+            let destination = segue.destination as! UINavigationController
+            
+            let addRoomViewController: AddRoomViewController = destination.topViewController as! AddRoomViewController
+            addRoomViewController.delegate = self
+    
+        } else if segue.identifier == "showEditRoom" {
+            
+            let destination = segue.destination as! UINavigationController
+            
+            let editRoomViewController: EditRoomViewController = destination.topViewController as! EditRoomViewController
+            
+        }
+    
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        editIndex = indexPath.row
+        performSegue(withIdentifier: "showEditRoom", sender: self)
+        
+        setEditing(false, animated: true)
+        
         
     }
     

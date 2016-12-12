@@ -58,8 +58,6 @@ class AddLightViewController: UIViewController {
         }
     }
     
-    
-    
     @IBAction func goBack(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }

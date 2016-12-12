@@ -29,6 +29,7 @@
 		5AD0AB6F1DB392E60012B913 /* RoomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */; };
 		5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */; };
 		5AD0AB731DB396D00012B913 /* MoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */; };
+		5AD580D51DFE161C006FC824 /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD580D41DFE161C006FC824 /* EditRoomViewController.swift */; };
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
 		5AE675C01DF05D2A0063DF87 /* EditLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */; };
 		5AF59D301DDA06750053700C /* Baldr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AF59D2E1DDA06750053700C /* Baldr.xcdatamodeld */; };
@@ -87,6 +88,7 @@
 		5AD0AB6D1DB392E60012B913 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
 		5AD0AB701DB396D00012B913 /* MoodsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewCell.swift; sourceTree = "<group>"; };
 		5AD0AB711DB396D00012B913 /* MoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoodsTableViewCell.xib; sourceTree = "<group>"; };
+		5AD580D41DFE161C006FC824 /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 		5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLightViewController.swift; sourceTree = "<group>"; };
 		5AF59D2F1DDA06750053700C /* Baldr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Baldr.xcdatamodel; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */,
 				5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
+				5AD580D41DFE161C006FC824 /* EditRoomViewController.swift */,
 				5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */,
 				A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */,
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
@@ -529,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AF59D301DDA06750053700C /* Baldr.xcdatamodeld in Sources */,
+				5AD580D51DFE161C006FC824 /* EditRoomViewController.swift in Sources */,
 				5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */,

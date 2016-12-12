@@ -47,21 +47,13 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func goBack(_ sender: AnyObject) {
-        //    print(noRoomLights)
+        
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-//        self.tableView.clipsToBounds = true
-//        self.tableView.layer.masksToBounds = false
-//        self.tableView.layer.borderColor = UIColor.black.cgColor
-//        self.tableView.layer.borderWidth = 2.0
-        
-       
-        // Do any additional setup after loading the view.
         
     }
     
