@@ -21,9 +21,9 @@ class EditRoomViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
     
     }
-    
-    @IBAction func saveLight(_ sender: Any) {
-    
+   
+    // Save the Edited Room
+    @IBAction func saveRoom(_ sender: Any) {
     }
     
     override func viewDidLoad() {

@@ -16,11 +16,11 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var delegate: AddRoomCellDelegate? = nil
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var nameRoomField: UITextField!
     
+    // holds all lights with no rooms
     var noRoomLights = [CoreLightCell]()
     
     @IBAction func saveRoom(_ sender: Any) {

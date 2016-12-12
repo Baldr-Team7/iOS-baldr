@@ -742,7 +742,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="e2J-9d-OKD">
                             <connections>
-                                <action selector="saveLight:" destination="uoz-ge-vt6" id="i8t-qY-iA9"/>
+                                <action selector="saveRoom:" destination="uoz-ge-vt6" id="rhE-Vn-a19"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

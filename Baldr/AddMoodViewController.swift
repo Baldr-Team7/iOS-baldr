@@ -17,7 +17,9 @@ protocol AddMoodCellDelegate{
 
 class AddMoodViewController: UIViewController {
 
+    
     @IBOutlet weak var nameMoodField: UITextField!
+    
     var delegate: AddMoodCellDelegate? = nil
     
     //Get the data user entered then sedn it to the previous page
