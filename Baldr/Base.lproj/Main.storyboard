@@ -535,7 +535,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -556,7 +556,7 @@
         <!--Light-->
         <scene sceneID="HeU-Nf-j6h">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nmd-fc-L2G" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="home" automaticallyAdjustsScrollViewInsets="NO" id="nmd-fc-L2G" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Light" image="lights" selectedImage="lights" id="9T9-xP-UKl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AF4-GK-rx5">

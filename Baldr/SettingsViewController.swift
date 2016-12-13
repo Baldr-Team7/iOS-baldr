@@ -16,29 +16,33 @@ class SettingsViewController: UIViewController {
     
 
     @IBOutlet weak var homeIDTextField: UITextField!
-    var delegate: SettingsDelegate? = nil
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.hideKeyboardWhenTappedAround()
+        homeIDTextField.text = DATA.homeID
         // Do any additional setup after loading the view.
     }
 
     @IBAction func updateHomeID(_ sender: Any) {
-        
-        if delegate != nil{
             if homeIDTextField.text != "" && homeIDTextField.text!.characters.first != " " {
+            
                 let homeID = homeIDTextField.text
-                delegate?.userUpdatedHomeID()
+
                 DATA.homeID = homeID!
                 
-            }
-        }
-
+                print(DATA.homeID)
+                
+                self.dismissKeyboard()
+                
+                tabBarController?.selectedIndex = 0
         
+        }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

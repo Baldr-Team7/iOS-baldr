@@ -25,6 +25,7 @@ class EditMoodViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func saveMood(_ sender: Any) {
         if delegate != nil{
             if nameMoodField.text != "" && nameMoodField.text!.characters.first != " "{

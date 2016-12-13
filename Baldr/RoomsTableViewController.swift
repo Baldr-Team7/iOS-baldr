@@ -12,7 +12,7 @@ import CocoaMQTT
 import CoreData
 
 
-class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate, SettingsDelegate {
+class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate {
     
     
     @IBOutlet var RoomsTable: UITableView!
@@ -23,7 +23,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRooms()
-        //self.hideKeyboardWhenTappedAround()
+        
         navigationItem.leftBarButtonItem = editButtonItem
         
         self.tableView.reloadData()
@@ -47,12 +47,6 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         self.RoomsTable.reloadData()
     }
     
-    func userUpdatedHomeID(){
-        
-        
-        RoomsTable.reloadData()
-        
-    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
