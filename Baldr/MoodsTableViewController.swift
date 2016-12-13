@@ -27,6 +27,8 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     @IBOutlet var MoodsTable: UITableView!
     var editIndex: Int = 0
     
+    var moodsArray = [CoreMoodCell]()
+    
     var moodsArrayData = [moodsCellData(mood: "Pissed"),
                           moodsCellData(mood: "Happy"),
                           moodsCellData(mood: "Depressed ")]
@@ -130,7 +132,6 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         
         self.tableView.reloadData()
         
-        
         // Do any additional setup after loading the view.
     }
     
@@ -142,6 +143,89 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
                 print("An error occured while saving: \(error)")
             }
         }
+    }
+    
+    func loadSavedData() {
+        let request = CoreMoodCell.createFetchRequest()
+        //  let sort = NSSortDescriptor(key: "room", ascending: false)
+        //request.sortDescriptors = [sort]
+        
+        do {
+            moodsArray = try container2.viewContext.fetch(request)
+            print("Got \(moodsArray.count) lights")
+            self.reload()
+            //tableView.reloadData()
+        } catch {
+            print("Fetch failed")
+        }
+    }
+    
+    func reload() {
+        
+        //print("reload")
+        MoodsTable.beginUpdates()
+        MoodsTable.endUpdates()
+    }
+    
+    func createCoreMood(message: String) {
+        DispatchQueue.main.async { [unowned self] in
+            //print(self.container2.name)
+            //      print(container.name)
+            let mood = NSEntityDescription.insertNewObject(forEntityName: "CoreMoodCell", into: self.container2.viewContext) as! CoreLightCell
+//            let json = message.data(using: .utf8)
+//            let jsonData = JSON(data: json!)
+//            
+            
+            //self.configure(coreLightCell: light, usingJSON: jsonData)
+            
+            // var indexPath = 0
+            var duplicate = false
+            
+//            for index in myLights.lights {
+//                // should be replaced with id checking
+//                if light.lightID == index.lightID {
+//                    duplicate = true
+//                    self.configure(coreLightCell: index, usingJSON: jsonData)
+//                    self.container2.viewContext.delete(light)
+//                }
+//            }
+            
+//            if (duplicate == false){
+//                moodsArray.append(mood)
+//                
+//            }
+//            
+            self.MoodsTable.reloadData()
+            self.saveContext()
+            
+        }
+    }
+    func configure(coreMoodCell: CoreMoodCell, moodName: String){
+        
+        coreMoodCell.moodName = moodName
+        
+        //coreMoodCell.lightsJSON
+        var lightsJSON: String = ""
+        
+        for index in myLights.lights {
+            lightsJSON += createJSONMessage(light: index)
+        }
+        
+        coreMoodCell.lightsJSON = lightsJSON
+    }
+    
+    func createJSONMessage(light: CoreLightCell) -> String {
+        
+        var JSON: String = ""
+        
+        
+        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+        
+        JSON += "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(light.color)\", \"name\":\"\(light.name)\", \"state\":\"\(light.state)}}"
+        
+     
+        
+        return JSON
     }
     
     override func didReceiveMemoryWarning() {

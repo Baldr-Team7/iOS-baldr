@@ -324,15 +324,10 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 
                 if light.lightID == index.lightID {
                     duplicate = true
-                    //print("\(light.name) + \(index.name)")
-                    //let indexPath = myLights.lights.index(of: index)!
-                    //self.lights.index
                     
                     self.configure(coreLightCell: index, usingJSON: jsonData)
-                    //self.container.viewContext.delete(self.lights[indexPath])
                     self.container.viewContext.delete(light)
-                    //                    self.lights[indexPath] = light
-                    //self.LightsTable.reloadRows(at: [indexPath], with: .none)
+      
                     
                 } 
             }
@@ -343,24 +338,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             }
             
             self.LightsTable.reloadData()
-            //        UITableView.performWithoutAnimation {
-            //   self.LightsTable.reloadRows(at: myLights.lights.index(of: index), with: .none)
-            //}
-            
             self.saveContext()
-            
-            
-            
-            //UITableView.performWithoutAnimation {
-            // self.reload()
-            //   self.LightsTable.reloadData()
-            //}
- 
-            //UIView.performWithoutAnimation {
-                
-            //  self.LightsTable.reloadData()
-            //}
-            
             
         }
     }
