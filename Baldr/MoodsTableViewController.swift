@@ -11,6 +11,12 @@ import SwiftyJSON
 import CoreData
 import CocoaMQTT
 
+struct lightMessage {
+    var topic: String
+    var message: String
+    
+}
+
 struct moodsCellData{
     var mood: String!
 //    let moodOnOff: Bool!
@@ -205,27 +211,24 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         coreMoodCell.moodName = moodName
         
         //coreMoodCell.lightsJSON
-        var lightsJSON: String = ""
+        //var lightsJSON: String = ""
+        
+        var dictionary: Dictionary<String, String>?
         
         for index in myLights.lights {
-            lightsJSON += createJSONMessage(light: index)
+            
+            let topic = "lightcontrol/home/\(DATA.homeID)/light/\(index.lightID)/commands"
+            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"name\":\"\(index.name)\", \"state\":\"\(index.state)}}"
+            dictionary?[topic] = message
+            
         }
         
-        coreMoodCell.lightsJSON = lightsJSON
-    }
-    
-    func createJSONMessage(light: CoreLightCell) -> String {
         
-        var JSON: String = ""
+        var jsonObject = JSON(dictionary!)
         
+        print(jsonObject)
         
-        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-        
-        JSON += "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(light.color)\", \"name\":\"\(light.name)\", \"state\":\"\(light.state)}}"
-        
-     
-        
-        return JSON
+        //coreMoodCell.lightsJSON = lightsJSON
     }
     
     override func didReceiveMemoryWarning() {
@@ -259,68 +262,4 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     func addMood(mood : moodsCellData){
         moodsArrayData.append(mood)
     }
-//    func toggleMood()
-//    
-//}
 }
-extension MoodsTableViewController: CocoaMQTTDelegate {
-    func mqtt(_ mqtt: CocoaMQTT, didConnect host: String, port: Int) {
-        print("didConnect \(host):\(port)")
-        mqtt.subscribe("lightcontrol/home/asdf/light/+/info")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
-        print("didPublishMessage with message: \(message.string)")
-        
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
-        print("didPublishAck with id: \(id)")
-        
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
-        print("didReceivedMessage: \(message.string) with id \(id)")
-        
-        //createCoreLight(message: message.string!)
-        
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
-        print("didSubscribeTopic to \(topic)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        print("didUnsubscribeTopic to \(topic)")
-    }
-    
-    func mqttDidPing(_ mqtt: CocoaMQTT) {
-        print("didPing")
-    }
-    
-    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        _console("didReceivePong")
-    }
-    
-    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-        _console("mqttDidDisconnect")
-    }
-    
-    func _console(_ info: String) {
-        print("Delegate: \(info)")
-    }
-    
-    
-}
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }*/
