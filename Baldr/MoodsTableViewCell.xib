@@ -16,30 +16,43 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="79"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlc-l6-y4s">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlc-l6-y4s">
                         <rect key="frame" x="8" y="8" width="243" height="63"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZvV-tu-3qQ">
-                        <rect key="frame" x="324" y="24" width="51" height="31"/>
-                    </switch>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DR-TY-dtT">
+                        <rect key="frame" x="310" y="25" width="82" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="82" id="Ihf-UJ-wVy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                        <state key="normal" title="APPLY">
+                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.36603719330000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="applyMood:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bQc-eS-62x"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZvV-tu-3qQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6pz-zj-cnJ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Mlc-l6-y4s" secondAttribute="bottom" id="S8O-fC-YET"/>
-                    <constraint firstAttribute="topMargin" secondItem="Mlc-l6-y4s" secondAttribute="top" id="cDH-aV-Yfd"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ZvV-tu-3qQ" secondAttribute="trailing" constant="19" id="xKm-wM-w0T"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="Mlc-l6-y4s" secondAttribute="leading" id="zWM-V9-cEj"/>
+                    <constraint firstItem="2DR-TY-dtT" firstAttribute="leading" secondItem="Mlc-l6-y4s" secondAttribute="trailing" constant="59" id="E86-3c-WAw"/>
+                    <constraint firstItem="Mlc-l6-y4s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="EdU-pf-khk"/>
+                    <constraint firstItem="2DR-TY-dtT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="LRk-9s-7ic"/>
+                    <constraint firstItem="2DR-TY-dtT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="N5Z-7U-rWB"/>
+                    <constraint firstItem="Mlc-l6-y4s" firstAttribute="centerY" secondItem="2DR-TY-dtT" secondAttribute="centerY" id="VmN-DL-8Zl"/>
+                    <constraint firstItem="Mlc-l6-y4s" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="fdq-72-ED3"/>
+                    <constraint firstItem="Mlc-l6-y4s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pzb-Ox-NzG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="applyButton" destination="2DR-TY-dtT" id="KWL-3v-t1x"/>
                 <outlet property="mainLabel" destination="Mlc-l6-y4s" id="IlW-jQ-zpB"/>
-                <outlet property="moodSwitch" destination="ZvV-tu-3qQ" id="LcZ-3f-7RA"/>
             </connections>
         </tableViewCell>
     </objects>

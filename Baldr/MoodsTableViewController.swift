@@ -24,7 +24,7 @@ struct moodsCellData{
 //    let lightsOff: Int!
 }
 
-class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate {
+class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate, MoodCellDelegate {
     
     var container2: NSPersistentContainer!
     //var moodsArrayData = [moodsCellData]()
@@ -41,22 +41,22 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     
     //when user entered new mood, save the input and pass it to the protocol func
-    func userEnteredMoodData(mood: String) {
-        let newMood = moodsCellData(mood: mood)
-        moodsArrayData.append(newMood)
+    func userEnteredMoodData(moodName: String) {
+        // let newMood = moodsCellData(mood: mood)
         
-        UIView.performWithoutAnimation {
-            self.MoodsTable.reloadData()
-        }
+        createCoreMood(moodName: moodName)
+        
     }
     
-    func userEditedData(mood: String) {
+    func userEditedData(moodName: String) {
         
-        print(mood)
-        moodsArrayData[editIndex].mood = mood
-        UIView.performWithoutAnimation {
-            self.MoodsTable.reloadData()
-        }
+        //        moodsArrayData[editIndex].mood = mood
+        moodsArray[editIndex].moodName = moodName
+        
+        saveContext()
+        
+        self.MoodsTable.reloadData()
+       
         
     }
     
@@ -73,12 +73,10 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
             
             let editMoodViewController: EditMoodViewController = destination.topViewController as! EditMoodViewController
             
-            editMoodViewController.currentMoodName = moodsArrayData[editIndex].mood
+            editMoodViewController.currentMoodName = moodsArray[editIndex].moodName
             
             editMoodViewController.delegate = self
             
-        
-        
         }
     }
     
@@ -97,20 +95,15 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     // Specify what happens when a cell is edited in some way
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Remove Row at specific index pressed
-            // Deletes from array of lights as well
-            //           lightsArrayData.remove(at: indexPath.row)
-//            let light = myLights.lights[indexPath.row]
-//            container.viewContext.delete(light)
-//            myLights.lights.remove(at: indexPath.row)
-//            LightsTable.deleteRows(at: [indexPath], with: .fade)
+
+            let mood = moodsArray[indexPath.row]
             
-//            saveContext()/
+            container2.viewContext.delete(mood)
+            moodsArray.remove(at: indexPath.row)
             
-         //   let mood = moodsArrayData[indexPath.row]
-            moodsArrayData.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
-            MoodsTable.deleteRows(at: [indexPath], with: .fade)
+            saveContext()
             
         } else if editingStyle == .insert {
             
@@ -128,7 +121,6 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
             if let error = error {
                 print("Unresolved error \(error)")
             }
-            
         }
 
         
@@ -136,7 +128,12 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         MoodsTable.allowsSelectionDuringEditing = true
         tableView.allowsSelection = false
         
-        self.tableView.reloadData()
+        loadSavedData()
+        print(moodsArray)
+        
+        
+        self.MoodsTable.reloadData()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -158,13 +155,15 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         
         do {
             moodsArray = try container2.viewContext.fetch(request)
-            print("Got \(moodsArray.count) lights")
+            print("Got \(moodsArray.count) moods")
             self.reload()
             //tableView.reloadData()
         } catch {
             print("Fetch failed")
         }
     }
+    
+    
     
     func reload() {
         
@@ -173,39 +172,39 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         MoodsTable.endUpdates()
     }
     
-    func createCoreMood(message: String) {
+    func createCoreMood(moodName: String) {
         DispatchQueue.main.async { [unowned self] in
             //print(self.container2.name)
             //      print(container.name)
-            let mood = NSEntityDescription.insertNewObject(forEntityName: "CoreMoodCell", into: self.container2.viewContext) as! CoreLightCell
-//            let json = message.data(using: .utf8)
-//            let jsonData = JSON(data: json!)
-//            
+            let mood = NSEntityDescription.insertNewObject(forEntityName: "CoreMoodCell", into: self.container2.viewContext) as! CoreMoodCell
             
-            //self.configure(coreLightCell: light, usingJSON: jsonData)
+            self.configure(coreMoodCell: mood, moodName: moodName)
             
-            // var indexPath = 0
-            var duplicate = false
-            
-//            for index in myLights.lights {
-//                // should be replaced with id checking
-//                if light.lightID == index.lightID {
-//                    duplicate = true
-//                    self.configure(coreLightCell: index, usingJSON: jsonData)
-//                    self.container2.viewContext.delete(light)
-//                }
-//            }
-            
-//            if (duplicate == false){
-//                moodsArray.append(mood)
-//                
-//            }
-//            
             self.MoodsTable.reloadData()
+            
             self.saveContext()
             
         }
     }
+    
+    func applyMood(moodName: String, jsonMessage: String?){
+        
+        //print(jsonMessage!)
+        
+        let json = jsonMessage?.data(using: .utf8)
+        let jsonData = JSON(data: json!)
+        
+        for (key,value):(String, JSON) in jsonData {
+            
+            DATA.mqtt.publish(key, withString: value.stringValue)
+            
+        }
+        //json?.index(after: <#T##Data.Index#>)
+        //let jsonData = JSON(data: json!)
+        
+    }
+    
+    
     func configure(coreMoodCell: CoreMoodCell, moodName: String){
         
         coreMoodCell.moodName = moodName
@@ -213,22 +212,26 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         //coreMoodCell.lightsJSON
         //var lightsJSON: String = ""
         
-        var dictionary: Dictionary<String, String>?
+        var dictionary: Dictionary<String, String> = [:]
         
         for index in myLights.lights {
             
             let topic = "lightcontrol/home/\(DATA.homeID)/light/\(index.lightID)/commands"
-            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"name\":\"\(index.name)\", \"state\":\"\(index.state)}}"
-            dictionary?[topic] = message
+            
+            
+            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"state\":\"\(index.state ? "on" : "off")\"}}"
+            dictionary[topic] = message
             
         }
         
         
-        var jsonObject = JSON(dictionary!)
+        let jsonObject = JSON(dictionary)
         
-        print(jsonObject)
+        coreMoodCell.lightsJSON = jsonObject.rawString()!
         
-        //coreMoodCell.lightsJSON = lightsJSON
+        moodsArray.append(coreMoodCell)
+        
+        self.MoodsTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -239,17 +242,26 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
   
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moodsArrayData.count
+        return moodsArray.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = Bundle.main.loadNibNamed("MoodsTableViewCell", owner: self, options: nil)?.first as! MoodsTableViewCell
-        cell.mainLabel.text = moodsArrayData[indexPath.row].mood
-        //cell.moodSwitch.setOn(moodsArrayData[indexPath.row].moodOnOff, animated:false)
-        //cell.delegate = self
         
-        //cell.delegate = self
+        
+        let cell = Bundle.main.loadNibNamed("MoodsTableViewCell", owner: self, options: nil)?.first as! MoodsTableViewCell
+        
+        let coreMoodCell = moodsArray[indexPath.row]
+        
+        cell.mainLabel.text = coreMoodCell.moodName
         cell.accessoryType = .none
+        cell.applyButton.layer.borderColor = UIColor.black.cgColor
+        cell.applyButton.layer.borderWidth = 0.5
+        
+        cell.jsonMessage = coreMoodCell.lightsJSON
+        
+        cell.delegate = self
+        
         
         return cell
         

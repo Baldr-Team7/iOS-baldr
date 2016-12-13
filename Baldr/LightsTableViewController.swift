@@ -327,8 +327,6 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
                     
                     self.configure(coreLightCell: index, usingJSON: jsonData)
                     self.container.viewContext.delete(light)
-      
-                    
                 } 
             }
 

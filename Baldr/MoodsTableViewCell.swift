@@ -9,23 +9,32 @@
 import UIKit
 
 protocol MoodCellDelegate {
-    func userdidEnterName(main: String)
+    func applyMood(moodName: String, jsonMessage: String?)
     
     
 }
 class MoodsTableViewCell: UITableViewCell {
 
     
-    var delegate: moodsCellData?
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var moodSwitch: UISwitch!
+    var delegate: MoodCellDelegate?
+    var jsonMessage: String?
     
+    @IBOutlet weak var mainLabel: UILabel!
+    
+    @IBOutlet weak var applyButton: UIButton!
+    
+    
+    
+    @IBAction func applyMood(_ sender: Any) {
+        delegate?.applyMood(moodName: mainLabel.text!, jsonMessage: jsonMessage)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+   
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

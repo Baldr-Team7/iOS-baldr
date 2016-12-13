@@ -12,7 +12,7 @@ import UIKit
 // protocol that pass the name user entered for every new Mood
 
 protocol AddMoodCellDelegate{
-    func userEnteredMoodData(mood: String)
+    func userEnteredMoodData(moodName: String)
 }
 
 class AddMoodViewController: UIViewController {
@@ -29,7 +29,7 @@ class AddMoodViewController: UIViewController {
         if delegate != nil{
             if nameMoodField.text != "" && nameMoodField.text!.characters.first != " " {
                 let name = nameMoodField.text
-                delegate?.userEnteredMoodData(mood: name!)
+                delegate?.userEnteredMoodData(moodName: name!)
                 dismiss(animated: true, completion: nil)
             
             }

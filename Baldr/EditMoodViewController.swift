@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditMoodCellDelegate {
-    func userEditedData(mood: String)
+    func userEditedData(moodName: String)
     
 }
 
@@ -29,7 +29,7 @@ class EditMoodViewController: UIViewController {
         if delegate != nil{
             if nameMoodField.text != "" && nameMoodField.text!.characters.first != " "{
                 let name = nameMoodField.text
-                delegate?.userEditedData(mood: name!)
+                delegate?.userEditedData(moodName: name!)
                 //exit the current page
                 dismiss(animated: true, completion: nil)
         }
