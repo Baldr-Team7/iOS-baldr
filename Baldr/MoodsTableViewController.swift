@@ -24,7 +24,7 @@ struct moodsCellData{
 //    let lightsOff: Int!
 }
 
-class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate, MoodCellDelegate {
+class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate, MoodCellDelegate, SettingsDelegate {
     
     var container2: NSPersistentContainer!
     //var moodsArrayData = [moodsCellData]()
@@ -58,6 +58,23 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         self.MoodsTable.reloadData()
        
         
+    }
+    
+    func userUpdatedHomeID(){
+        //  for index in myLights.lights{
+        //  container.viewContext.delete(index)
+        //}
+        
+        
+        for index in moodsArray {
+            container2.viewContext.delete(index)
+        }
+        
+        moodsArray = []
+        
+        saveContext()
+        
+        MoodsTable.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

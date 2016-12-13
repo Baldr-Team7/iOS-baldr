@@ -12,7 +12,7 @@ import CocoaMQTT
 import CoreData
 
 
-class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate {
+class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate, SettingsDelegate {
     
     
     @IBOutlet var RoomsTable: UITableView!
@@ -45,6 +45,13 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
    
     func reloadRoomTable(notification: NSNotification){
         self.RoomsTable.reloadData()
+    }
+    
+    func userUpdatedHomeID(){
+        
+        
+        RoomsTable.reloadData()
+        
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

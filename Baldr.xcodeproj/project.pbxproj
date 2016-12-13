@@ -19,6 +19,7 @@
 		5A46E5611D95090D00A63C32 /* BaldrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46E5601D95090D00A63C32 /* BaldrUITests.swift */; };
 		5A6190651DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6190631DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift */; };
 		5A6190661DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6190641DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift */; };
+		5A6190681E001C1C00618858 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6190671E001C1C00618858 /* SettingsViewController.swift */; };
 		5A6AB7001DDE00060076B3F2 /* Pods_Baldr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */; };
 		5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */; };
@@ -81,6 +82,7 @@
 		5A46E5621D95090D00A63C32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A6190631DFF68FC00618858 /* CoreMoodCell+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreMoodCell+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5A6190641DFF68FC00618858 /* CoreMoodCell+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreMoodCell+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5A6190671E001C1C00618858 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5A9DABF01DA5A0EE00E67B56 /* AddLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLightViewController.swift; sourceTree = "<group>"; };
 		5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
 		5A9DABF61DA6698F00E67B56 /* AddMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoodViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */,
 				5AF59D2E1DDA06750053700C /* Baldr.xcdatamodeld */,
 				5A46E5441D95090D00A63C32 /* Main.storyboard */,
+				5A6190671E001C1C00618858 /* SettingsViewController.swift */,
 				5A46E5421D95090D00A63C32 /* RoomsTableViewController.swift */,
 				5A9DABF41DA6698600E67B56 /* AddRoomViewController.swift */,
 				5AD580D41DFE161C006FC824 /* EditRoomViewController.swift */,
@@ -539,6 +542,7 @@
 			files = (
 				5AF59D301DDA06750053700C /* Baldr.xcdatamodeld in Sources */,
 				5AD580D51DFE161C006FC824 /* EditRoomViewController.swift in Sources */,
+				5A6190681E001C1C00618858 /* SettingsViewController.swift in Sources */,
 				5A9DABF51DA6698600E67B56 /* AddRoomViewController.swift in Sources */,
 				5A46E5431D95090D00A63C32 /* RoomsTableViewController.swift in Sources */,
 				A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */,

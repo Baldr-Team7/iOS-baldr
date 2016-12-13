@@ -34,7 +34,7 @@ struct DATA {
     static var homeID = "asdf"
 }
 
-class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
+class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate, SettingsDelegate {
     
     @IBOutlet var LightsTable: UITableView!
 
@@ -80,7 +80,21 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     }
     
   
-    
+    func userUpdatedHomeID(){
+        
+        for index in myLights.lights{
+            container.viewContext.delete(index)
+        }
+        
+        
+        myLights.lights = []
+        
+        
+        saveContext()
+        
+        LightsTable.reloadData()
+        
+    }
     // ---------------------------------------------------------------------------------------------
     
     // Delegate Methods
