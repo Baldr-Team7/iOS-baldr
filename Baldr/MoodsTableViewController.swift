@@ -129,7 +129,7 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.hideKeyboardWhenTappedAround()
         container2 = NSPersistentContainer(name: "Baldr")
 
         container2.loadPersistentStores { storeDescription, error in

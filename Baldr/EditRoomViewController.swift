@@ -77,6 +77,7 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
+        self.hideKeyboardWhenTappedAround()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         nameRoomField.text = roomName
         

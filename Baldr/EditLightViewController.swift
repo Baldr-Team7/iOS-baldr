@@ -65,7 +65,7 @@ class EditLightViewController: UIViewController {
         displayColorView.backgroundColor = myColor
         colorSlider?.setValue(mySlider! * 100, animated: true)
         nameLightField.text = myName
-        
+        self.hideKeyboardWhenTappedAround()
         
         // Do any additional setup after loading the view.
     }

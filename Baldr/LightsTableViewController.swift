@@ -187,6 +187,8 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
+    
+        
         container = NSPersistentContainer(name: "Baldr")
         
         //print(container.name)
@@ -636,4 +638,29 @@ extension LightsTableViewController: CocoaMQTTDelegate {
 extension Notification.Name {
     static let reload = Notification.Name("reload")
 }
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+
+extension UITableViewController {
+    override func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+
 

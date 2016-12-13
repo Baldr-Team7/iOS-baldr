@@ -23,7 +23,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRooms()
-        
+        //self.hideKeyboardWhenTappedAround()
         navigationItem.leftBarButtonItem = editButtonItem
         
         self.tableView.reloadData()

@@ -55,6 +55,7 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
+        self.hideKeyboardWhenTappedAround()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
     }
