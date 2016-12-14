@@ -134,11 +134,11 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
             if (index.room == room){
                 
                 // Create Message
-                let message = Message(forLight: index.lightID, toggle: state)
+                _ = Message(forLight: index.lightID, toggle: state)
                 //                let message = Message(forRoom: index, room: room, toggle: state)
 
                 // Publish Message
-                DATA.mqtt!.publish(message.topic, withString: message.message)
+                //DATA.mqtt!.publish(message.topic, withString: message.message)
                 
                 //toggleLight(light: index, room: room, state: state)
             }
@@ -249,8 +249,8 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
             for index in myLights.lights {
                 if index.room == room {
                     // change to undefined
-                    let message = Message(forRoom: index, room: "undefined")
-                    DATA.mqtt!.publish(message.topic, withString: message.message)
+                    _ = Message(forRoom: index, room: "undefined")
+                    //DATA.mqtt!.publish(message.topic, withString: message.message)
                     //setRoomToUndefined(light: index)
                 }
                 

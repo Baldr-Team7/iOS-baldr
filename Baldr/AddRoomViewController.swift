@@ -38,10 +38,10 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
                         //print("hello")
                         
                         // Create Message
-                        let message = Message(forRoom: noRoomLights[index], room: room!)
+                        _ = Message(forRoom: noRoomLights[index], room: room!)
                         
                         // Publish Message
-                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        //DATA.mqtt!.publish(message.topic, withString: message.message)
                         
                         //updateRoomForLight(light: noRoomLights[index], room: name!)
                     }

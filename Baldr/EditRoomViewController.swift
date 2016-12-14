@@ -43,10 +43,10 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
                     if (tableView.cellForRow(at: indexPath)?.isSelected)! {
                         
                         // Create Message
-                        let message = Message(forRoom: myRoomLights[index], room: room!)
+                        _ = Message(forRoom: myRoomLights[index], room: room!)
                         
                         // Publish Message
-                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        //DATA.mqtt!.publish(message.topic, withString: message.message)
                         
 //                        updateRoomForLight(light: myRoomLights[index], room: room!)
                         //print((tableView.cellForRow(at: indexPath)?.isSelected)!)
@@ -54,10 +54,10 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
                     } else {
                         
                         // Create Message with "undefined"
-                        let message = Message(forRoom: myRoomLights[index], room: "undefined")
+                        _ = Message(forRoom: myRoomLights[index], room: "undefined")
                         
                         // Publish Message
-                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        //DATA.mqtt!.publish(message.topic, withString: message.message)
                         // setRoomToUndefined(light: myRoomLights[index])
                     }
                 

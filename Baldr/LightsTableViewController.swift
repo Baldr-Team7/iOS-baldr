@@ -57,9 +57,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         //print("\(main) is \(state)")
         
-        let message = Message(forLight: lightID, toggle: state)
-        
-        DATA.mqtt!.publish(message.topic, withString: message.message)
+        _ = Message(forLight: lightID, toggle: state)
+    
+        //DATA.mqtt!.publish(message.topic, withString: message.message)
        
 //        let topic: String?
 //        
@@ -74,7 +74,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
 //            turnLightOff(topic: topic!)
 //        }
 //        
-        print(message.topic)
+        //        print(message.topic)
     }
 
     func reload() {
@@ -98,9 +98,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     func userEnteredLightData(discoveryCode: String) {
     
-        let message = Message(forDiscovery: discoveryCode)
+        _ = Message(forDiscovery: discoveryCode)
         
-        DATA.mqtt!.publish(message.topic, withString: message.message)
+        //DATA.mqtt!.publish(message.topic, withString: message.message)
         // DATA.mqtt!.publish("lightcontrol/discovery", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"discovery\" : {\"discoveryCode\":\"\(discoveryCode)\", \"home\": \"\(DATA.homeID)\"}}")
         
     }
@@ -111,9 +111,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         let lightID = myLights.lights[editIndex].lightID
         
-        let message = Message(forLight: lightID, name: name, color: color)
+        _ = Message(forLight: lightID, name: name, color: color)
         
-        DATA.mqtt!.publish(message.topic, withString: message.message)
+        //DATA.mqtt!.publish(message.topic, withString: message.message)
 
         //print("\(lightID)")
         //        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
