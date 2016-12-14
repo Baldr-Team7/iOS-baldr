@@ -36,17 +36,12 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         
         self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
         
-        
-        // Checks for Notifications
-//        NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
         
     }
     
     func reload() {
         
-        //print("reload")
         RoomsTable.beginUpdates()
         RoomsTable.endUpdates()
     }
@@ -59,11 +54,8 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     func handleRefresh(refreshControl: UIRefreshControl) {
         
         
-        // myLights.lights.sort() { $0.room < $1.room }
-        
+        myRooms.sort() { $0 < $1 }
         reload()
-        //self.RoomsTable.reloadData()
-        
         refreshControl.endRefreshing()
         
     }
@@ -74,7 +66,6 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        //print(myRooms[0])
         
     }
     
@@ -102,12 +93,6 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         myRooms = Array(Set(rooms))
     }
     
- 
-    
-    
-    
-    // Delegate Method
-    
     func userEnteredRoomData(room: String) {
         
         myRooms.append("\(room)")
@@ -118,13 +103,9 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     
     func userEditedRoomData(room: String) {
 
-        //print(room)
         myRooms[editIndex] = room
-        
         self.RoomsTable.reloadData()
-        
-        // let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
-        //changeNameAndColor(topic: topic, hex: color, name: name)
+    
     }
     
     func toggleRoom(room: String, state: Bool) {
@@ -135,53 +116,10 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
                 
                 // Create Message
                 _ = Message(forLight: index.lightID, toggle: state)
-                //                let message = Message(forRoom: index, room: room, toggle: state)
-
-                // Publish Message
-                //DATA.mqtt!.publish(message.topic, withString: message.message)
-                
-                //toggleLight(light: index, room: room, state: state)
+  
             }
         }
     }
-
-//    func toggleLight(light: CoreLightCell, room: String, state: Bool) {
-//        
-//        
-//        let message = Message(forRoom: light, room: room, toggle: state)
-//        DATA.mqtt!.publish(message.topic, withString: message.message)
-//   
-//        
-//        let topic = "lightcontrol/home/\(DATA.homeID)/room/\(room)/commands"
-//        
-//        if (state == true){
-//            turnRoomOn(topic: topic)
-//        }
-//        else {
-//            turnRoomOff(topic: topic)
-//        }
-//        
-//    }
-    
-//    func turnRoomOn(topic: String){
-//        DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
-//        
-//    }
-//    
-//    // Turn Light Off Message
-//    func turnRoomOff(topic: String){
-//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
-//        
-//    }
-    
-//    func setRoomToUndefined(light: CoreLightCell){
-//        
-//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-//        
-//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
-//        
-//    }
-    
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -250,13 +188,10 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
                 if index.room == room {
                     // change to undefined
                     _ = Message(forRoom: index, room: "undefined")
-                    //DATA.mqtt!.publish(message.topic, withString: message.message)
-                    //setRoomToUndefined(light: index)
                 }
                 
             }
             
-            //myLights.lights.remove(at: indexPath.row)
             RoomsTable.deleteRows(at: [indexPath], with: .fade)
             
             

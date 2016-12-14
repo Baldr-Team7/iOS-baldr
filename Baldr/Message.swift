@@ -52,6 +52,7 @@ class Message {
         handleMessage(message: self)
     }
     
+    // Message for Discovering New Lights
     init(forDiscovery: String){
         
         self.topic = "lightcontrol/discovery"
@@ -62,6 +63,7 @@ class Message {
     
 }
 
+// Extension that publishes the Message when initialized
 extension Message {
     
     func handleMessage(message: Message){

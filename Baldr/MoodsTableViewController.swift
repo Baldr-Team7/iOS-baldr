@@ -11,19 +11,6 @@ import SwiftyJSON
 import CoreData
 import CocoaMQTT
 
-struct lightMessage {
-    var topic: String
-    var message: String
-    
-}
-
-struct moodsCellData{
-    var mood: String!
-//    let moodOnOff: Bool!
-//    let lightsOn: Int!
-//    let lightsOff: Int!
-}
-
 class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate, MoodCellDelegate {
     
     var container2: NSPersistentContainer!
@@ -35,14 +22,8 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     var moodsArray = [CoreMoodCell]()
     
-    var moodsArrayData = [moodsCellData(mood: "Pissed"),
-                          moodsCellData(mood: "Happy"),
-                          moodsCellData(mood: "Depressed ")]
-    
-    
     //when user entered new mood, save the input and pass it to the protocol func
     func userEnteredMoodData(moodName: String) {
-        // let newMood = moodsCellData(mood: mood)
         
         createCoreMood(moodName: moodName)
         
@@ -50,7 +31,6 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     func userEditedData(moodName: String) {
         
-        //        moodsArrayData[editIndex].mood = mood
         moodsArray[editIndex].moodName = moodName
         
         saveContext()
@@ -133,9 +113,6 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         
         
         self.MoodsTable.reloadData()
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     func saveContext() {
@@ -150,14 +127,11 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     func loadSavedData() {
         let request = CoreMoodCell.createFetchRequest()
-        //  let sort = NSSortDescriptor(key: "room", ascending: false)
-        //request.sortDescriptors = [sort]
         
         do {
             moodsArray = try container2.viewContext.fetch(request)
             print("Got \(moodsArray.count) moods")
             self.reload()
-            //tableView.reloadData()
         } catch {
             print("Fetch failed")
         }
@@ -166,16 +140,13 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     
     func reload() {
-        
-        //print("reload")
         MoodsTable.beginUpdates()
         MoodsTable.endUpdates()
     }
     
     func createCoreMood(moodName: String) {
         DispatchQueue.main.async { [unowned self] in
-            //print(self.container2.name)
-            //      print(container.name)
+
             let mood = NSEntityDescription.insertNewObject(forEntityName: "CoreMoodCell", into: self.container2.viewContext) as! CoreMoodCell
             
             self.configure(coreMoodCell: mood, moodName: moodName)
@@ -199,8 +170,7 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
             DATA.mqtt.publish(key, withString: value.stringValue)
             
         }
-        //json?.index(after: <#T##Data.Index#>)
-        //let jsonData = JSON(data: json!)
+
         
     }
     
@@ -208,21 +178,12 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     func configure(coreMoodCell: CoreMoodCell, moodName: String){
         
         coreMoodCell.moodName = moodName
-        
-        //coreMoodCell.lightsJSON
-        //var lightsJSON: String = ""
-        
+
         var dictionary: Dictionary<String, String> = [:]
         
         for index in myLights.lights {
             
             let message = Message(forMood: index)
-            
-//            let topic = "lightcontrol/home/\(DATA.homeID)/light/\(index.lightID)/commands"
-            
-            
-//            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"state\":\"\(index.state ? "on" : "off")\"}}"
-            
             dictionary[message.topic] = message.message
             
         }
@@ -272,9 +233,5 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
-    }
-    
-    func addMood(mood : moodsCellData){
-        moodsArrayData.append(mood)
     }
 }

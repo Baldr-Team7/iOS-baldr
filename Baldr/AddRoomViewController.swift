@@ -32,27 +32,15 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
                 delegate?.userEnteredRoomData(room: room!)
                 print(room!)
                 for index in 0...(noRoomLights.count - 1) {
-                    // let indexPath = IndexPath(row: index, section: 0)
-                    //print(tableView.cellForRow(at: indexPath)!)//{
                     if (tableView.cellForRow(at: IndexPath(row: index, section: 0))?.isSelected)! {
-                        //print("hello")
                         
                         // Create Message
                         _ = Message(forRoom: noRoomLights[index], room: room!)
-                        
-                        // Publish Message
-                        //DATA.mqtt!.publish(message.topic, withString: message.message)
-                        
-                        //updateRoomForLight(light: noRoomLights[index], room: name!)
+
                     }
                 }
                 dismiss(animated: true, completion: nil)
             }
-            
-            // go through all lights in the table and update selected lights
-            
-            // exit page
-            
         }
     }
     
@@ -78,16 +66,6 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
-//    func updateRoomForLight(light: CoreLightCell, room: String){
-//        
-//        
-//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-//        
-//        
-//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
-//        
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,8 +80,7 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // your cell coding
-        // let cell = UITableViewCell()
+
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         let light = noRoomLights[indexPath.row]
         cell.textLabel?.text = light.name
@@ -121,7 +98,6 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
-            //cell.isSelected = true
             
         }
     
@@ -131,10 +107,6 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
-            // cell.isSelected = false
-            
-            
-            
         }
     }
  
@@ -143,13 +115,3 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 50
     }
 }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */

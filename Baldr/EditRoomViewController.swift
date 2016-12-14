@@ -35,30 +35,19 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 let room = nameRoomField.text
                 delegate?.userEditedRoomData(room: room!)
-                // exit page
                 
                 for index in 0...(myRoomLights.count - 1) {
                     let indexPath = IndexPath(row: index, section: 0)
                     
                     if (tableView.cellForRow(at: indexPath)?.isSelected)! {
                         
-                        // Create Message
+                        // Change the assigned Room of a Light
                         _ = Message(forRoom: myRoomLights[index], room: room!)
-                        
-                        // Publish Message
-                        //DATA.mqtt!.publish(message.topic, withString: message.message)
-                        
-//                        updateRoomForLight(light: myRoomLights[index], room: room!)
-                        //print((tableView.cellForRow(at: indexPath)?.isSelected)!)
                         
                     } else {
                         
-                        // Create Message with "undefined"
+                        // Set Light to have no room
                         _ = Message(forRoom: myRoomLights[index], room: "undefined")
-                        
-                        // Publish Message
-                        //DATA.mqtt!.publish(message.topic, withString: message.message)
-                        // setRoomToUndefined(light: myRoomLights[index])
                     }
                 
                 }
@@ -68,28 +57,6 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-//    func updateRoomForLight(light: CoreLightCell, room: String){
-//        
-//        let message = Message(forRoom: light, room: room)
-//        
-//        
-//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-//        
-//        
-//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
-//        
-//    }
-//    
-//    
-//    func setRoomToUndefined(light: CoreLightCell) {
-//        
-//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-//        
-//        
-//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
-//        
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
@@ -97,7 +64,6 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         nameRoomField.text = roomName
         
-        // Do any additional setup after loading the view.
     }
 
     
@@ -111,31 +77,16 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // show only lights without rooms
-        
         return myRoomLights.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // your cell coding
-        // let cell = UITableViewCell()
+
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         
         let light = myRoomLights[indexPath.row]
@@ -147,7 +98,6 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
         } else {
             cell.accessoryType = .none
-            //cell.isSelected = false
         }
         cell.selectionStyle = .none
         
@@ -161,16 +111,13 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
-            
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
-            
         }
     }
     

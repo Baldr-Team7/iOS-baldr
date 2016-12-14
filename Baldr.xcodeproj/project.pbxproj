@@ -37,7 +37,6 @@
 		5AE333521DA05E4600D679BF /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE333511DA05E4600D679BF /* MoodsTableViewController.swift */; };
 		5AE675C01DF05D2A0063DF87 /* EditLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE675BF1DF05D2A0063DF87 /* EditLightViewController.swift */; };
 		5AF59D301DDA06750053700C /* Baldr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AF59D2E1DDA06750053700C /* Baldr.xcdatamodeld */; };
-		A2206C461DD9EE8C00C2205E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2206C451DD9EE8C00C2205E /* Light.swift */; };
 		A2D697821DB918A300200200 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D697801DB918A300200200 /* LightsTableViewCell.swift */; };
 		A2D697831DB918A300200200 /* LightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2D697811DB918A300200200 /* LightsTableViewCell.xib */; };
 		A2E59ACE1DFD9CF000434BD7 /* EditMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */; };
@@ -105,7 +104,6 @@
 		5AF59D351DDDF2E70053700C /* Pods_Baldr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Baldr.framework; path = "Pods/../build/Release-iphoneos/Pods_Baldr.framework"; sourceTree = "<group>"; };
 		5AF59D371DDDF2EF0053700C /* MSWeakTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MSWeakTimer.framework; path = "Pods/../build/Release-iphoneos/MSWeakTimer/MSWeakTimer.framework"; sourceTree = "<group>"; };
 		76E983A314399B5E1ECADE13 /* Pods_Baldr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Baldr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2206C451DD9EE8C00C2205E /* Light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		A2D697801DB918A300200200 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
 		A2D697811DB918A300200200 /* LightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightsTableViewCell.xib; sourceTree = "<group>"; };
 		A2E59ACD1DFD9CF000434BD7 /* EditMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMoodViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				5A46E5471D95090D00A63C32 /* Assets.xcassets */,
 				5A46E5491D95090D00A63C32 /* LaunchScreen.storyboard */,
 				5A46E54C1D95090D00A63C32 /* Info.plist */,
-				A2206C451DD9EE8C00C2205E /* Light.swift */,
 			);
 			path = Baldr;
 			sourceTree = "<group>";
@@ -554,7 +551,6 @@
 				5AC6993D1DA67D6F009432E2 /* MasterTableViewCell.swift in Sources */,
 				5A9DABF11DA5A0EE00E67B56 /* AddLightViewController.swift in Sources */,
 				A2E59ACE1DFD9CF000434BD7 /* EditMoodViewController.swift in Sources */,
-				A2206C461DD9EE8C00C2205E /* Light.swift in Sources */,
 				5AC26AA51DE3FD990090ECAC /* CoreLightCell+CoreDataProperties.swift in Sources */,
 				5AD0AB6E1DB392E60012B913 /* RoomsTableViewCell.swift in Sources */,
 				5AD0AB721DB396D00012B913 /* MoodsTableViewCell.swift in Sources */,

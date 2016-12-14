@@ -31,10 +31,8 @@ class LightsTableViewCell: UITableViewCell {
     @IBOutlet weak var roomLabel: UILabel!
     
     @IBAction func toggleLight(_ sender: AnyObject) {
-        //delegate?.reload()
-        //        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn, lightID: ID)
         delegate?.toggleLight(lightID: ID, state: lightSwitch.isOn)
-        // print("\(self.ID) + \(lightSwitch.isOn)")
+
     }
     
     
@@ -46,6 +44,5 @@ class LightsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 }
