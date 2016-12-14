@@ -25,4 +25,6 @@ extension CoreLightCell {
     @NSManaged public var lightID: String
     @NSManaged public var room: String
 
+   
+    
 }

@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         self.hideKeyboardWhenTappedAround()
         homeIDTextField.text = DATA.homeID
         // Do any additional setup after loading the view.

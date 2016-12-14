@@ -39,12 +39,13 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
                         updateRoomForLight(light: noRoomLights[index], room: name!)
                     }
                 }
+                dismiss(animated: true, completion: nil)
             }
             
             // go through all lights in the table and update selected lights
             
             // exit page
-            dismiss(animated: true, completion: nil)
+            
         }
     }
     
@@ -55,10 +56,13 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         getLights()
-        self.hideKeyboardWhenTappedAround()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
+        self.hideKeyboardWhenTappedAround()
+
     }
+    
+  
     
     func getLights(){
         for index in myLights.lights {

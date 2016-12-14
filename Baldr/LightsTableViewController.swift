@@ -62,6 +62,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
 
+        
         if (state == true){
             turnLightOn(topic: topic!)
         }
@@ -626,6 +627,8 @@ extension Notification.Name {
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.numberOfTapsRequired = 2
+        
         view.addGestureRecognizer(tap)
     }
     
@@ -637,7 +640,8 @@ extension UIViewController {
 
 extension UITableViewController {
     override func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UITableViewController.dismissKeyboard))
+        tap.numberOfTapsRequired = 2
         view.addGestureRecognizer(tap)
     }
     

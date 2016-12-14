@@ -216,11 +216,14 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         
         for index in myLights.lights {
             
-            let topic = "lightcontrol/home/\(DATA.homeID)/light/\(index.lightID)/commands"
+            let message = Message(forMood: index)
+            
+//            let topic = "lightcontrol/home/\(DATA.homeID)/light/\(index.lightID)/commands"
             
             
-            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"state\":\"\(index.state ? "on" : "off")\"}}"
-            dictionary[topic] = message
+//            let message: String = "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(index.color)\", \"state\":\"\(index.state ? "on" : "off")\"}}"
+            
+            dictionary[message.topic] = message.message
             
         }
         

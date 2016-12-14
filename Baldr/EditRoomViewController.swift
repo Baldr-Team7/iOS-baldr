@@ -31,21 +31,34 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func saveRoom(_ sender: Any) {
         if delegate != nil {
             
-            if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
+            if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " && nameRoomField.text != "undefined" {
                 
-                let name = nameRoomField.text
-                delegate?.userEditedRoomData(room: name!)
+                let room = nameRoomField.text
+                delegate?.userEditedRoomData(room: room!)
                 // exit page
                 
                 for index in 0...(myRoomLights.count - 1) {
                     let indexPath = IndexPath(row: index, section: 0)
-                    //print(tableView.cellForRow(at: indexPath)!)//{
+                    
                     if (tableView.cellForRow(at: indexPath)?.isSelected)! {
-                        //print("hello")
-                        updateRoomForLight(light: myRoomLights[index], room: name!)
-                        print((tableView.cellForRow(at: indexPath)?.isSelected)!)
+                        
+                        // Create Message
+                        let message = Message(forRoom: myRoomLights[index], room: room!)
+                        
+                        // Publish Message
+                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        
+//                        updateRoomForLight(light: myRoomLights[index], room: room!)
+                        //print((tableView.cellForRow(at: indexPath)?.isSelected)!)
+                        
                     } else {
-                        setRoomToUndefined(light: myRoomLights[index])
+                        
+                        // Create Message with "undefined"
+                        let message = Message(forRoom: myRoomLights[index], room: "undefined")
+                        
+                        // Publish Message
+                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        // setRoomToUndefined(light: myRoomLights[index])
                     }
                 
                 }
@@ -55,24 +68,27 @@ class EditRoomViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func updateRoomForLight(light: CoreLightCell, room: String){
-        
-        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-        
-        
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
-        
-    }
-    
-    
-    func setRoomToUndefined(light: CoreLightCell) {
-        
-        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-        
-        
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
-        
-    }
+//    func updateRoomForLight(light: CoreLightCell, room: String){
+//        
+//        let message = Message(forRoom: light, room: room)
+//        
+//        
+//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+//        
+//        
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
+//        
+//    }
+//    
+//    
+//    func setRoomToUndefined(light: CoreLightCell) {
+//        
+//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+//        
+//        
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
+//        
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
