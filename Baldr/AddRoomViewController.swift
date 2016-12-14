@@ -28,15 +28,22 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if delegate != nil {
             if nameRoomField.text != "" && nameRoomField.text!.characters.first != " " {
-                let name = nameRoomField.text
-                delegate?.userEnteredRoomData(room: name!)
-                print(name!)
+                let room = nameRoomField.text
+                delegate?.userEnteredRoomData(room: room!)
+                print(room!)
                 for index in 0...(noRoomLights.count - 1) {
                     // let indexPath = IndexPath(row: index, section: 0)
                     //print(tableView.cellForRow(at: indexPath)!)//{
                     if (tableView.cellForRow(at: IndexPath(row: index, section: 0))?.isSelected)! {
                         //print("hello")
-                        updateRoomForLight(light: noRoomLights[index], room: name!)
+                        
+                        // Create Message
+                        let message = Message(forRoom: noRoomLights[index], room: room!)
+                        
+                        // Publish Message
+                        DATA.mqtt!.publish(message.topic, withString: message.message)
+                        
+                        //updateRoomForLight(light: noRoomLights[index], room: name!)
                     }
                 }
                 dismiss(animated: true, completion: nil)
@@ -72,14 +79,15 @@ class AddRoomViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func updateRoomForLight(light: CoreLightCell, room: String){
-        
-        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-        
-        
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
-        
-    }
+//    func updateRoomForLight(light: CoreLightCell, room: String){
+//        
+//        
+//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+//        
+//        
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"\(room)\"}}")
+//        
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

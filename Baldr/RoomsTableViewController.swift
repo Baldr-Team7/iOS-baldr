@@ -102,13 +102,7 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         myRooms = Array(Set(rooms))
     }
     
-    func setRoomToUndefined(light: CoreLightCell){
-        
-        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
-        
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
-        
-    }
+ 
     
     
     
@@ -138,34 +132,55 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         
         for index in myLights.lights {
             if (index.room == room){
-                toggleLight(light: index, room: room, state: state)
+                
+                // Create Message
+                let message = Message(forLight: index.lightID, toggle: state)
+                //                let message = Message(forRoom: index, room: room, toggle: state)
+
+                // Publish Message
+                DATA.mqtt!.publish(message.topic, withString: message.message)
+                
+                //toggleLight(light: index, room: room, state: state)
             }
         }
     }
 
-    func toggleLight(light: CoreLightCell, room: String, state: Bool) {
-        
-        let topic = "lightcontrol/home/\(DATA.homeID)/room/\(room)/commands"
-        
-        if (state == true){
-            turnRoomOn(topic: topic)
-        }
-        else {
-            turnRoomOff(topic: topic)
-        }
-        
-    }
+//    func toggleLight(light: CoreLightCell, room: String, state: Bool) {
+//        
+//        
+//        let message = Message(forRoom: light, room: room, toggle: state)
+//        DATA.mqtt!.publish(message.topic, withString: message.message)
+//   
+//        
+//        let topic = "lightcontrol/home/\(DATA.homeID)/room/\(room)/commands"
+//        
+//        if (state == true){
+//            turnRoomOn(topic: topic)
+//        }
+//        else {
+//            turnRoomOff(topic: topic)
+//        }
+//        
+//    }
     
-    func turnRoomOn(topic: String){
-        DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
-        
-    }
+//    func turnRoomOn(topic: String){
+//        DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
+//        
+//    }
+//    
+//    // Turn Light Off Message
+//    func turnRoomOff(topic: String){
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
+//        
+//    }
     
-    // Turn Light Off Message
-    func turnRoomOff(topic: String){
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
-        
-    }
+//    func setRoomToUndefined(light: CoreLightCell){
+//        
+//        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(light.lightID)/commands"
+//        
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"room\":\"undefined\"}}")
+//        
+//    }
     
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -234,7 +249,9 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
             for index in myLights.lights {
                 if index.room == room {
                     // change to undefined
-                    setRoomToUndefined(light: index)
+                    let message = Message(forRoom: index, room: "undefined")
+                    DATA.mqtt!.publish(message.topic, withString: message.message)
+                    //setRoomToUndefined(light: index)
                 }
                 
             }

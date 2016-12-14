@@ -53,24 +53,28 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     
     
     // toggle the light, send the appropriate message to the broker
-    func toggleLight(main: String, state: Bool, lightID: String){
-        print("Hello")
+    func toggleLight(lightID: String, state: Bool) {
         
         //print("\(main) is \(state)")
         
-        let topic: String?
+        let message = Message(forLight: lightID, toggle: state)
         
-        topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
-
-        
-        if (state == true){
-            turnLightOn(topic: topic!)
-        }
-        else {
-            turnLightOff(topic: topic!)
-        }
-        
-        print(topic!)
+        DATA.mqtt!.publish(message.topic, withString: message.message)
+       
+//        let topic: String?
+//        
+//        
+//        topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
+//
+//        
+//        if (state == true){
+//            turnLightOn(topic: topic!)
+//        }
+//        else {
+//            turnLightOff(topic: topic!)
+//        }
+//        
+        print(message.topic)
     }
 
     func reload() {
@@ -92,9 +96,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     // Receive Data Light Cell
 
     
-    func userEnteredLightData(discoveryCode code: String) {
+    func userEnteredLightData(discoveryCode: String) {
     
-        DATA.mqtt!.publish("lightcontrol/discovery", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"discovery\" : {\"discoveryCode\":\"\(code)\", \"home\": \"\(DATA.homeID)\"}}")
+        let message = Message(forDiscovery: discoveryCode)
+        
+        DATA.mqtt!.publish(message.topic, withString: message.message)
+        // DATA.mqtt!.publish("lightcontrol/discovery", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"discovery\" : {\"discoveryCode\":\"\(discoveryCode)\", \"home\": \"\(DATA.homeID)\"}}")
         
     }
     
@@ -104,10 +111,13 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         
         let lightID = myLights.lights[editIndex].lightID
         
-        print("\(lightID)")
+        let message = Message(forLight: lightID, name: name, color: color)
         
-        let topic = "lightcontrol/home/asdf/light/\(lightID)/commands"
-        changeNameAndColor(topic: topic, hex: color, name: name)
+        DATA.mqtt!.publish(message.topic, withString: message.message)
+
+        //print("\(lightID)")
+        //        let topic = "lightcontrol/home/\(DATA.homeID)/light/\(lightID)/commands"
+        //        changeNameAndColor(topic: topic, hex: color, name: name)
         
         
     }
@@ -492,28 +502,29 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func getMessage(topic: String){
         DATA.mqtt!.subscribe("\(topic)")
     }
-    // Turn Light on Message
-    func turnLightOn(topic: String){
-         DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
-        
-    }
     
-    // Turn Light Off Message
-    func turnLightOff(topic: String){
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
-
-    }
+    // Turn Light on Message
+//    func turnLightOn(topic: String){
+//         DATA.mqtt!.publish("\(topic)", withString:"{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"on\"}}")
+//        
+//    }
+//    
+//    // Turn Light Off Message
+//    func turnLightOff(topic: String){
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"state\":\"off\"}}")
+//
+//    }
     
     // Change Color Message, with parameter as a UIColor
-    func changeNameAndColor(topic: String, color: UIColor, name: String){
-        let hex = color.toHex()
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
-    }
-
-    // Change Color Message, with parameter as a hexadecimal String
-    func changeNameAndColor(topic: String, hex: String, name: String){
-        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\", \"name\":\"\(name)\"}}")
-    }
+//    func changeNameAndColor(topic: String, color: UIColor, name: String){
+//        let hex = color.toHex()
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\"}}")
+//    }
+//
+//    // Change Color Message, with parameter as a hexadecimal String
+//    func changeNameAndColor(topic: String, hex: String, name: String){
+//        DATA.mqtt!.publish("\(topic)", withString: "{\"version\": 1, \"protocolName\": \"baldr\", \"lightCommand\" : { \"color\":\"\(hex)\", \"name\":\"\(name)\"}}")
+//    }
 }
 
 extension UIColor {

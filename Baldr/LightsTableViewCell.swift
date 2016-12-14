@@ -10,7 +10,8 @@ import UIKit
 
 
 protocol LightCellDelegate {
-    func toggleLight(main: String, state: Bool, lightID: String)
+    //func toggleLight(main: String, state: Bool, lightID: String)
+    func toggleLight(lightID: String, state: Bool)
     func reload()
 }
 
@@ -31,7 +32,8 @@ class LightsTableViewCell: UITableViewCell {
     
     @IBAction func toggleLight(_ sender: AnyObject) {
         //delegate?.reload()
-        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn, lightID: ID)
+        //        delegate?.toggleLight(main: mainLabel.text!, state: lightSwitch.isOn, lightID: ID)
+        delegate?.toggleLight(lightID: ID, state: lightSwitch.isOn)
         // print("\(self.ID) + \(lightSwitch.isOn)")
     }
     
