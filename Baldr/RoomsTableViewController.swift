@@ -34,19 +34,43 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
         print("rooms: \(myRooms) ")
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        
         // Checks for Notifications
+//        NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadRoomTableData(_:)), name: .reload, object: nil)
         
     }
     
-    func reloadRoomTableData(_ notification: Notification) {
-        self.tableView.reloadData()
+    func reload() {
+        
+        //print("reload")
+        RoomsTable.beginUpdates()
+        RoomsTable.endUpdates()
     }
-   
-    func reloadRoomTable(notification: NSNotification){
+    
+    func refreshTable(){
         self.RoomsTable.reloadData()
     }
     
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        
+        // myLights.lights.sort() { $0.room < $1.room }
+        
+        reload()
+        //self.RoomsTable.reloadData()
+        
+        refreshControl.endRefreshing()
+        
+    }
+    
+    func reloadRoomTableData(_ notification: Notification) {
+        self.RoomsTable.reloadData()
+    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)

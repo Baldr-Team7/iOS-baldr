@@ -354,8 +354,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         coreLightCell.room = json["lightInfo"]["room"].stringValue
         
         // Notification message to update room
-        NotificationCenter.default.post(name: .reload, object: nil)
-                
+        //NotificationCenter.default.post(name: .reload, object: nil)
+        //  NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     // When Edit button is pressed, do stuff
