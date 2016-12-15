@@ -118,8 +118,20 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if DATA.moodPageWillUpdate {
+            
+        
+            
+            for index in moodsArray {
+                container2.viewContext.delete(index)
+            }
+            
+            saveContext()
+            
+            
             moodsArray = []
+            
             self.MoodsTable.reloadData()
+            
             DATA.moodPageWillUpdate = false
         }
     }

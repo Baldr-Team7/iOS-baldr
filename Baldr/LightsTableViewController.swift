@@ -46,8 +46,19 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         if (DATA.lightPageWillUpdate == true) {
             DATA.mqtt!.unsubscribe("lightcontrol/home/\(DATA.oldHomeID)/light/+/info")
             DATA.mqtt!.subscribe("lightcontrol/home/\(DATA.homeID)/light/+/info")
+           
+            
+            for index in myLights.lights {
+                container.viewContext.delete(index)
+            }
+            
+            
+            saveContext()
+            
             myLights.lights = []
+            
             self.LightsTable.reloadData()
+            
             DATA.lightPageWillUpdate = false
         }
         
