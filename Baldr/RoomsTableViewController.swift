@@ -7,9 +7,6 @@
 //
 
 import UIKit
-//import SwiftyJSON
-import CocoaMQTT
-import CoreData
 
 
 class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, EditRoomCellDelegate, RoomCellDelegate {
@@ -71,7 +68,11 @@ class RoomsTableViewController: UITableViewController, AddRoomCellDelegate, Edit
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        if DATA.roomPageWillUpdate {
+            myRooms = []
+            self.RoomsTable.reloadData()
+            DATA.roomPageWillUpdate = false
+        }
     }
     
     override func didReceiveMemoryWarning() {

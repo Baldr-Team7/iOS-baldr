@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import CoreData
-import CocoaMQTT
 
 class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, EditMoodCellDelegate, MoodCellDelegate {
     
@@ -39,6 +38,7 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
        
         
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //set Delegate 
@@ -115,6 +115,14 @@ class MoodsTableViewController: UITableViewController, AddMoodCellDelegate, Edit
         self.MoodsTable.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if DATA.moodPageWillUpdate {
+            moodsArray = []
+            self.MoodsTable.reloadData()
+            DATA.moodPageWillUpdate = false
+        }
+    }
     func saveContext() {
         if container2.viewContext.hasChanges {
             do {

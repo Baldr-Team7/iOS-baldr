@@ -30,10 +30,12 @@ class SettingsViewController: UIViewController {
             if homeIDTextField.text != "" && homeIDTextField.text!.characters.first != " " {
             
                 let homeID = homeIDTextField.text
-
+                DATA.oldHomeID = DATA.homeID
                 DATA.homeID = homeID!
                 
-                print(DATA.homeID)
+                DATA.lightPageWillUpdate = true
+                DATA.roomPageWillUpdate = true
+                DATA.moodPageWillUpdate = true
                 
                 self.dismissKeyboard()
                 

@@ -21,6 +21,10 @@ struct myLights {
 struct DATA {
     static var mqtt: CocoaMQTT!
     static var homeID = "asdf"
+    static var lightPageWillUpdate = false
+    static var roomPageWillUpdate = false
+    static var moodPageWillUpdate = false
+    static var oldHomeID = ""
 }
 
 class LightsTableViewController: UITableViewController, AddLightCellDelegate, LightCellDelegate, EditLightCellDelegate {
@@ -37,14 +41,25 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         _ = Message(forLight: lightID, toggle: state)
  
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if (DATA.lightPageWillUpdate == true) {
+            DATA.mqtt!.unsubscribe("lightcontrol/home/\(DATA.oldHomeID)/light/+/info")
+            DATA.mqtt!.subscribe("lightcontrol/home/\(DATA.homeID)/light/+/info")
+            myLights.lights = []
+            self.LightsTable.reloadData()
+            DATA.lightPageWillUpdate = false
+        }
+        
+    }
+    
+    
+    
     func reload() {
         
         LightsTable.beginUpdates()
         LightsTable.endUpdates()
     }
-
-
     
     func userEnteredLightData(discoveryCode: String) {
     
