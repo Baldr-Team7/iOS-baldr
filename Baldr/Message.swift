@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaMQTT
 
 class Message {
     
@@ -61,6 +62,22 @@ class Message {
         handleMessage(message: self)
     }
     
+    init(forPresence: String){
+        self.topic = "presence/\(forPresence)"
+        
+        let timeInterval = NSDate().timeIntervalSince1970
+        
+
+            
+        self.message = "{\"version\": 1, \"groupName\": \"baldr\", \"groupNumber\" : \"7\", \"connectedAt\": \"\(timeInterval)\", \"rfcs\": \"[RFC 1, RFC 17, RFC 18]\", \"clientVersion\": \"1.0\", \"clientSoftware\": \"Baldr-iOS-Client\""
+            
+        retainMessage(message: self)
+            
+    
+       
+        
+    }
+    
 }
 
 // Extension that publishes the Message when initialized
@@ -69,4 +86,9 @@ extension Message {
     func handleMessage(message: Message){
         DATA.mqtt!.publish(message.topic, withString: message.message)
     }
+    
+    func retainMessage(message: Message){
+        DATA.mqtt!.publish(message.topic, withString: message.message, qos: .qos1, retained: true, dup: false)
+    }
+    
 }
