@@ -41,6 +41,9 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         _ = Message(forLight: lightID, toggle: state)
  
     }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if (DATA.lightPageWillUpdate == true) {
@@ -264,7 +267,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
     func settingMQTT() {
         // message = "Hi"
         let clientIdPid = "CocoaMQTT" + String(ProcessInfo().processIdentifier)
-        DATA.mqtt = CocoaMQTT(clientId: clientIdPid, host: "tann.si", port: 8883)
+        DATA.mqtt = CocoaMQTT(clientId: clientIdPid, host: "prata.technocreatives.com", port: 1883)
         //prata.technocreatives.com 1883
         
         if let mqtt = DATA.mqtt {
@@ -273,7 +276,7 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
             mqtt.willMessage = CocoaMQTTWill(topic: "presence/\(clientIdPid)", message: "")
             mqtt.keepAlive = 90
             mqtt.delegate = self
-            
+        
         }
         
         
