@@ -265,12 +265,12 @@ class LightsTableViewController: UITableViewController, AddLightCellDelegate, Li
         // message = "Hi"
         let clientIdPid = "CocoaMQTT" + String(ProcessInfo().processIdentifier)
         DATA.mqtt = CocoaMQTT(clientId: clientIdPid, host: "tann.si", port: 8883)
-        
+        //prata.technocreatives.com 1883
         
         if let mqtt = DATA.mqtt {
             mqtt.username = "test"
             mqtt.password = "public"
-            mqtt.willMessage = CocoaMQTTWill(topic: "presence/clientIdPid", message: "")
+            mqtt.willMessage = CocoaMQTTWill(topic: "presence/\(clientIdPid)", message: "")
             mqtt.keepAlive = 90
             mqtt.delegate = self
             
